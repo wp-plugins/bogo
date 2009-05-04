@@ -1,0 +1,261 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bogo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-03 02:47+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SearchPath-0: bogo\n"
+
+#: bogo/bogo.php:82
+msgid "Locale"
+msgstr ""
+
+#: bogo/bogo.php:115
+msgid "Afrikaans"
+msgstr ""
+
+#: bogo/bogo.php:116
+msgid "Arabic"
+msgstr ""
+
+#: bogo/bogo.php:117
+msgid "Belarusian"
+msgstr ""
+
+#: bogo/bogo.php:118
+msgid "Bulgarian"
+msgstr ""
+
+#: bogo/bogo.php:119
+msgid "Bengali"
+msgstr ""
+
+#: bogo/bogo.php:120
+msgid "Catalan"
+msgstr ""
+
+#: bogo/bogo.php:121
+msgid "Czech"
+msgstr ""
+
+#: bogo/bogo.php:122
+msgid "Welsh"
+msgstr ""
+
+#: bogo/bogo.php:123
+msgid "Danish"
+msgstr ""
+
+#: bogo/bogo.php:124
+msgid "German"
+msgstr ""
+
+#: bogo/bogo.php:125
+msgid "Greek"
+msgstr ""
+
+#: bogo/bogo.php:126
+msgid "English"
+msgstr ""
+
+#: bogo/bogo.php:127
+msgid "Esperanto"
+msgstr ""
+
+#: bogo/bogo.php:128
+msgid "Spanish"
+msgstr ""
+
+#: bogo/bogo.php:129
+msgid "Estonian"
+msgstr ""
+
+#: bogo/bogo.php:130
+msgid "Basque"
+msgstr ""
+
+#: bogo/bogo.php:131
+msgid "Persian"
+msgstr ""
+
+#: bogo/bogo.php:132
+msgid "Finnish"
+msgstr ""
+
+#: bogo/bogo.php:133
+msgid "Faroese"
+msgstr ""
+
+#: bogo/bogo.php:134
+msgid "French"
+msgstr ""
+
+#: bogo/bogo.php:135
+msgid "Georgian"
+msgstr ""
+
+#: bogo/bogo.php:136
+msgid "Galician"
+msgstr ""
+
+#: bogo/bogo.php:137
+msgid "Hebrew"
+msgstr ""
+
+#: bogo/bogo.php:138
+msgid "Croatian"
+msgstr ""
+
+#: bogo/bogo.php:139
+msgid "Hungarian"
+msgstr ""
+
+#: bogo/bogo.php:140
+msgid "Indonesian"
+msgstr ""
+
+#: bogo/bogo.php:141
+msgid "Icelandic"
+msgstr ""
+
+#: bogo/bogo.php:142
+msgid "Italian"
+msgstr ""
+
+#: bogo/bogo.php:143
+msgid "Japanese"
+msgstr ""
+
+#: bogo/bogo.php:144
+msgid "Khmer"
+msgstr ""
+
+#: bogo/bogo.php:145
+msgid "Korean"
+msgstr ""
+
+#: bogo/bogo.php:146
+msgid "Lithuanian"
+msgstr ""
+
+#: bogo/bogo.php:147
+msgid "Latvian"
+msgstr ""
+
+#: bogo/bogo.php:148
+msgid "Malagasy"
+msgstr ""
+
+#: bogo/bogo.php:149
+msgid "Macedonian"
+msgstr ""
+
+#: bogo/bogo.php:150
+msgid "Mongolian"
+msgstr ""
+
+#: bogo/bogo.php:151
+msgid "Malay"
+msgstr ""
+
+#: bogo/bogo.php:152
+msgid "Norwegian"
+msgstr ""
+
+#: bogo/bogo.php:153
+msgid "Nias"
+msgstr ""
+
+#: bogo/bogo.php:154
+msgid "Dutch"
+msgstr ""
+
+#: bogo/bogo.php:155
+msgid "Polish"
+msgstr ""
+
+#: bogo/bogo.php:156
+msgid "Brazilian Portuguese"
+msgstr ""
+
+#: bogo/bogo.php:157
+msgid "Portuguese"
+msgstr ""
+
+#: bogo/bogo.php:158
+msgid "Romanian"
+msgstr ""
+
+#: bogo/bogo.php:159
+msgid "Russian"
+msgstr ""
+
+#: bogo/bogo.php:160
+msgid "Sinhala"
+msgstr ""
+
+#: bogo/bogo.php:161
+msgid "Slovak"
+msgstr ""
+
+#: bogo/bogo.php:162
+msgid "Slovenian"
+msgstr ""
+
+#: bogo/bogo.php:163
+msgid "Albanian"
+msgstr ""
+
+#: bogo/bogo.php:164
+msgid "Serbian"
+msgstr ""
+
+#: bogo/bogo.php:165
+msgid "Swedish"
+msgstr ""
+
+#: bogo/bogo.php:166
+msgid "Sundanese"
+msgstr ""
+
+#: bogo/bogo.php:167
+msgid "Tajik"
+msgstr ""
+
+#: bogo/bogo.php:168
+msgid "Thai"
+msgstr ""
+
+#: bogo/bogo.php:169
+msgid "Turkish"
+msgstr ""
+
+#: bogo/bogo.php:170
+msgid "Ukrainian"
+msgstr ""
+
+#: bogo/bogo.php:171
+msgid "Uzbek"
+msgstr ""
+
+#: bogo/bogo.php:172
+msgid "Vietnamse"
+msgstr ""
+
+#: bogo/bogo.php:173
+msgid "Chinese"
+msgstr ""
+
+#: bogo/bogo.php:174
+msgid "Traditional Chinese"
+msgstr ""
+
