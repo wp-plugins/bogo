@@ -4,7 +4,7 @@ Plugin Name: Bogo
 Plugin URI: http://ideasilo.wordpress.com/2009/05/05/bogo/
 Description: Bogo allows each user to choose their locale for the admin panel.
 Author: Takayuki Miyoshi
-Version: 1.0
+Version: 1.1
 Author URI: http://ideasilo.wordpress.com/
 */
 
