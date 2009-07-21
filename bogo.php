@@ -31,7 +31,7 @@ add_action( 'personal_options_update', 'bogo_update_user_option' );
 add_action( 'personal_options', 'bogo_select_own_locale' );
 
 function bogo_locale( $locale ) {
-	if ( ! function_exists( 'get_user_option' ) )
+	if ( ! function_exists( 'wp_get_current_user' ) )
 		return $locale;
 
 	$locale_option = get_user_option( 'locale' );
