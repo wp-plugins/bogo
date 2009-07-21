@@ -31,9 +31,7 @@ add_action( 'personal_options_update', 'bogo_update_user_option' );
 add_action( 'personal_options', 'bogo_select_own_locale' );
 
 function bogo_locale( $locale ) {
-	global $current_user;
-
-	if ( ! isset( $current_user ) )
+	if ( ! function_exists( 'get_user_option' ) )
 		return $locale;
 
 	$locale_option = get_user_option( 'locale' );
@@ -104,6 +102,11 @@ function bogo_installed_locales() {
 		rewinddir( $handle );
 		while ( false !== ( $file = readdir( $handle ) ) ) {
 			$filename = basename( $file );
+
+			// exceptional case
+			if ( false !== strpos( $filename, 'continents-cities' ) )
+				continue;
+
 			if ( preg_match( '/^([^.]+)\.mo$/', $filename, $regs ) ) {
 				$locale = $regs[1];
 				$locales[] = $locale;
