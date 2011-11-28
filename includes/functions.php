@@ -1,6 +1,6 @@
 <?php
 
-function bogo_languages() {
+function bogo_languages( $locale = '' ) {
 	$languages = array(
 		'af' => __( 'Afrikaans', 'bogo' ),
 		'ar' => __( 'Arabic', 'bogo' ),
@@ -63,6 +63,9 @@ function bogo_languages() {
 		'zh_CN' => __( 'Chinese', 'bogo' ),
 		'zh_TW' => __( 'Traditional Chinese', 'bogo' )
 	);
+
+	if ( ! empty( $locale ) )
+		return $languages[$locale];
 
 	return $languages;
 }

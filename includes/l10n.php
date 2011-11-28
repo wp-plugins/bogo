@@ -17,17 +17,11 @@ function bogo_add_l10n_custom_post_types() {
 
 	$supports = array( 'title', 'editor', 'author', 'excerpt', 'custom-fields', 'revisions' );
 
-	register_post_type( 'post_l10n', array(
+	register_post_type( 'l10n', array(
 		'labels' => $labels,
 		'supports' => $supports,
 		'show_ui' => true,
-		'show_in_menu' => 'edit.php' ) );
-
-	register_post_type( 'page_l10n', array(
-		'labels' => $labels,
-		'supports' => $supports,
-		'show_ui' => true,
-		'show_in_menu' => 'edit.php?post_type=page' ) );
+		'show_in_menu' => false ) );
 
 	do_action( 'bogo_add_l10n_custom_post_types' );
 }
@@ -37,6 +31,11 @@ add_filter( 'default_title', 'bogo_l10n_default_content' );
 add_filter( 'default_excerpt', 'bogo_l10n_default_content' );
 
 function bogo_l10n_default_content( $post_content ) {
+	global $post_type;
+
+	if ( 'l10n' != $post_type )
+		return $post_content;
+
 	if ( ! $parent_post = get_post( $_REQUEST['parent_id'] ) )
 		return $post_content;
 
@@ -59,27 +58,91 @@ add_action( 'add_meta_boxes', 'bogo_add_l10n_meta_boxes', 10, 2 );
 function bogo_add_l10n_meta_boxes( $post_type, $post ) {
 	global $action;
 
-	if ( '_l10n' == substr( $post_type, -5 ) || 'edit' != $action )
-		return;
-
 	add_meta_box( 'bogol10ndiv', __( 'Localization', 'bogo' ),
 		'bogo_l10n_meta_box', $post_type, 'side', 'high' );
 }
 
 function bogo_l10n_meta_box( $post ) {
+	if ( 'l10n' == $post->post_type ) {
+		echo '<div class="l10ndiv">' . "\n";
+
+		$parent_id = $post->post_parent ? $post->post_parent : $_REQUEST['parent_id'];
+
+		if ( $parent_post = get_post( $parent_id ) ) {
+?>
+<p><strong><?php echo esc_html( __( 'Original Post:', 'bogo' ) ); ?></strong>
+<a href="<?php echo get_edit_post_link( $parent_post->ID ); ?>" target="_blank"><?php echo esc_html( $parent_post->post_title ); ?></a></p>
+
+<input type="hidden" name="parent_id" value="<?php echo absint( $parent_post->ID ); ?>" />
+<?php
+		}
+
+		if ( ! $locale = get_post_meta( $post->ID, '_locale', true ) )
+			$locale = $_REQUEST['locale'];
+
+		if ( $locale ) {
+?>
+<p>
+<strong><?php echo esc_html( __( 'Locale:', 'bogo' ) ); ?></strong>
+<?php echo esc_html( $locale ); ?>
+<?php if ( $language = bogo_languages( $locale ) ) echo ' (' . esc_html( $language ) . ')'; ?>
+</p>
+
+<input type="hidden" name="bogo_locale" value="<?php echo esc_attr( $locale ); ?>" />
+<?php
+		}
+
+		echo '</div>' . "\n";
+
+		return;
+	}
+
 	$l10n_url = add_query_arg(
-		array( 'post_type' => $post->post_type . '_l10n', 'parent_id' => $post->ID ),
+		array( 'post_type' => 'l10n', 'parent_id' => $post->ID ),
 		admin_url( 'post-new.php' ) );
 
 ?>
 <div class="l10ndiv">
-<p><?php echo esc_html( __( 'Add translation', 'bogo' ) ); ?>:
+
+<?php
+	$translations = get_posts( array(
+		'numberposts' => -1,
+		'post_parent' => $post->ID,
+		'post_type' => 'l10n',
+		'post_status' => 'any' ) );
+
+	if ( $translations ) :
+?>
+<p><strong><?php echo esc_html( __( 'Edit Translation:', 'bogo' ) ); ?></strong></p>
+<ul>
+<?php
+		foreach ( $translations as $tr ) {
+			echo '<li>';
+			echo '<a href="' . get_edit_post_link( $tr->ID ) . '" target="_blank">' . esc_html( $tr->post_title ) . '</a>';
+
+			if ( $locale = get_post_meta( $tr->ID, '_locale', true ) ) {
+				if ( $language = bogo_languages( $locale ) )
+					echo ' [' . esc_html( $language ) . ']';
+			}
+
+			echo '</li>';
+		}
+?>
+</ul>
+<?php
+	endif;
+?>
+
+<p><strong><?php echo esc_html( __( 'Add New Translation:', 'bogo' ) ); ?></strong></p>
+<p>
 <select name="bogo_add_translation" id="bogo_add_translation">
-<option value="">&ndash; <?php echo esc_html( __( 'Select language', 'bogo' ) ); ?> &ndash;</option>
+<option value=""><?php echo esc_html( __( '&ndash; Select Language &ndash;', 'bogo' ) ); ?></option>
 <?php foreach ( bogo_languages() as $locale => $language ) : ?>
 <option value="<?php echo esc_attr( $locale ); ?>"><?php echo esc_html( $language ); ?></option>
 <?php endforeach; ?>
 </select>
+
+<a href="#" id="bogo_add_translation_link" class="button hidden" target="blank"><?php echo esc_html( __( 'Add', 'bogo' ) ); ?></a>
 </p>
 </div>
 <script type="text/javascript">
@@ -87,14 +150,26 @@ function bogo_l10n_meta_box( $post ) {
 (function($) {
 $(function() {
 	$('#bogo_add_translation').change(function() {
-		if ($(this).val())
-			window.open('<?php echo esc_url_raw( $l10n_url . '&locale=' ); ?>' + $(this).val());
+		var locale = $(this).val();
+
+		if (locale) {
+			var link = '<?php echo esc_url_raw( $l10n_url . '&locale=' ); ?>' + locale;
+			$('#bogo_add_translation_link').attr('href', link).show();
+		}
 	});
 });
 })(jQuery);
 /* ]]> */
 </script>
 <?php
+}
+
+add_action( 'save_post', 'bogo_add_l10n_save_post', 10, 2 );
+
+function bogo_add_l10n_save_post( $post_id, $post ) {
+	if ( 'l10n' == $post->post_type && $locale = $_POST['bogo_locale'] ) {
+		update_post_meta( $post_id, '_locale',  $locale );
+	}
 }
 
 ?>
