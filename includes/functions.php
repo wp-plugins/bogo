@@ -64,6 +64,8 @@ function bogo_languages( $locale = '' ) {
 		'zh_TW' => __( 'Traditional Chinese', 'bogo' )
 	);
 
+	$languages = apply_filters( 'bogo_languages', $languages );
+
 	if ( ! empty( $locale ) )
 		return $languages[$locale];
 
