@@ -36,6 +36,7 @@ if ( ! defined( 'BOGO_PLUGIN_NAME' ) )
 if ( ! defined( 'BOGO_PLUGIN_DIR' ) )
 	define( 'BOGO_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . BOGO_PLUGIN_NAME );
 
+require_once BOGO_PLUGIN_DIR . '/includes/functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/l10n.php';
 require_once BOGO_PLUGIN_DIR . '/includes/user-l10n.php';
 
