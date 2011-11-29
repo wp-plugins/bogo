@@ -72,6 +72,64 @@ function bogo_languages( $locale = '' ) {
 	return $languages;
 }
 
+function bogo_get_closest_locale( $var ) {
+	$var = strtolower( $var );
+
+	if ( ! preg_match( '/^([a-z]{2})(?:_([a-z]{2}))?/', $var, $matches ) )
+		return false;
+
+	$language_code = $matches[1];
+	$region_code = $matches[2];
+
+	$locales = array_keys( bogo_languages() );
+
+	if ( $region_code ) {
+		$locale = $language_code . '_' . strtoupper( $region_code );
+
+		if ( false !== array_search( $locale, $locales ) )
+			return $locale;
+	}
+
+	$locale = $language_code;
+
+	if ( false !== array_search( $locale, $locales ) )
+		return $locale;
+
+	if ( $matches = preg_grep( "/^{$locale}_/", $locales ) )
+		return $matches[0];
+
+	return false;
+}
+
+function bogo_http_accept_languages() {
+	if ( ! isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) )
+		return false;
+
+	$languages = array();
+
+	foreach ( explode( ',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) as $lang ) {
+		$lang = trim( strtolower( $lang ) );
+
+		if ( preg_match( '/^([a-z-]+)(?:;q=([0-9.]+))?$/', $lang, $matches ) ) {
+			$language_tag = $matches[1];
+			$qvalue = ( isset( $matches[2] ) ? 0 : 1 ) + $matches[2];
+
+			if ( preg_match( '/^([a-z]{2})(?:-([a-z]{2}))?$/', $language_tag, $matches ) ) {
+				$language_tag = $matches[1];
+
+				if ( isset( $matches[2] ) )
+					$language_tag .= '_' . strtoupper( $matches[2] );
+
+				$languages[$language_tag] = $qvalue;
+			}
+		}
+	}
+
+	natsort( $languages );
+
+	return array_reverse( array_keys( $languages ) );
+}
+
 function bogo_get_post_locale( $post_id, $return_language = false ) {
 	$locale = get_post_meta( $post_id, '_locale', true );
 
