@@ -30,7 +30,7 @@ function bogo_update_user_option() {
 function bogo_select_own_locale() {
 	$languages = bogo_languages();
 
-	$installed_locales = bogo_installed_locales();
+	$installed_locales = get_available_languages();
 	$installed_locales[] = 'en_US';
 	$installed_locales = array_unique( $installed_locales );
 
@@ -63,29 +63,6 @@ function bogo_select_own_locale() {
 </tr>
 
 <?php
-}
-
-function bogo_installed_locales() {
-	$locales = array();
-
-	if ( $handle = opendir( WP_LANG_DIR ) ) {
-		rewinddir( $handle );
-		while ( false !== ( $file = readdir( $handle ) ) ) {
-			$filename = basename( $file );
-
-			// exceptional case
-			if ( false !== strpos( $filename, 'continents-cities' ) )
-				continue;
-
-			if ( preg_match( '/^([^.]+)\.mo$/', $filename, $regs ) ) {
-				$locale = $regs[1];
-				$locales[] = $locale;
-			}
-		}
-		closedir( $handle );
-	}
-
-	return $locales;
 }
 
 ?>
