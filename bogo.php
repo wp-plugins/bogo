@@ -55,9 +55,18 @@ function bogo_locale( $locale ) {
 		if ( ! empty( $locale_option ) )
 			$locale = $locale_option;
 
-	} elseif ( isset( $_REQUEST['lang'] ) ) {
+		return $locale;
+	}
+
+	if ( isset( $_REQUEST['lang'] ) ) {
 		if ( $closest = bogo_get_closest_locale( $_REQUEST['lang'] ) )
 			$locale = $closest;
+
+	} elseif ( is_user_logged_in() ) {
+		$locale_option = get_user_option( 'locale' );
+
+		if ( ! empty( $locale_option ) )
+			$locale = $locale_option;
 
 	} elseif ( isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
 		$langs = bogo_http_accept_languages();
