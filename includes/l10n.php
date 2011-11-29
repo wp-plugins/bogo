@@ -153,6 +153,9 @@ $(function() {
 function bogo_translation_select( $post_id ) {
 	$languages = bogo_languages();
 
+	if ( ( $locale = get_locale() ) && isset( $languages[$locale] ) )
+		unset( $languages[$locale] );
+
 	$translations = bogo_get_post_translations( $post_id );
 
 	foreach ( (array) $translations as $tr ) {
