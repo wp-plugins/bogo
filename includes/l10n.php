@@ -105,13 +105,7 @@ function bogo_l10n_meta_box( $post ) {
 <div class="l10ndiv">
 
 <?php
-	$translations = get_posts( array(
-		'numberposts' => -1,
-		'post_parent' => $post->ID,
-		'post_type' => 'l10n',
-		'post_status' => 'any' ) );
-
-	if ( $translations ) :
+	if ( $translations = bogo_get_post_translations( $post->ID ) ) :
 ?>
 <p><strong><?php echo esc_html( __( 'Edit Translation:', 'bogo' ) ); ?></strong></p>
 <ul>
@@ -133,13 +127,7 @@ function bogo_l10n_meta_box( $post ) {
 
 <p><strong><?php echo esc_html( __( 'Add New Translation:', 'bogo' ) ); ?></strong></p>
 <p>
-<select name="bogo_add_translation" id="bogo_add_translation">
-<option value=""><?php echo esc_html( __( '&ndash; Select Language &ndash;', 'bogo' ) ); ?></option>
-<?php foreach ( bogo_languages() as $locale => $language ) : ?>
-<option value="<?php echo esc_attr( $locale ); ?>"><?php echo esc_html( $language ); ?></option>
-<?php endforeach; ?>
-</select>
-
+<?php bogo_translation_select( $post->ID ); ?>
 <a href="#" id="bogo_add_translation_link" class="button hidden" target="blank"><?php echo esc_html( __( 'Add', 'bogo' ) ); ?></a>
 </p>
 </div>
@@ -159,6 +147,44 @@ $(function() {
 })(jQuery);
 /* ]]> */
 </script>
+<?php
+}
+
+function bogo_translation_select( $post_id ) {
+	$languages = bogo_languages();
+
+	$translations = bogo_get_post_translations( $post_id );
+
+	foreach ( (array) $translations as $tr ) {
+		if ( $locale = bogo_get_post_locale( $tr->ID ) )
+			unset( $languages[$locale] );
+	}
+
+?>
+<select name="bogo_add_translation" id="bogo_add_translation">
+<option value=""><?php echo esc_html( __( '&ndash; Select Language &ndash;', 'bogo' ) ); ?></option>
+
+<?php
+	$user_translated = bogo_locales_current_user_has_translated();
+
+	foreach ( $user_translated as $locale ) :
+
+		if ( isset( $languages[$locale] ) )
+			unset( $languages[$locale] );
+		else
+			continue;
+
+		$language = bogo_languages( $locale );
+?>
+<option value="<?php echo esc_attr( $locale ); ?>"><?php echo esc_html( $language ); ?></option>
+<?php
+	endforeach;
+?>
+
+<?php foreach ( $languages as $locale => $language ) : ?>
+<option value="<?php echo esc_attr( $locale ); ?>"><?php echo esc_html( $language ); ?></option>
+<?php endforeach; ?>
+</select>
 <?php
 }
 

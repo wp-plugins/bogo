@@ -81,4 +81,28 @@ function bogo_get_post_locale( $post_id, $return_language = false ) {
 	return $locale;
 }
 
+function bogo_get_post_translations( $post_id ) {
+	$translations = get_posts( array(
+		'numberposts' => -1,
+		'post_parent' => $post_id,
+		'post_type' => 'l10n',
+		'post_status' => 'any' ) );
+
+	return $translations;
+}
+
+function bogo_locales_current_user_has_translated() {
+	global $wpdb;
+
+	$current_user = wp_get_current_user();
+
+	$q = "SELECT meta_value FROM $wpdb->postmeta"
+		. " INNER JOIN $wpdb->posts ON post_id = ID"
+		. " WHERE meta_key LIKE '_locale' AND post_type LIKE 'l10n'"
+		. $wpdb->prepare( " AND post_author = %d", $current_user->ID )
+		. " GROUP BY meta_value ORDER BY count(meta_value) DESC";
+
+	return $wpdb->get_col( $q );
+}
+
 ?>
