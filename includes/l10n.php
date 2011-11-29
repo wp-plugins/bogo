@@ -77,7 +77,7 @@ function bogo_l10n_meta_box( $post ) {
 <?php
 		}
 
-		if ( ! $locale = get_post_meta( $post->ID, '_locale', true ) )
+		if ( ! $locale = bogo_get_post_locale( $post->ID ) )
 			$locale = $_REQUEST['locale'];
 
 		if ( $locale ) {
@@ -120,10 +120,8 @@ function bogo_l10n_meta_box( $post ) {
 			echo '<li>';
 			echo '<a href="' . get_edit_post_link( $tr->ID ) . '" target="_blank">' . esc_html( $tr->post_title ) . '</a>';
 
-			if ( $locale = get_post_meta( $tr->ID, '_locale', true ) ) {
-				if ( $language = bogo_languages( $locale ) )
-					echo ' [' . esc_html( $language ) . ']';
-			}
+			if ( $language = bogo_get_post_locale( $tr->ID, true ) )
+				echo ' [' . esc_html( $language ) . ']';
 
 			echo '</li>';
 		}

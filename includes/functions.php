@@ -72,4 +72,13 @@ function bogo_languages( $locale = '' ) {
 	return $languages;
 }
 
+function bogo_get_post_locale( $post_id, $return_language = false ) {
+	$locale = get_post_meta( $post_id, '_locale', true );
+
+	if ( $return_language )
+		return bogo_languages( $locale );
+
+	return $locale;
+}
+
 ?>
