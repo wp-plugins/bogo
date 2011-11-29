@@ -96,7 +96,7 @@ function bogo_get_closest_locale( $var ) {
 		return $locale;
 
 	if ( $matches = preg_grep( "/^{$locale}_/", $locales ) )
-		return $matches[0];
+		return array_shift( $matches );
 
 	return false;
 }

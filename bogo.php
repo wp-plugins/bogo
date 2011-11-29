@@ -75,6 +75,9 @@ function bogo_locale( $locale ) {
 			if ( bogo_languages( $lang ) ) {
 				$locale = $lang;
 				break;
+			} elseif ( 2 == strlen( $lang ) && $closest = bogo_get_closest_locale( $lang ) ) {
+				$locale = $closest;
+				break;
 			}
 		}
 	}
