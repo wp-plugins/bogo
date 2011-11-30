@@ -15,7 +15,7 @@ function bogo_add_l10n_custom_post_types() {
 		'not_found_in_trash' => __( 'No translations found in Trash', 'bogo' ),
 		'menu_name' => __( 'Translations', 'bogo' ) );
 
-	$supports = array( 'title', 'editor', 'author', 'excerpt', 'custom-fields', 'revisions' );
+	$supports = array( 'title', 'editor', 'excerpt', 'revisions' );
 
 	register_post_type( 'l10n', array(
 		'labels' => $labels,
