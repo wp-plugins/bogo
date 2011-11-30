@@ -26,6 +26,26 @@ function bogo_add_l10n_custom_post_types() {
 	do_action( 'bogo_add_l10n_custom_post_types' );
 }
 
+add_filter( 'the_posts', 'bogo_l10n_posts_filter', 11, 2 );
+
+function bogo_l10n_posts_filter( $posts, $query ) {
+	$locale = get_locale();
+
+	foreach ( (array) $posts as $post ) {
+		$translation = bogo_get_post_translation( $post->ID, $locale );
+
+		if ( ! $translation )
+			continue;
+
+		$post->post_title = $translation->post_title;
+		$post->post_content = $translation->post_content;
+		$post->post_excerpt = $translation->post_excerpt;
+		$post->post_author = $translation->post_author;
+	}
+
+	return $posts;
+}
+
 add_filter( 'default_content', 'bogo_l10n_default_content' );
 add_filter( 'default_title', 'bogo_l10n_default_content' );
 add_filter( 'default_excerpt', 'bogo_l10n_default_content' );

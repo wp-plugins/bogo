@@ -149,6 +149,23 @@ function bogo_get_post_translations( $post_id ) {
 	return $translations;
 }
 
+function bogo_get_post_translation( $post_id, $locale ) {
+	$translations = get_posts( array(
+		'numberposts' => 1,
+		'post_parent' => $post_id,
+		'post_type' => 'l10n',
+		'post_status' => 'publish',
+		'meta_key' => '_locale',
+		'meta_value' => $locale ) );
+
+	$translation = array_shift( $translations );
+
+	if ( $translation )
+		return $translation;
+
+	return false;
+}
+
 function bogo_locales_current_user_has_translated() {
 	global $wpdb;
 
