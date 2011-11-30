@@ -112,7 +112,7 @@ function bogo_http_accept_languages() {
 
 		if ( preg_match( '/^([a-z-]+)(?:;q=([0-9.]+))?$/', $lang, $matches ) ) {
 			$language_tag = $matches[1];
-			$qvalue = ( isset( $matches[2] ) ? 0 : 1 ) + $matches[2];
+			$qvalue = isset( $matches[2] ) ? 0 + $matches[2] : 1;
 
 			if ( preg_match( '/^([a-z]{2})(?:-([a-z]{2}))?$/', $language_tag, $matches ) ) {
 				$language_tag = $matches[1];
