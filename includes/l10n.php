@@ -73,13 +73,19 @@ function bogo_l10n_default_content( $post_content ) {
 	return $post_content;
 }
 
+function bogo_l10n_original_post_types() {
+	$post_types = array( 'post', 'page' );
+
+	return apply_filters( 'bogo_l10n_original_post_types', $post_types );
+}
+
 add_action( 'add_meta_boxes', 'bogo_add_l10n_meta_boxes', 10, 2 );
 
 function bogo_add_l10n_meta_boxes( $post_type, $post ) {
-	global $action;
-
-	add_meta_box( 'bogol10ndiv', __( 'Localization', 'bogo' ),
-		'bogo_l10n_meta_box', $post_type, 'side', 'high' );
+	if ( 'l10n' == $post_type || in_array( $post_type, bogo_l10n_original_post_types() ) ) {
+		add_meta_box( 'bogol10ndiv', __( 'Localization', 'bogo' ),
+			'bogo_l10n_meta_box', $post_type, 'side', 'high' );
+	}
 }
 
 function bogo_l10n_meta_box( $post ) {
