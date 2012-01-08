@@ -13,6 +13,7 @@ function bogo_languages( $locale = '' ) {
 		'da_DK' => __( 'Danish', 'bogo' ),
 		'de_DE' => __( 'German', 'bogo' ),
 		'el' => __( 'Greek', 'bogo' ),
+		'en_GB' => __( 'British English', 'bogo' ),
 		'en_US' => __( 'English', 'bogo' ),
 		'eo' => __( 'Esperanto', 'bogo' ),
 		'es_ES' => __( 'Spanish', 'bogo' ),
