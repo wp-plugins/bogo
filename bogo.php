@@ -65,8 +65,16 @@ function bogo_locale( $locale ) {
 		return $locale;
 	}
 
-	if ( isset( $_REQUEST['lang'] ) ) {
-		if ( $closest = bogo_get_closest_locale( $_REQUEST['lang'] ) )
+	if ( isset( $_GET['lang'] ) ) {
+		if ( $closest = bogo_get_closest_locale( $_GET['lang'] ) )
+			$locale = $closest;
+
+	} elseif ( isset( $_POST['lang'] ) ) {
+		if ( $closest = bogo_get_closest_locale( $_POST['lang'] ) )
+			$locale = $closest;
+
+	} elseif ( isset( $_COOKIE['lang'] ) ) {
+		if ( $closest = bogo_get_closest_locale( $_COOKIE['lang'] ) )
 			$locale = $closest;
 
 	} elseif ( is_user_logged_in() ) {
