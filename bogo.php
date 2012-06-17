@@ -59,47 +59,29 @@ function bogo_init() {
 add_filter( 'locale', 'bogo_locale' );
 
 function bogo_locale( $locale ) {
-	if ( is_admin() ) {
-		$locale_option = get_user_option( 'locale' );
+	if ( $lang = get_query_var( 'lang' ) ) {
+		$closest = bogo_get_closest_locale( $lang );
 
-		if ( ! empty( $locale_option ) )
-			$locale = $locale_option;
-
-		return $locale;
+		if ( $closest )
+			return $closest;
 	}
 
-	if ( isset( $_GET['lang'] ) ) {
-		if ( $closest = bogo_get_closest_locale( $_GET['lang'] ) )
-			$locale = $closest;
+	if ( is_user_logged_in() && ( is_admin() || ! defined( 'WP_CACHE' ) || ! WP_CACHE ) ) {
+		$user_locale = get_user_option( 'locale' );
 
-	} elseif ( ! ( defined( 'WP_CACHE' ) && WP_CACHE ) ) {
-
-		if ( isset( $_COOKIE['lang'] ) ) {
-			if ( $closest = bogo_get_closest_locale( $_COOKIE['lang'] ) )
-				$locale = $closest;
-
-		} elseif ( is_user_logged_in() ) {
-			$locale_option = get_user_option( 'locale' );
-
-			if ( ! empty( $locale_option ) )
-				$locale = $locale_option;
-
-		} elseif ( isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
-			$langs = bogo_http_accept_languages();
-
-			foreach ( (array) $langs as $lang ) {
-				if ( bogo_languages( $lang ) ) {
-					$locale = $lang;
-					break;
-				} elseif ( 2 == strlen( $lang ) && $closest = bogo_get_closest_locale( $lang ) ) {
-					$locale = $closest;
-					break;
-				}
-			}
-		}
+		if ( ! empty( $user_locale ) )
+			return $user_locale;
 	}
 
 	return $locale;
+}
+
+add_filter( 'query_vars', 'bogo_query_vars' );
+
+function bogo_query_vars( $query_vars ) {
+	$query_vars[] = 'lang';
+
+	return $query_vars;
 }
 
 ?>
