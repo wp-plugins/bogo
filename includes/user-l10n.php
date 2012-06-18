@@ -11,7 +11,7 @@ function bogo_update_user_option() {
 	else
 		$locale = trim( $_POST['own_locale'] );
 
-	update_user_option( $current_user->id, 'locale', $locale, true );
+	update_user_option( $current_user->ID, 'locale', $locale, true );
 }
 
 function bogo_select_own_locale() {
