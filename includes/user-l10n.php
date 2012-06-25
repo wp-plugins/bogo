@@ -15,35 +15,24 @@ function bogo_update_user_option() {
 }
 
 function bogo_select_own_locale() {
-	$languages = bogo_languages();
-
-	$installed_locales = get_available_languages();
-	$installed_locales[] = 'en_US';
-	$installed_locales = array_unique( $installed_locales );
-
-	$locales = array();
-	foreach ( $installed_locales as $il ) {
-		$label = array_key_exists( $il, $languages ) ? $languages[$il] : "[$il]";
-		$locales[] = array( $il, $label );
-	}
-
-	usort( $locales, create_function( '$a, $b', 'return strnatcmp($a[1], $b[1]);' ) );
+	$available_languages = bogo_available_languages();
 
 	$selected = get_user_option( 'locale' );
+
 	if ( empty( $selected ) && defined( 'WPLANG' ) )
 		$selected = WPLANG;
+
 	if ( empty( $selected ) )
 		$selected = 'en_US';
-
 ?>
 
 <!-- Bogo plugin -->
 <tr>
-<th scope="row"><?php _e( 'Locale', 'bogo' ); ?></th>
+<th scope="row"><?php echo esc_html( __( 'Locale', 'bogo' ) ); ?></th>
 <td>
 <select name="own_locale">
-<?php foreach ( $locales as $locale ) : ?>
-<option value="<?php echo $locale[0]; ?>" <?php selected( $locale[0], $selected ); ?>><?php echo $locale[1]; ?></option>
+<?php foreach ( $available_languages as $locale => $lang ) : ?>
+<option value="<?php echo esc_attr( $locale ); ?>" <?php selected( $locale, $selected ); ?>><?php echo esc_html( $lang ? $lang : "[$locale]" ); ?></option>
 <?php endforeach; ?>
 </select>
 </td>

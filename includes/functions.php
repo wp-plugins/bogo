@@ -67,10 +67,30 @@ function bogo_languages( $locale = '' ) {
 
 	$languages = apply_filters( 'bogo_languages', $languages );
 
-	if ( ! empty( $locale ) )
+	if ( empty( $locale ) )
+		return $languages;
+
+	if ( ! empty( $languages[$locale] ) )
 		return $languages[$locale];
 
-	return $languages;
+	return null;		
+}
+
+function bogo_available_languages() {
+	$langs = array();
+
+	$installed_locales = get_available_languages();
+	$installed_locales[] = 'en_US';
+	$installed_locales = array_unique( $installed_locales );
+
+	foreach ( $installed_locales as $locale )
+		$langs[$locale] = bogo_languages( $locale );
+
+	natcasesort( $langs );
+
+	$langs = apply_filters( 'bogo_available_languages', $langs );
+
+	return $langs;
 }
 
 function bogo_get_closest_locale( $var ) {
@@ -131,54 +151,16 @@ function bogo_http_accept_languages() {
 	return array_reverse( array_keys( $languages ) );
 }
 
-function bogo_get_post_locale( $post_id, $return_language = false ) {
+function bogo_get_post_locale( $post_id ) {
 	$locale = get_post_meta( $post_id, '_locale', true );
 
-	if ( $return_language )
-		return bogo_languages( $locale );
+	if ( empty( $locale ) )
+		$locale = WPLANG;
+
+	if ( empty( $locale ) )
+		$locale = 'en_US';
 
 	return $locale;
-}
-
-function bogo_get_post_translations( $post_id ) {
-	$translations = get_posts( array(
-		'numberposts' => -1,
-		'post_parent' => $post_id,
-		'post_type' => 'l10n',
-		'post_status' => 'any' ) );
-
-	return $translations;
-}
-
-function bogo_get_post_translation( $post_id, $locale ) {
-	$translations = get_posts( array(
-		'numberposts' => 1,
-		'post_parent' => $post_id,
-		'post_type' => 'l10n',
-		'post_status' => 'publish',
-		'meta_key' => '_locale',
-		'meta_value' => $locale ) );
-
-	$translation = array_shift( $translations );
-
-	if ( $translation )
-		return $translation;
-
-	return false;
-}
-
-function bogo_locales_current_user_has_translated() {
-	global $wpdb;
-
-	$current_user = wp_get_current_user();
-
-	$q = "SELECT meta_value FROM $wpdb->postmeta"
-		. " INNER JOIN $wpdb->posts ON post_id = ID"
-		. " WHERE meta_key LIKE '_locale' AND post_type LIKE 'l10n'"
-		. $wpdb->prepare( " AND post_author = %d", $current_user->ID )
-		. " GROUP BY meta_value ORDER BY count(meta_value) DESC";
-
-	return $wpdb->get_col( $q );
 }
 
 ?>
