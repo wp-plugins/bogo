@@ -85,4 +85,26 @@ function bogo_query_vars( $query_vars ) {
 	return $query_vars;
 }
 
+add_action( 'parse_query', 'bogo_parse_query' );
+
+function bogo_parse_query( $query ) {
+	$qv = &$query->query_vars;
+
+	if ( empty( $qv['lang'] ) )
+		return;
+
+	$locale = bogo_get_closest_locale( $qv['lang'] );
+
+	if ( ! in_array( $locale, array_keys( bogo_available_languages() ) ) )
+		return;
+
+	$meta_query = array(
+		array( 'key' => '_locale', 'value' => $locale ) );
+
+	if ( ! isset( $qv['meta_query'] ) )
+		$qv['meta_query'] = array();
+
+	$qv['meta_query'] = array_merge( $qv['meta_query'], $meta_query );
+}
+
 ?>
