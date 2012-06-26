@@ -113,7 +113,7 @@ function bogo_l10n_meta_box( $post ) {
 ?>
 <div class="make-translation">
 <p><strong><?php echo esc_html( sprintf( __( 'Make a translation of this %s:', 'bogo' ), $post_type_label ) ); ?></strong></p>
-<p><?php echo $select; ?> <a href="<?php echo esc_url_raw( $link ); ?>" id="bogo-make-translation" class="button-secondary" target="_blank"><?php echo esc_html( __( 'Make Translation', 'bogo' ) ); ?></a></p>
+<p><?php echo $select; ?> <a href="<?php echo esc_url_raw( $link ); ?>" id="bogo-make-translation" class="button-secondary hide-if-js" target="_blank"><?php echo esc_html( __( 'Make Translation', 'bogo' ) ); ?></a></p>
 </div><!-- .make-translation -->
 
 <script type="text/javascript">
