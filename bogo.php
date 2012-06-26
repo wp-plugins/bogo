@@ -40,7 +40,8 @@ if ( ! defined( 'BOGO_PLUGIN_URL' ) )
 	define( 'BOGO_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) ) );
 
 require_once BOGO_PLUGIN_DIR . '/includes/functions.php';
-require_once BOGO_PLUGIN_DIR . '/includes/l10n.php';
+require_once BOGO_PLUGIN_DIR . '/includes/post-l10n-functions.php';
+require_once BOGO_PLUGIN_DIR . '/includes/post-l10n.php';
 require_once BOGO_PLUGIN_DIR . '/includes/user-l10n.php';
 
 add_action( 'init', 'bogo_init' );
