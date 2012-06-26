@@ -26,7 +26,20 @@ function bogo_get_post_translations( $post_id = 0 ) {
 		'meta_value' => $post->ID );
 
 	$q = new WP_Query();
-	return $q->query( $args );
+	$posts = $q->query( $args );
+
+	$translations = array();
+
+	foreach ( $posts as $post ) {
+		$locale = get_post_meta( $post->ID, '_locale', true );
+
+		if ( empty( $locale ) )
+			continue;
+
+		$translations[$locale] = $post;
+	}
+
+	return $translations;
 }
 
 ?>

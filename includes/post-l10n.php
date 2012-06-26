@@ -26,29 +26,24 @@ function bogo_l10n_meta_box( $post ) {
 
 <ul>
 <?php
-	foreach ( $translations as $translation ) {
-		$locale = get_post_meta( $translation->ID, '_locale', true );
+		foreach ( $translations as $locale => $translation ) {
+			$edit_link = get_edit_post_link( $translation->ID );
 
-		if ( empty( $locale ) )
-			continue;
+			echo '<li>';
 
-		$edit_link = get_edit_post_link( $translation->ID );
+			if ( $edit_link )
+				echo '<a href="' . esc_url( $edit_link ) . '" target="_blank">' . get_the_title( $translation->ID ) . '</a>';
+			else
+				echo get_the_title( $translation->ID );
 
-		echo '<li>';
+			$lang = bogo_languages( $locale );
 
-		if ( $edit_link )
-			echo '<a href="' . esc_url( $edit_link ) . '" target="_blank">' . get_the_title( $translation->ID ) . '</a>';
-		else
-			echo get_the_title( $translation->ID );
+			if ( empty( $lang ) )
+				$lang = $locale;
 
-		$lang = bogo_languages( $locale );
-
-		if ( empty( $lang ) )
-			$lang = $locale;
-
-		echo ' [' . $lang . ']';
-		echo '</li>';
-	}
+			echo ' [' . $lang . ']';
+			echo '</li>';
+		}
 ?>
 </ul>
 </div><!-- .translations -->
@@ -98,6 +93,14 @@ function bogo_l10n_meta_box( $post ) {
 
 	if ( isset( $available_languages[$post_locale] ) )
 		unset( $available_languages[$post_locale] );
+
+	foreach ( array_keys( $translations ) as $locale ) {
+		if ( isset( $available_languages[$locale] ) )
+			unset( $available_languages[$locale] );
+	}
+
+	if ( empty( $available_languages ) )
+		return;
 
 	$select = '<select name="bogo-make-translation-in" id="bogo-make-translation-in">';
 	$select .= '<option value="">' . esc_html( __( 'Select Language', 'bogo' ) ) . '</option>';
