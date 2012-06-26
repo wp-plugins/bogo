@@ -32,7 +32,7 @@ function bogo_select_own_locale() {
 <td>
 <select name="own_locale">
 <?php foreach ( $available_languages as $locale => $lang ) : ?>
-<option value="<?php echo esc_attr( $locale ); ?>" <?php selected( $locale, $selected ); ?>><?php echo esc_html( $lang ? $lang : "[$locale]" ); ?></option>
+<option value="<?php echo esc_attr( $locale ); ?>" <?php selected( $locale, $selected ); ?>><?php echo esc_html( $lang ); ?></option>
 <?php endforeach; ?>
 </select>
 </td>

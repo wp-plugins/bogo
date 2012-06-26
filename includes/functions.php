@@ -83,8 +83,14 @@ function bogo_available_languages() {
 	$installed_locales[] = 'en_US';
 	$installed_locales = array_unique( $installed_locales );
 
-	foreach ( $installed_locales as $locale )
-		$langs[$locale] = bogo_languages( $locale );
+	foreach ( $installed_locales as $locale ) {
+		$lang = bogo_languages( $locale );
+
+		if ( empty( $lang ) )
+			$lang = "[$locale]";
+
+		$langs[$locale] = $lang;
+	}
 
 	natcasesort( $langs );
 
