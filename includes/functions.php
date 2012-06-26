@@ -157,16 +157,4 @@ function bogo_http_accept_languages() {
 	return array_reverse( array_keys( $languages ) );
 }
 
-function bogo_get_post_locale( $post_id ) {
-	$locale = get_post_meta( $post_id, '_locale', true );
-
-	if ( empty( $locale ) )
-		$locale = WPLANG;
-
-	if ( empty( $locale ) )
-		$locale = 'en_US';
-
-	return $locale;
-}
-
 ?>
