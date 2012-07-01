@@ -50,7 +50,7 @@ function bogo_l10n_meta_box( $post ) {
 <?php
 	}
 
-	$available_languages = bogo_available_languages();
+	$available_languages = bogo_available_languages( 'orderby=value' );
 	$post_locale = bogo_get_post_locale( $post->ID );
 
 	if ( 'auto-draft' == $post->post_status ) {

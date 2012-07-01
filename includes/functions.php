@@ -76,7 +76,13 @@ function bogo_languages( $locale = '' ) {
 	return null;		
 }
 
-function bogo_available_languages() {
+function bogo_available_languages( $args = '' ) {
+	$defaults = array(
+		'orderby' => 'key',
+		'order' => 'ASC' );
+
+	$args = wp_parse_args( $args, $defaults );
+
 	$langs = array();
 
 	$installed_locales = get_available_languages();
@@ -92,9 +98,19 @@ function bogo_available_languages() {
 		$langs[$locale] = $lang;
 	}
 
-	natcasesort( $langs );
+	if ( 'value' == $args['orderby'] ) {
+		natcasesort( $langs );
 
-	$langs = apply_filters( 'bogo_available_languages', $langs );
+		if ( 'DESC' == $args['order'] )
+			$langs = array_reverse( $langs );
+	} else {
+		if ( 'DESC' == $args['order'] )
+			krsort( $langs );
+		else
+			ksort( $langs );
+	}
+
+	$langs = apply_filters( 'bogo_available_languages', $langs, $args );
 
 	return $langs;
 }

@@ -15,7 +15,7 @@ function bogo_update_user_option() {
 }
 
 function bogo_select_own_locale() {
-	$available_languages = bogo_available_languages();
+	$available_languages = bogo_available_languages( 'orderby=value' );
 
 	$selected = get_user_option( 'locale' );
 
