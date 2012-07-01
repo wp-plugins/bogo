@@ -93,9 +93,7 @@ function bogo_parse_query( $query ) {
 	if ( empty( $qv['lang'] ) )
 		return;
 
-	$locale = bogo_get_closest_locale( $qv['lang'] );
-
-	if ( ! in_array( $locale, array_keys( bogo_available_languages() ) ) )
+	if ( ! $locale = bogo_get_closest_locale( $qv['lang'] ) )
 		return;
 
 	$meta_query = array(

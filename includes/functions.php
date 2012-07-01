@@ -124,7 +124,7 @@ function bogo_get_closest_locale( $var ) {
 	$language_code = $matches[1];
 	$region_code = isset( $matches[2] ) ? $matches[2] : '';
 
-	$locales = array_keys( bogo_languages() );
+	$locales = array_keys( bogo_available_languages() );
 
 	if ( $region_code ) {
 		$locale = $language_code . '_' . strtoupper( $region_code );
@@ -141,7 +141,7 @@ function bogo_get_closest_locale( $var ) {
 	if ( $matches = preg_grep( "/^{$locale}_/", $locales ) )
 		return array_shift( $matches );
 
-	return $locale;
+	return false;
 }
 
 function bogo_http_accept_languages() {
