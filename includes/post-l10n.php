@@ -202,4 +202,54 @@ function bogo_save_post( $post_id, $post ) {
 		update_post_meta( $post_id, '_original_post', $_REQUEST['original_post'] );
 }
 
+/*
+ * Original slug is not passed as an argument in WP 3.4
+ * http://core.trac.wordpress.org/changeset/21177
+ */
+
+if ( version_compare( get_bloginfo( 'version' ), '3.5', '>=' ) ) {
+
+add_filter( 'wp_unique_post_slug', 'bogo_unique_post_slug', 10, 6 );
+
+function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent, $original ) {
+	global $wp_rewrite;
+
+	if ( in_array( $status, array( 'draft', 'pending', 'auto-draft', 'attachment' ) ) )
+		return $slug;
+
+	$feeds = is_array( $wp_rewrite->feeds ) ? $wp_rewrite->feeds : array();
+
+	if ( in_array( $original, $feeds ) )
+		return $slug;
+
+	$locale = get_post_meta( $post_id, '_locale', true );
+
+	$args = array(
+		'posts_per_page' => 1,
+		'post__not_in' => array( $post_id ),
+		'post_type' => $type,
+		'name' => $original,
+		'meta_key' => '_locale',
+		'meta_value' => $locale );
+
+	$hierarchical = in_array( $type, get_post_types( array( 'hierarchical' => true ) ) );
+
+	if ( $hierarchical ) {
+		if ( preg_match( "@^($wp_rewrite->pagination_base)?\d+$@", $original ) )
+			return $slug;
+
+		$args['post_parent'] = $parent;
+	}
+
+	$q = new WP_Query();
+	$posts = $q->query( $args );
+
+	if ( empty( $posts ) )
+		$slug = $original;
+
+	return $slug;
+}
+
+}
+
 ?>
