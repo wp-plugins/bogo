@@ -193,13 +193,29 @@ function bogo_translation_default_excerpt( $excerpt, $post ) {
 add_action( 'save_post', 'bogo_save_post', 10, 2 );
 
 function bogo_save_post( $post_id, $post ) {
-	$available_languages = bogo_available_languages();
+	if ( ! empty( $_REQUEST['locale'] ) ) {
+		$available_languages = bogo_available_languages();
 
-	if ( ! empty( $_REQUEST['locale'] ) && isset( $available_languages[$_REQUEST['locale']] ) )
-		update_post_meta( $post_id, '_locale', $_REQUEST['locale'] );
+		if ( isset( $available_languages[$_REQUEST['locale']] ) )
+			$locale = $_REQUEST['locale'];
+	}
 
-	if ( ! empty( $_REQUEST['original_post'] ) && get_post( $_REQUEST['original_post'] ) )
-		update_post_meta( $post_id, '_original_post', $_REQUEST['original_post'] );
+	if ( empty( $locale ) )
+		$locale = get_post_meta( $post_id, '_locale', true );
+
+	if ( empty( $locale ) )
+		$locale = bogo_get_user_locale();
+
+	if ( ! empty( $locale ) )
+		update_post_meta( $post_id, '_locale', $locale );
+
+	if ( ! empty( $_REQUEST['original_post'] ) ) {
+		$original = get_post( $_REQUEST['original_post'] );
+
+		if ( $original && $original->ID != $post_id
+		&& bogo_get_post_locale( $original->ID ) != $locale )
+			update_post_meta( $post_id, '_original_post', $original->ID );
+	}
 }
 
 /*
