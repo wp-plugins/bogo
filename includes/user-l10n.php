@@ -1,7 +1,6 @@
 <?php
 
 add_action( 'personal_options_update', 'bogo_update_user_option' );
-add_action( 'personal_options', 'bogo_select_own_locale' );
 
 function bogo_update_user_option() {
 	global $current_user;
@@ -14,16 +13,13 @@ function bogo_update_user_option() {
 	update_user_option( $current_user->ID, 'locale', $locale, true );
 }
 
+add_action( 'personal_options', 'bogo_select_own_locale' );
+
 function bogo_select_own_locale() {
 	$available_languages = bogo_available_languages( 'orderby=value' );
 
-	$selected = get_user_option( 'locale' );
+	$selected = bogo_get_user_locale();
 
-	if ( empty( $selected ) && defined( 'WPLANG' ) )
-		$selected = WPLANG;
-
-	if ( empty( $selected ) )
-		$selected = 'en_US';
 ?>
 
 <!-- Bogo plugin -->

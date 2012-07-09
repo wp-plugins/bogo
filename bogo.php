@@ -42,6 +42,7 @@ if ( ! defined( 'BOGO_PLUGIN_URL' ) )
 require_once BOGO_PLUGIN_DIR . '/includes/functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/rewrite.php';
 require_once BOGO_PLUGIN_DIR . '/includes/post-l10n-functions.php';
+require_once BOGO_PLUGIN_DIR . '/includes/user-l10n-functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/post-l10n.php';
 require_once BOGO_PLUGIN_DIR . '/includes/user-l10n.php';
 
@@ -69,7 +70,7 @@ function bogo_locale( $locale ) {
 	}
 
 	if ( is_user_logged_in() && ( is_admin() || ! defined( 'WP_CACHE' ) || ! WP_CACHE ) ) {
-		$user_locale = get_user_option( 'locale' );
+		$user_locale = bogo_get_user_locale();
 
 		if ( ! empty( $user_locale ) )
 			return $user_locale;

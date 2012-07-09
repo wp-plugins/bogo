@@ -3,7 +3,7 @@
 function bogo_get_post_locale( $post_id ) {
 	$locale = get_post_meta( $post_id, '_locale', true );
 
-	if ( empty( $locale ) )
+	if ( empty( $locale ) && defined( 'WPLANG' ) )
 		$locale = WPLANG;
 
 	if ( empty( $locale ) )
