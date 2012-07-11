@@ -26,7 +26,7 @@ function bogo_post_rewrite_rules( $post_rewrite ) {
 
 	$permastruct = $wp_rewrite->permalink_structure;
 
-	if ( ! got_mod_rewrite() && ! iis7_supports_permalinks() )
+	if ( ! apache_mod_loaded( 'mod_rewrite', true ) && ! iis7_supports_permalinks() )
 		$permastruct = preg_replace( '#^/index\.php#', '/index.php/%lang%', $permastruct );
 	elseif ( is_multisite() && ! is_subdomain_install() && is_main_site() )
 		$permastruct = preg_replace( '#^/blog#', '/blog/%lang%', $permastruct );
