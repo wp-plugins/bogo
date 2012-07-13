@@ -1,5 +1,23 @@
 <?php
 
+function bogo_get_default_locale() {
+	if ( defined( 'WPLANG' ) )
+		$locale = WPLANG;
+
+	if ( is_multisite() ) {
+		if ( defined( 'WP_INSTALLING' ) || ( false === $ms_locale = get_option( 'WPLANG' ) ) )
+			$ms_locale = get_site_option( 'WPLANG' );
+
+		if ( $ms_locale !== false )
+			$locale = $ms_locale;
+	}
+
+	if ( empty( $locale ) )
+		$locale = 'en_US';
+
+	return $locale;
+}
+
 function bogo_languages( $locale = '' ) {
 	$languages = array(
 		'af' => __( 'Afrikaans', 'bogo' ),

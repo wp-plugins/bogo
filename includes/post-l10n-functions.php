@@ -3,11 +3,8 @@
 function bogo_get_post_locale( $post_id ) {
 	$locale = get_post_meta( $post_id, '_locale', true );
 
-	if ( empty( $locale ) && defined( 'WPLANG' ) )
-		$locale = WPLANG;
-
 	if ( empty( $locale ) )
-		$locale = 'en_US';
+		$locale = bogo_get_default_locale();
 
 	return $locale;
 }
