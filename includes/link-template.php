@@ -67,6 +67,51 @@ function bogo_post_type_link( $permalink, $post, $leavename, $sample ) {
 	return $permalink;
 }
 
+add_filter( 'year_link', 'bogo_year_link', 10, 2 );
+
+function bogo_year_link( $link, $year ) {
+	return bogo_get_general_link( $link );
+}
+
+add_filter( 'month_link', 'bogo_month_link', 10, 3 );
+
+function bogo_month_link( $link, $year, $month ) {
+	return bogo_get_general_link( $link );
+}
+
+add_filter( 'day_link', 'bogo_day_link', 10, 4 );
+
+function bogo_day_link( $link, $year, $month, $day ) {
+	return bogo_get_general_link( $link );
+}
+
+add_filter( 'feed_link', 'bogo_feed_link', 10, 2 );
+
+function bogo_feed_link( $link, $feed ) {
+	return bogo_get_general_link( $link );
+}
+
+add_filter( 'author_feed_link', 'bogo_author_feed_link', 10, 2 );
+
+function bogo_author_feed_link( $link, $feed ) {
+	return bogo_get_general_link( $link );
+}
+
+function bogo_get_general_link( $link ) {
+	$default_locale = bogo_get_default_locale();
+	$locale = get_locale();
+
+	if ( $default_locale == $locale )
+		return $link;
+
+	$permalink_structure = get_option( 'permalink_structure' );
+
+	if ( empty( $permalink_structure ) )
+		return add_query_arg( array( 'lang' => $locale ), $link );
+
+	return bogo_get_url_with_lang( $link, $locale );
+}
+
 function bogo_get_url_with_lang( $url, $lang ) {
 	$home = trailingslashit( home_url() );
 
