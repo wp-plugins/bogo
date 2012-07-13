@@ -97,6 +97,30 @@ function bogo_author_feed_link( $link, $feed ) {
 	return bogo_get_general_link( $link );
 }
 
+add_filter( 'category_feed_link', 'bogo_category_feed_link', 10, 2 );
+
+function bogo_category_feed_link( $link, $feed ) {
+	return bogo_get_general_link( $link );
+}
+
+add_filter( 'taxonomy_feed_link', 'bogo_taxonomy_feed_link', 10, 3 );
+
+function bogo_taxonomy_feed_link( $link, $feed, $taxonomy ) {
+	return bogo_get_general_link( $link );
+}
+
+add_filter( 'post_type_archive_link', 'bogo_post_type_archive_link', 10, 2 );
+
+function bogo_post_type_archive_link( $link, $post_type ) {
+	return bogo_get_general_link( $link );
+}
+
+add_filter( 'post_type_archive_feed_link', 'bogo_post_type_archive_feed_link', 10, 2 );
+
+function bogo_post_type_archive_feed_link( $link, $feed ) {
+	return bogo_get_general_link( $link );
+}
+
 function bogo_get_general_link( $link ) {
 	$default_locale = bogo_get_default_locale();
 	$locale = get_locale();
