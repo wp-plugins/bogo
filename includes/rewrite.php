@@ -1,5 +1,12 @@
 <?php
 
+add_action( 'activate_' . BOGO_PLUGIN_BASENAME, 'bogo_flush_rewrite_rules' );
+
+function bogo_flush_rewrite_rules() {
+	bogo_add_rewrite_tags();
+	flush_rewrite_rules();
+}
+
 add_action( 'init', 'bogo_add_rewrite_tags' );
 
 function bogo_add_rewrite_tags() {
