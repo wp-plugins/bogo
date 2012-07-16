@@ -96,6 +96,7 @@ function bogo_languages( $locale = '' ) {
 
 function bogo_available_languages( $args = '' ) {
 	$defaults = array(
+		'exclude' => array(),
 		'orderby' => 'key',
 		'order' => 'ASC' );
 
@@ -108,6 +109,9 @@ function bogo_available_languages( $args = '' ) {
 	$installed_locales = array_unique( $installed_locales );
 
 	foreach ( $installed_locales as $locale ) {
+		if ( in_array( $locale, (array) $args['exclude'] ) )
+			continue;
+
 		$lang = bogo_languages( $locale );
 
 		if ( empty( $lang ) )
