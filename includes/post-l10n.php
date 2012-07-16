@@ -1,5 +1,66 @@
 <?php
 
+/* Posts List Table */
+
+add_filter( 'manage_posts_columns', 'bogo_posts_columns' );
+add_filter( 'manage_pages_columns', 'bogo_posts_columns' );
+
+function bogo_posts_columns( $posts_columns ) {
+	if ( ! isset( $posts_columns['locale'] ) ) {
+		$posts_columns = array_merge(
+			array_slice( $posts_columns, 0, 3 ),
+			array( 'locale' => __( 'Locale', 'bogo' ) ),
+			array_slice( $posts_columns, 3 ) );
+	}
+
+	return $posts_columns;
+}
+
+add_action( 'manage_pages_custom_column', 'bogo_manage_posts_custom_column', 10, 2 );
+add_action( 'manage_posts_custom_column', 'bogo_manage_posts_custom_column', 10, 2 );
+
+function bogo_manage_posts_custom_column( $column_name, $post_id ) {
+	if ( 'locale' != $column_name )
+		return;
+
+	$locale = bogo_get_post_locale( $post_id );
+	$language = bogo_languages( $locale );
+
+	if ( empty( $language ) )
+		$language = $locale;
+
+	echo sprintf( '<a href="%1$s">%2$s</a>',
+		esc_url( add_query_arg(
+			array( 'post_type' => get_post_type( $post_id ), 'lang' => $locale ),
+			'edit.php' ) ),
+		esc_html( $language ) );
+}
+
+add_action( 'restrict_manage_posts', 'bogo_restrict_manage_posts' );
+
+function bogo_restrict_manage_posts() {
+	$available_languages = bogo_available_languages();
+	$current_locale = empty( $_GET['lang'] ) ? '' : $_GET['lang'];
+
+	echo '<select name="lang">';
+
+	$selected = ( '' == $current_locale ) ? ' selected="selected"' : '';
+
+	echo '<option value=""' . $selected . '>'
+		. esc_html( __( 'Show all locales', 'bogo' ) ) . '</option>';
+
+	foreach ( $available_languages as $locale => $lang ) {
+		$selected = ( $locale == $current_locale ) ? ' selected="selected"' : '';
+
+		echo '<option value="' . esc_attr( $locale ) . '"' . $selected . '>'
+			. esc_html( $lang ) . '</option>';
+	}
+
+	echo '</select>' . "\n";
+}
+
+/* Single Post */
+
 add_action( 'add_meta_boxes', 'bogo_add_l10n_meta_boxes', 10, 2 );
 
 function bogo_add_l10n_meta_boxes( $post_type, $post ) {
