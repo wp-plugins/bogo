@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bogo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-03 02:47+0900\n"
+"POT-Creation-Date: 2012-07-16 19:36+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
 "Language-Team: \n"
@@ -15,247 +15,289 @@ msgstr ""
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SearchPath-0: bogo\n"
 
-#: bogo/bogo.php:82
-msgid "Locale"
-msgstr ""
-
-#: bogo/bogo.php:115
+#: bogo/includes/functions.php:23
 msgid "Afrikaans"
 msgstr ""
 
-#: bogo/bogo.php:116
+#: bogo/includes/functions.php:24
 msgid "Arabic"
 msgstr ""
 
-#: bogo/bogo.php:117
+#: bogo/includes/functions.php:25
 msgid "Belarusian"
 msgstr ""
 
-#: bogo/bogo.php:118
+#: bogo/includes/functions.php:26
 msgid "Bulgarian"
 msgstr ""
 
-#: bogo/bogo.php:119
-msgid "Bengali"
+#: bogo/includes/functions.php:27
+msgid "Bangla"
 msgstr ""
 
-#: bogo/bogo.php:120
+#: bogo/includes/functions.php:28
 msgid "Catalan"
 msgstr ""
 
-#: bogo/bogo.php:121
+#: bogo/includes/functions.php:29
 msgid "Czech"
 msgstr ""
 
-#: bogo/bogo.php:122
+#: bogo/includes/functions.php:30
 msgid "Welsh"
 msgstr ""
 
-#: bogo/bogo.php:123
+#: bogo/includes/functions.php:31
 msgid "Danish"
 msgstr ""
 
-#: bogo/bogo.php:124
+#: bogo/includes/functions.php:32
 msgid "German"
 msgstr ""
 
-#: bogo/bogo.php:125
+#: bogo/includes/functions.php:33
 msgid "Greek"
 msgstr ""
 
-#: bogo/bogo.php:126
+#: bogo/includes/functions.php:34
+msgid "British English"
+msgstr ""
+
+#: bogo/includes/functions.php:35
 msgid "English"
 msgstr ""
 
-#: bogo/bogo.php:127
+#: bogo/includes/functions.php:36
 msgid "Esperanto"
 msgstr ""
 
-#: bogo/bogo.php:128
+#: bogo/includes/functions.php:37
 msgid "Spanish"
 msgstr ""
 
-#: bogo/bogo.php:129
+#: bogo/includes/functions.php:38
 msgid "Estonian"
 msgstr ""
 
-#: bogo/bogo.php:130
+#: bogo/includes/functions.php:39
 msgid "Basque"
 msgstr ""
 
-#: bogo/bogo.php:131
+#: bogo/includes/functions.php:40
 msgid "Persian"
 msgstr ""
 
-#: bogo/bogo.php:132
+#: bogo/includes/functions.php:41
 msgid "Finnish"
 msgstr ""
 
-#: bogo/bogo.php:133
+#: bogo/includes/functions.php:42
 msgid "Faroese"
 msgstr ""
 
-#: bogo/bogo.php:134
+#: bogo/includes/functions.php:43
 msgid "French"
 msgstr ""
 
-#: bogo/bogo.php:135
+#: bogo/includes/functions.php:44
 msgid "Georgian"
 msgstr ""
 
-#: bogo/bogo.php:136
+#: bogo/includes/functions.php:45
 msgid "Galician"
 msgstr ""
 
-#: bogo/bogo.php:137
+#: bogo/includes/functions.php:46
 msgid "Hebrew"
 msgstr ""
 
-#: bogo/bogo.php:138
+#: bogo/includes/functions.php:47
 msgid "Croatian"
 msgstr ""
 
-#: bogo/bogo.php:139
+#: bogo/includes/functions.php:48
 msgid "Hungarian"
 msgstr ""
 
-#: bogo/bogo.php:140
+#: bogo/includes/functions.php:49
 msgid "Indonesian"
 msgstr ""
 
-#: bogo/bogo.php:141
+#: bogo/includes/functions.php:50
 msgid "Icelandic"
 msgstr ""
 
-#: bogo/bogo.php:142
+#: bogo/includes/functions.php:51
 msgid "Italian"
 msgstr ""
 
-#: bogo/bogo.php:143
+#: bogo/includes/functions.php:52
 msgid "Japanese"
 msgstr ""
 
-#: bogo/bogo.php:144
+#: bogo/includes/functions.php:53
 msgid "Khmer"
 msgstr ""
 
-#: bogo/bogo.php:145
+#: bogo/includes/functions.php:54
 msgid "Korean"
 msgstr ""
 
-#: bogo/bogo.php:146
+#: bogo/includes/functions.php:55
 msgid "Lithuanian"
 msgstr ""
 
-#: bogo/bogo.php:147
+#: bogo/includes/functions.php:56
 msgid "Latvian"
 msgstr ""
 
-#: bogo/bogo.php:148
+#: bogo/includes/functions.php:57
 msgid "Malagasy"
 msgstr ""
 
-#: bogo/bogo.php:149
+#: bogo/includes/functions.php:58
 msgid "Macedonian"
 msgstr ""
 
-#: bogo/bogo.php:150
+#: bogo/includes/functions.php:59
 msgid "Mongolian"
 msgstr ""
 
-#: bogo/bogo.php:151
+#: bogo/includes/functions.php:60
 msgid "Malay"
 msgstr ""
 
-#: bogo/bogo.php:152
+#: bogo/includes/functions.php:61
 msgid "Norwegian"
 msgstr ""
 
-#: bogo/bogo.php:153
+#: bogo/includes/functions.php:62
 msgid "Nias"
 msgstr ""
 
-#: bogo/bogo.php:154
+#: bogo/includes/functions.php:63
 msgid "Dutch"
 msgstr ""
 
-#: bogo/bogo.php:155
+#: bogo/includes/functions.php:64
 msgid "Polish"
 msgstr ""
 
-#: bogo/bogo.php:156
+#: bogo/includes/functions.php:65
 msgid "Brazilian Portuguese"
 msgstr ""
 
-#: bogo/bogo.php:157
+#: bogo/includes/functions.php:66
 msgid "Portuguese"
 msgstr ""
 
-#: bogo/bogo.php:158
+#: bogo/includes/functions.php:67
 msgid "Romanian"
 msgstr ""
 
-#: bogo/bogo.php:159
+#: bogo/includes/functions.php:68
 msgid "Russian"
 msgstr ""
 
-#: bogo/bogo.php:160
+#: bogo/includes/functions.php:69
 msgid "Sinhala"
 msgstr ""
 
-#: bogo/bogo.php:161
+#: bogo/includes/functions.php:70
 msgid "Slovak"
 msgstr ""
 
-#: bogo/bogo.php:162
+#: bogo/includes/functions.php:71
 msgid "Slovenian"
 msgstr ""
 
-#: bogo/bogo.php:163
+#: bogo/includes/functions.php:72
 msgid "Albanian"
 msgstr ""
 
-#: bogo/bogo.php:164
+#: bogo/includes/functions.php:73
 msgid "Serbian"
 msgstr ""
 
-#: bogo/bogo.php:165
+#: bogo/includes/functions.php:74
 msgid "Swedish"
 msgstr ""
 
-#: bogo/bogo.php:166
+#: bogo/includes/functions.php:75
 msgid "Sundanese"
 msgstr ""
 
-#: bogo/bogo.php:167
+#: bogo/includes/functions.php:76
 msgid "Tajik"
 msgstr ""
 
-#: bogo/bogo.php:168
+#: bogo/includes/functions.php:77
 msgid "Thai"
 msgstr ""
 
-#: bogo/bogo.php:169
+#: bogo/includes/functions.php:78
 msgid "Turkish"
 msgstr ""
 
-#: bogo/bogo.php:170
+#: bogo/includes/functions.php:79
 msgid "Ukrainian"
 msgstr ""
 
-#: bogo/bogo.php:171
+#: bogo/includes/functions.php:80
 msgid "Uzbek"
 msgstr ""
 
-#: bogo/bogo.php:172
-msgid "Vietnamse"
+#: bogo/includes/functions.php:81
+msgid "Vietnamese"
 msgstr ""
 
-#: bogo/bogo.php:173
+#: bogo/includes/functions.php:82
 msgid "Chinese"
 msgstr ""
 
-#: bogo/bogo.php:174
+#: bogo/includes/functions.php:83
 msgid "Traditional Chinese"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:12
+#: bogo/includes/user-l10n.php:25
+#: bogo/includes/user-l10n.php:44
+msgid "Locale"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:50
+msgid "Show all locales"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:73
+msgid "Localization"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:86
+#, php-format
+msgid "Translations of this %s:"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:147
+#, php-format
+msgid "This %1$s is a %2$s translation of %3$s."
+msgstr ""
+
+#: bogo/includes/post-l10n.php:149
+#, php-format
+msgid "This %1$s is a %2$s translation."
+msgstr ""
+
+#: bogo/includes/post-l10n.php:167
+msgid "Select Language"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:179
+#, php-format
+msgid "Make a translation of this %s:"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:180
+msgid "Make Translation"
 msgstr ""
 

@@ -24,7 +24,7 @@ function bogo_languages( $locale = '' ) {
 		'ar' => __( 'Arabic', 'bogo' ),
 		'be_BY' => __( 'Belarusian', 'bogo' ),
 		'bg_BG' => __( 'Bulgarian', 'bogo' ),
-		'bn_BD' => __( 'Bengali', 'bogo' ),
+		'bn_BD' => __( 'Bangla', 'bogo' ),
 		'ca' => __( 'Catalan', 'bogo' ),
 		'cs_CZ' => __( 'Czech', 'bogo' ),
 		'cy' => __( 'Welsh', 'bogo' ),
@@ -78,7 +78,7 @@ function bogo_languages( $locale = '' ) {
 		'tr' => __( 'Turkish', 'bogo' ),
 		'uk_UA' => __( 'Ukrainian', 'bogo' ),
 		'uz_UZ' => __( 'Uzbek', 'bogo' ),
-		'vi' => __( 'Vietnamse', 'bogo' ),
+		'vi' => __( 'Vietnamese', 'bogo' ),
 		'zh_CN' => __( 'Chinese', 'bogo' ),
 		'zh_TW' => __( 'Traditional Chinese', 'bogo' )
 	);
