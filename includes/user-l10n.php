@@ -35,14 +35,11 @@ function bogo_select_own_locale() {
 <?php
 }
 
+/* Admin Bar */
+
 add_action( 'admin_bar_menu', 'bogo_admin_bar_menu' );
 
 function bogo_admin_bar_menu( $wp_admin_bar ) {
-	$wp_admin_bar->add_menu( array(
-		'parent' => 'top-secondary',
-		'id' => 'bogo-user-locale',
-		'title' => __( 'Locale', 'bogo' ) ) );
-
 	$current_locale = bogo_get_user_locale();
 	$current_language = bogo_languages( $current_locale );
 
@@ -50,12 +47,12 @@ function bogo_admin_bar_menu( $wp_admin_bar ) {
 		$current_language = $current_locale;
 
 	$wp_admin_bar->add_menu( array(
-		'parent' => 'bogo-user-locale',
-		'id' => 'bogo-user-locale-current',
+		'parent' => 'top-secondary',
+		'id' => 'bogo-user-locale',
 		'title' => '&#10004; ' . $current_language ) );
 
-	$available_languages = bogo_available_languages( array(
-		'exclude' => array( $current_locale ) ) );
+	$available_languages = bogo_available_languages(
+		array( 'exclude' => array( $current_locale ) ) );
 
 	foreach ( $available_languages as $locale => $lang ) {
 		$url = admin_url( 'profile.php?action=bogo-switch-locale&locale=' . $locale );

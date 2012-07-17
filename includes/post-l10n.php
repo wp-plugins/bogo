@@ -23,7 +23,11 @@ function bogo_manage_posts_custom_column( $column_name, $post_id ) {
 	if ( 'locale' != $column_name )
 		return;
 
-	$locale = bogo_get_post_locale( $post_id );
+	$locale = get_post_meta( $post_id, '_locale', true );
+
+	if ( empty( $locale ) )
+		return;
+
 	$language = bogo_languages( $locale );
 
 	if ( empty( $language ) )
