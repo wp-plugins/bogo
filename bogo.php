@@ -93,10 +93,18 @@ add_action( 'parse_query', 'bogo_parse_query' );
 function bogo_parse_query( $query ) {
 	$qv = &$query->query_vars;
 
-	if ( empty( $qv['lang'] ) )
-		return;
+	$lang = isset( $qv['lang'] ) ? $qv['lang'] : '';
 
-	if ( ! $locale = bogo_get_closest_locale( $qv['lang'] ) )
+	if ( is_admin() ) {
+		$locale = $lang;
+	} else {
+		$locale = bogo_get_closest_locale( $lang );
+
+		if ( empty( $locale ) )
+			$locale = bogo_get_default_locale();
+	}
+
+	if ( empty( $locale ) )
 		return;
 
 	$meta_query = array(
