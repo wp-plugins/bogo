@@ -129,4 +129,37 @@ function bogo_page_rewrite_rules( $page_rewrite ) {
 	return $page_rewrite;
 }
 
+add_filter( 'category_rewrite_rules', 'bogo_category_rewrite_rules' );
+
+function bogo_category_rewrite_rules( $category_rewrite ) {
+	return bogo_taxonomy_rewrite_rules( $category_rewrite, 'category', EP_CATEGORIES );
+}
+
+add_filter( 'post_tag_rewrite_rules', 'bogo_post_tag_rewrite_rules' );
+
+function bogo_post_tag_rewrite_rules( $post_tag_rewrite ) {
+	return bogo_taxonomy_rewrite_rules( $post_tag_rewrite, 'post_tag', EP_TAGS );
+}
+
+add_filter( 'post_format_rewrite_rules', 'bogo_post_format_rewrite_rules' );
+
+function bogo_post_format_rewrite_rules( $post_format_rewrite ) {
+	return bogo_taxonomy_rewrite_rules( $post_format_rewrite, 'post_format' );
+}
+
+function bogo_taxonomy_rewrite_rules( $taxonomy_rewrite, $taxonomy, $ep_mask = EP_NONE ) {
+	global $wp_rewrite;
+
+	$permastruct = $wp_rewrite->get_extra_permastruct( $taxonomy );
+
+	$permastruct = preg_replace(
+		'#^' . $wp_rewrite->front . '#',
+		trailingslashit( $wp_rewrite->front ) . '%lang%/',
+		$permastruct );
+
+	$extra = $wp_rewrite->generate_rewrite_rules( $permastruct, $ep_mask );
+
+	return array_merge( $extra, $taxonomy_rewrite );
+}
+
 ?>

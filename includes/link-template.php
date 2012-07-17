@@ -121,6 +121,12 @@ function bogo_post_type_archive_feed_link( $link, $feed ) {
 	return bogo_get_general_link( $link );
 }
 
+add_filter( 'term_link', 'bogo_term_link', 10, 3 );
+
+function bogo_term_link( $link, $term, $taxonomy ) {
+	return bogo_get_general_link( $link );
+}
+
 function bogo_get_general_link( $link ) {
 	$default_locale = bogo_get_default_locale();
 	$locale = get_locale();
