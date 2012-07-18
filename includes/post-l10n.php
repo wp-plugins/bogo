@@ -105,27 +105,24 @@ function bogo_l10n_meta_box( $post ) {
 <div class="descriptions">
 <p><strong><?php echo esc_html( __( 'Language', 'bogo' ) ); ?>:</strong>
 	<?php echo esc_html( $lang ); ?></p>
-<?php if ( ! empty( $original_post ) ) :
-	$original_post = get_post( $original_post );
-	$edit_link = get_edit_post_link( $original_post->ID );
-
-	if ( $edit_link )
-		$edit_link = '<a href="' . esc_url( $edit_link ) . '" target="_blank">' . get_the_title( $original_post->ID ) . '</a>';
-	else
-		$edit_link = get_the_title( $original_post->ID );
-?>
-<p><strong><?php echo esc_html( __( 'Original', 'bogo' ) ); ?>:</strong>
-	<?php echo $edit_link; ?></p>
-<?php endif; ?>
 </div>
 
 <?php
-	bogo_metabox_translations( $post );
+	bogo_metabox_translations( $post, $locale );
 	bogo_metabox_add_translation( $post );
 }
 
-function bogo_metabox_translations( $post ) {
-	$translations = bogo_get_post_translations( $post->ID );
+function bogo_metabox_translations( $post, $locale ) {
+	if ( 'auto-draft' == $post->post_status ) {
+		if ( isset( $_REQUEST['original_post'] )
+		&& $original_post = get_post( $_REQUEST['original_post'] ) )
+			$translations = bogo_get_post_translations( $original_post->ID );
+	} else {
+		$translations = bogo_get_post_translations( $post->ID );
+	}
+
+	if ( isset( $translations[$locale] ) )
+		unset( $translations[$locale] );
 
 	if ( empty( $translations ) )
 		return;
@@ -133,7 +130,7 @@ function bogo_metabox_translations( $post ) {
 ?>
 <p><strong><?php echo esc_html( __( 'Translations', 'bogo' ) ); ?>:</strong></p>
 
-<ul>
+<ul style="list-style: disc inside; margin-left: 1em;">
 <?php
 	foreach ( $translations as $locale => $translation ) {
 		$edit_link = get_edit_post_link( $translation->ID );
@@ -175,14 +172,22 @@ function bogo_metabox_add_translation( $post ) {
 	if ( isset( $translations[$locale] ) )
 		return;
 
+	$original = get_post_meta( $post->ID, '_original_post', true );
+
+	if ( ! empty( $original ) )
+		$original = get_post( $original );
+
+	if ( empty( $original ) )
+		$original = $post;
+
 	$lang = bogo_languages( $locale );
 
 	if ( empty( $lang ) )
 		$lang = $locale;
 
-	$edit_link = admin_url( 'post-new.php?post_type=' . $post->post_type
+	$edit_link = admin_url( 'post-new.php?post_type=' . $original->post_type
 		. '&locale=' . $locale
-		. '&original_post=' . $post->ID );
+		. '&original_post=' . $original->ID );
 
 ?>
 <p class="textright"><a href="<?php echo $edit_link; ?>" target="_blank" class="button"><?php echo esc_html( sprintf( __( 'Add %s translation', 'bogo' ), $lang ) ) ?></a></p>
@@ -248,21 +253,34 @@ function bogo_save_post( $post_id, $post ) {
 	}
 
 	if ( empty( $locale ) )
-		$locale = get_post_meta( $post_id, '_locale', true );
-
-	if ( empty( $locale ) )
-		$locale = bogo_get_user_locale();
+		$locale = bogo_get_post_locale( $post_id );
 
 	if ( ! empty( $locale ) )
 		update_post_meta( $post_id, '_locale', $locale );
 
-	if ( ! empty( $_REQUEST['original_post'] ) ) {
+	$original = get_post_meta( $post_id, '_original_post', true );
+
+	if ( ! empty( $original ) )
+		$original = get_post( $original );
+
+	if ( empty( $original ) && ! empty( $_REQUEST['original_post'] ) )
 		$original = get_post( $_REQUEST['original_post'] );
 
-		if ( $original && $original->ID != $post_id
-		&& bogo_get_post_locale( $original->ID ) != $locale )
-			update_post_meta( $post_id, '_original_post', $original->ID );
+	$translations = bogo_get_post_translations( $post_id );
+
+	if ( $translations ) {
+		foreach ( $translations as $key => $value )
+			$translations[$key] = $value->ID;
 	}
+
+	if ( ! empty( $original )
+	&& $original->ID != $post_id
+	&& bogo_get_post_locale( $original->ID ) != $locale ) {
+		update_post_meta( $post_id, '_original_post', $original->ID );
+		update_post_meta( $original->ID, '_translations', $translations );
+	}
+
+	update_post_meta( $post_id, '_translations', $translations );
 }
 
 /*
