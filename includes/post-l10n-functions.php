@@ -20,7 +20,7 @@ function bogo_get_post_translations( $post_id = 0 ) {
 	if ( ! empty( $original ) )
 		$original = get_post( $original );
 
-	if ( empty( $original ) )
+	if ( empty( $original ) || 'trash' == get_post_status( $original ) )
 		$original = $post;
 
 	$args = array(
@@ -39,8 +39,12 @@ function bogo_get_post_translations( $post_id = 0 ) {
 		$translations[bogo_get_post_locale( $p->ID )] = $p;
 
 	foreach ( (array) get_post_meta( $original->ID, '_translations', true ) as $key => $value ) {
-		if ( ! isset( $translations[$key] ) )
-			$translations[$key] = get_post( $value );
+		if ( ! isset( $translations[$key] ) ) {
+			$translation = get_post( $value );
+
+			if ( ! empty( $translation ) && 'trash' != get_post_status( $translation ) )
+				$translations[$key] = $translation;
+		}
 	}
 
 	$translations[bogo_get_post_locale( $original->ID )] = $original;
@@ -53,7 +57,7 @@ function bogo_get_post_translations( $post_id = 0 ) {
 			unset( $translations[$key] );
 	}
 
-	return $translations;
+	return array_filter( $translations );
 }
 
 ?>
