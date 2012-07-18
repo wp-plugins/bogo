@@ -56,7 +56,11 @@ function bogo_admin_bar_menu( $wp_admin_bar ) {
 
 	foreach ( $available_languages as $locale => $lang ) {
 		$url = admin_url( 'profile.php?action=bogo-switch-locale&locale=' . $locale );
-		$url = add_query_arg( array( 'redirect_to' => $_SERVER['REQUEST_URI'] ), $url );
+
+		$url = add_query_arg(
+			array( 'redirect_to' => urlencode( $_SERVER['REQUEST_URI'] ) ),
+			$url );
+
 		$url = wp_nonce_url( $url, 'bogo-switch-locale' );
 
 		$wp_admin_bar->add_menu( array(
