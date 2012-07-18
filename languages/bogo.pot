@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bogo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-16 19:36+0900\n"
+"POT-Creation-Date: 2012-07-18 19:39+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
 "Language-Team: \n"
@@ -261,43 +261,34 @@ msgstr ""
 
 #: bogo/includes/post-l10n.php:12
 #: bogo/includes/user-l10n.php:25
-#: bogo/includes/user-l10n.php:44
 msgid "Locale"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:50
+#: bogo/includes/post-l10n.php:54
 msgid "Show all locales"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:73
-msgid "Localization"
-msgstr ""
-
-#: bogo/includes/post-l10n.php:86
+#: bogo/includes/post-l10n.php:93
 #, php-format
-msgid "Translations of this %s:"
+msgid "Translate this item into %s"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:147
+#: bogo/includes/post-l10n.php:93
 #, php-format
-msgid "This %1$s is a %2$s translation of %3$s."
+msgid "Translate into %s"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:149
+#: bogo/includes/post-l10n.php:106
+#: bogo/includes/post-l10n.php:138
+msgid "Language"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:154
+msgid "Translations"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:208
 #, php-format
-msgid "This %1$s is a %2$s translation."
-msgstr ""
-
-#: bogo/includes/post-l10n.php:167
-msgid "Select Language"
-msgstr ""
-
-#: bogo/includes/post-l10n.php:179
-#, php-format
-msgid "Make a translation of this %s:"
-msgstr ""
-
-#: bogo/includes/post-l10n.php:180
-msgid "Make Translation"
+msgid "Add %s translation"
 msgstr ""
 
