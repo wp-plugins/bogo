@@ -15,46 +15,54 @@ function bogo_get_post_translations( $post_id = 0 ) {
 	if ( ! $post )
 		return false;
 
-	$original = get_post_meta( $post->ID, '_original_post', true );
+	if ( 'auto-draft' == $post->post_status ) {
+		if ( ! empty( $_REQUEST['original_post'] ) ) {
+			$original = get_post_meta( $_REQUEST['original_post'], '_original_post', true );
 
-	if ( ! empty( $original ) )
-		$original = get_post( $original );
+			if ( empty( $original ) )
+				$original = (int) $_REQUEST['original_post'];
+		} else {
+			return false;
+		}
+	} else {
+		$original = get_post_meta( $post->ID, '_original_post', true );
+	}
 
-	if ( empty( $original ) || 'trash' == get_post_status( $original ) )
-		$original = $post;
+	if ( empty( $original ) )
+		$original = $post->ID;
 
 	$args = array(
 		'posts_per_page' => -1,
 		'post_status' => 'any',
 		'post_type' => $post->post_type,
 		'meta_key' => '_original_post',
-		'meta_value' => (int) $original->ID );
+		'meta_value' => $original );
 
 	$q = new WP_Query();
 	$posts = $q->query( $args );
 
 	$translations = array();
 
-	foreach ( $posts as $p )
-		$translations[bogo_get_post_locale( $p->ID )] = $p;
+	$original_post_status = get_post_status( $original );
 
-	foreach ( (array) get_post_meta( $original->ID, '_translations', true ) as $key => $value ) {
-		if ( ! isset( $translations[$key] ) ) {
-			$translation = get_post( $value );
-
-			if ( ! empty( $translation ) && 'trash' != get_post_status( $translation ) )
-				$translations[$key] = $translation;
-		}
+	if ( $original != $post->ID && $original_post_status && 'trash' != $original_post_status ) {
+		$locale = bogo_get_post_locale( $original );
+		$translations[$locale] = get_post( $original );
 	}
-
-	$translations[bogo_get_post_locale( $original->ID )] = $original;
-	$translations[bogo_get_post_locale( $post->ID )] = $post;
 
 	$available_languages = bogo_available_languages();
 
-	foreach ( $translations as $key => $value ) {
-		if ( ! isset( $available_languages[$key] ) )
-			unset( $translations[$key] );
+	foreach ( $posts as $p ) {
+		if ( $p->ID == $post->ID )
+			continue;
+
+		$locale = bogo_get_post_locale( $p->ID );
+
+		if ( ! isset( $available_languages[$locale] ) )
+			continue;
+
+		if ( ! isset( $translations[$locale] ) )
+			$translations[$locale] = $p;
 	}
 
 	return array_filter( $translations );
