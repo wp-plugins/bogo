@@ -1,14 +1,16 @@
 <?php
 /*
 Plugin Name: Bogo
+Description: A multilingualization plugin doesn't do what it shouldn't.
 Plugin URI: http://ideasilo.wordpress.com/2009/05/05/bogo/
-Description: Bogo allows each user to choose their locale for the admin panel.
 Author: Takayuki Miyoshi
-Version: 2.0-dev
 Author URI: http://ideasilo.wordpress.com/
+Text Domain: bogo
+Domain Path: /languages/
+Version: 2.0-dev
 */
 
-/*  Copyright 2007-2011 Takayuki Miyoshi (email: takayukister at gmail.com)
+/*  Copyright 2007-2012 Takayuki Miyoshi (email: takayukister at gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

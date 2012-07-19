@@ -1,11 +1,14 @@
 === Bogo ===
 Contributors: takayukister
-Tags: language, admin
-Requires at least: 2.7
-Tested up to: 2.9-rare
+Tags: multilingualization, localization, language, locale, admin
+Requires at least: 3.4
+Tested up to: 3.4.1
+Donate link: http://www.pledgie.com/campaigns/17860
 Stable tag: 1.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Bogo allows each user to choose their locale for the admin panel.
+A multilingualization plugin doesn't do what it shouldn't.
 
 == Description ==
 
