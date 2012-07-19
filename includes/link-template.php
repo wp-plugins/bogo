@@ -15,7 +15,7 @@ function bogo_post_link( $permalink, $post, $leavename ) {
 
 	if ( empty( $permalink_structure )
 	|| ! $sample && in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) )
-		return add_query_arg( array( 'lang' => $locale ), $permalink );
+		return add_query_arg( array( 'lang' => bogo_lang_slug( $locale ) ), $permalink );
 
 	$permalink = bogo_get_url_with_lang( $permalink, $locale );
 
@@ -40,7 +40,7 @@ function bogo_page_link( $permalink, $id, $sample ) {
 
 	if ( empty( $permalink_structure )
 	|| ! $sample && in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) )
-		return add_query_arg( array( 'lang' => $locale ), $permalink );
+		return add_query_arg( array( 'lang' => bogo_lang_slug( $locale ) ), $permalink );
 
 	$permalink = bogo_get_url_with_lang( $permalink, $locale );
 
@@ -60,7 +60,7 @@ function bogo_post_type_link( $permalink, $post, $leavename, $sample ) {
 
 	if ( empty( $permalink_structure )
 	|| ! $sample && in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) )
-		return add_query_arg( array( 'lang' => $locale ), $permalink );
+		return add_query_arg( array( 'lang' => bogo_lang_slug( $locale ) ), $permalink );
 
 	$permalink = bogo_get_url_with_lang( $permalink, $locale );
 
@@ -137,7 +137,7 @@ function bogo_get_general_link( $link ) {
 	$permalink_structure = get_option( 'permalink_structure' );
 
 	if ( empty( $permalink_structure ) )
-		return add_query_arg( array( 'lang' => $locale ), $link );
+		return add_query_arg( array( 'lang' => bogo_lang_slug( $locale ) ), $link );
 
 	return bogo_get_url_with_lang( $link, $locale );
 }
@@ -156,7 +156,9 @@ function bogo_m17n_headers() {
 
 		foreach ( $translations as $lang => $translation ) {
 			if ( $locale != $lang )
-				$languages[] = array( 'hreflang' => $lang, 'href' => get_permalink( $translation ) );
+				$languages[] = array(
+					'hreflang' => bogo_language_tag( $lang ),
+					'href' => get_permalink( $translation ) );
 		}
 
 	} else {
@@ -165,7 +167,9 @@ function bogo_m17n_headers() {
 		foreach ( array_keys( $available_languages ) as $lang ) {
 			if ( $locale != $lang ) {
 				$url = bogo_get_url_with_lang( null, $lang );
-				$languages[] = array( 'hreflang' => $lang, 'href' => $url );
+				$languages[] = array(
+					'hreflang' => bogo_language_tag( $lang ),
+					'href' => $url );
 			}
 		}
 	}

@@ -94,6 +94,29 @@ function bogo_languages( $locale = '' ) {
 	return null;		
 }
 
+function bogo_language_tag( $locale ) {
+	// http://www.ietf.org/rfc/bcp/bcp47.txt
+	$tag = preg_replace( '/[^0-9a-zA-Z]+/', '-', $locale );
+	$tag = trim( $tag, '-' );
+
+	return apply_filters( 'bogo_language_tag', $tag, $locale );
+}
+
+function bogo_lang_slug( $locale ) {
+	$tag = bogo_language_tag( $locale );
+	$slug = $tag;
+
+	if ( false !== $pos = strpos( $tag, '-' ) )
+		$slug = substr( $tag, 0, $pos );
+
+	$variations = preg_grep( '/^' . $slug . '/', array_keys( bogo_available_languages() ) );
+
+	if ( 1 < count( $variations ) )
+		$slug = $tag;
+
+	return apply_filters( 'bogo_lang_slug', $slug, $locale );
+}
+
 function bogo_available_languages( $args = '' ) {
 	$defaults = array(
 		'exclude' => array(),
@@ -140,7 +163,7 @@ function bogo_available_languages( $args = '' ) {
 function bogo_get_closest_locale( $var ) {
 	$var = strtolower( $var );
 
-	if ( ! preg_match( '/^([a-z]{2})(?:_([a-z]{2}))?/', $var, $matches ) )
+	if ( ! preg_match( '/^([a-z]{2})(?:-([a-z]{2}))?/', $var, $matches ) )
 		return false;
 
 	$language_code = $matches[1];
@@ -220,11 +243,11 @@ function bogo_get_url_with_lang( $url = null, $lang = null ) {
 	$home = trailingslashit( home_url() );
 
 	$available_languages = bogo_available_languages();
-	$available_languages = array_keys( $available_languages );
+	$available_languages = array_map( 'bogo_lang_slug', array_keys( $available_languages ) );
 
 	$url = preg_replace(
 		'#^' . preg_quote( $home ) . '((' . implode( '|', $available_languages ) . ')/)?' . '#',
-		$home . ( $lang == $default_locale ? '' : $lang . '/' ),
+		$home . ( $lang == $default_locale ? '' : bogo_lang_slug( $lang ) . '/' ),
 		$url );
 
 	return $url;
