@@ -10,7 +10,7 @@ function bogo_flush_rewrite_rules() {
 add_action( 'init', 'bogo_add_rewrite_tags' );
 
 function bogo_add_rewrite_tags() {
-	add_rewrite_tag( '%lang%', '([a-z]{2}(?:_[A-Z]{2})?)', 'lang=' );
+	add_rewrite_tag( '%lang%', '([a-z]{2}(?:-[A-Z]{2})?)', 'lang=' );
 }
 
 add_filter( 'root_rewrite_rules', 'bogo_root_rewrite_rules' );
