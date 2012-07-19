@@ -207,12 +207,12 @@ function bogo_language_selector( $args = '' ) {
 			if ( empty( $translations[$code] ) || $locale == $code )
 				echo esc_html( $name );
 			else
-				echo '<a href="' . get_permalink( $translations[$code] ) . '">' . esc_html( $name ) . '</a>';
+				echo '<a rel="alternate" hreflang="' . bogo_language_tag( $code ) . '" href="' . get_permalink( $translations[$code] ) . '">' . esc_html( $name ) . '</a>';
 		} else {
 			if ( $locale == $code )
 				echo esc_html( $name );
 			else
-				echo '<a href="' . esc_url( bogo_get_url_with_lang( null, $code ) ) . '">' . esc_html( $name ) . '</a>';
+				echo '<a rel="alternate" hreflang="' . bogo_language_tag( $code ) . '" href="' . esc_url( bogo_get_url_with_lang( null, $code ) ) . '">' . esc_html( $name ) . '</a>';
 		}
 
 		echo '</li>';
