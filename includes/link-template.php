@@ -145,18 +145,36 @@ function bogo_get_general_link( $link ) {
 add_action( 'wp_head', 'bogo_m17n_headers' );
 
 function bogo_m17n_headers() {
-	$available_languages = bogo_available_languages();
+	$languages = array();
+	$locale = get_locale();
 
-	foreach ( $available_languages as $key => $value ) {
-		$locale = get_locale();
+	if ( is_singular() ) {
+		$post_id = get_queried_object_id();
 
-		if ( $key == $locale )
-			continue;
+		if ( ! $post_id || ! $translations = bogo_get_post_translations( $post_id ) )
+			return;
 
-		$url = bogo_get_url_with_lang( null, $key );
+		foreach ( $translations as $lang => $translation ) {
+			if ( $locale != $lang )
+				$languages[] = array( 'hreflang' => $lang, 'href' => get_permalink( $translation ) );
+		}
 
-		echo '<link rel="alternate" hreflang="' . $key . '" href="' . $url . '" />' . "\n";
+	} else {
+		$available_languages = bogo_available_languages();
+
+		foreach ( array_keys( $available_languages ) as $lang ) {
+			if ( $locale != $lang ) {
+				$url = bogo_get_url_with_lang( null, $lang );
+				$languages[] = array( 'hreflang' => $lang, 'href' => $url );
+			}
+		}
 	}
+
+	if ( ! $languages )
+		return;
+
+	foreach ( $languages as $language )
+		echo '<link rel="alternate" hreflang="' . esc_attr( $language['hreflang'] ) . '" href="' . esc_url( $language['href'] ) . '" />' . "\n";
 }
 
 ?>

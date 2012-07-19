@@ -90,6 +90,9 @@ add_action( 'parse_query', 'bogo_parse_query' );
 function bogo_parse_query( $query ) {
 	$qv = &$query->query_vars;
 
+	if ( ! empty( $qv['bogo_suppress_locale_query'] ) )
+		return;
+
 	$lang = isset( $qv['lang'] ) ? $qv['lang'] : '';
 
 	if ( is_admin() ) {
