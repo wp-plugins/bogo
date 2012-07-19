@@ -195,4 +195,39 @@ function bogo_http_accept_languages() {
 	return array_reverse( array_keys( $languages ) );
 }
 
+function bogo_get_url_with_lang( $url = null, $lang = null ) {
+	if ( ! $url ) {
+		if ( ! $url = redirect_canonical( $url, false ) ) {
+			$url = is_ssl() ? 'https://' : 'http://';
+			$url .= $_SERVER['HTTP_HOST'];
+			$url .= $_SERVER['REQUEST_URI'];
+		}
+
+		if ( $query = @parse_url( $url, PHP_URL_QUERY ) ) {
+			parse_str( $query, $query_vars );
+			$url = remove_query_arg( array_keys( $query_vars ), $url );
+		}
+
+		if ( $frag = strstr( $url, '#' ) )
+			$url = substr( $url, 0, - strlen( $frag ) );
+	}
+
+	$default_locale = bogo_get_default_locale();
+
+	if ( ! $lang )
+		$lang = $default_locale;
+
+	$home = trailingslashit( home_url() );
+
+	$available_languages = bogo_available_languages();
+	$available_languages = array_keys( $available_languages );
+
+	$url = preg_replace(
+		'#^' . preg_quote( $home ) . '((' . implode( '|', $available_languages ) . ')/)?' . '#',
+		$home . ( $lang == $default_locale ? '' : $lang . '/' ),
+		$url );
+
+	return $url;
+}
+
 ?>

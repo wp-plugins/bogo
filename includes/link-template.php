@@ -142,15 +142,21 @@ function bogo_get_general_link( $link ) {
 	return bogo_get_url_with_lang( $link, $locale );
 }
 
-function bogo_get_url_with_lang( $url, $lang ) {
-	$home = trailingslashit( home_url() );
+add_action( 'wp_head', 'bogo_m17n_headers' );
 
-	if ( 0 !== strpos( $url, $home ) )
-		return $url;
+function bogo_m17n_headers() {
+	$available_languages = bogo_available_languages();
 
-	$url = substr_replace( $url, $home . $lang . '/', 0, strlen( $home ) );
+	foreach ( $available_languages as $key => $value ) {
+		$locale = get_locale();
 
-	return $url;
+		if ( $key == $locale )
+			continue;
+
+		$url = bogo_get_url_with_lang( null, $key );
+
+		echo '<link rel="alternate" hreflang="' . $key . '" href="' . $url . '" />' . "\n";
+	}
 }
 
 ?>

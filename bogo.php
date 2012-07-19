@@ -65,19 +65,14 @@ function bogo_init() {
 add_filter( 'locale', 'bogo_locale' );
 
 function bogo_locale( $locale ) {
-	if ( $lang = get_query_var( 'lang' ) ) {
-		$closest = bogo_get_closest_locale( $lang );
+	if ( is_admin() )
+		return bogo_get_user_locale();
 
-		if ( $closest )
-			return $closest;
-	}
+	if ( ( $lang = get_query_var( 'lang' ) ) && $closest = bogo_get_closest_locale( $lang ) )
+		return $closest;
 
-	if ( is_user_logged_in() && ( is_admin() || ! defined( 'WP_CACHE' ) || ! WP_CACHE ) ) {
-		$user_locale = bogo_get_user_locale();
-
-		if ( ! empty( $user_locale ) )
-			return $user_locale;
-	}
+	if ( $default_locale = bogo_get_default_locale() )
+		return $default_locale;
 
 	return $locale;
 }
