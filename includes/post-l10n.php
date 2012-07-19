@@ -276,7 +276,9 @@ function bogo_translation_default_excerpt( $excerpt, $post ) {
 add_action( 'save_post', 'bogo_save_post', 10, 2 );
 
 function bogo_save_post( $post_id, $post ) {
-	if ( ! empty( $_REQUEST['locale'] ) ) {
+	$locale = get_post_meta( $post_id, '_locale', true );
+
+	if ( empty( $locale ) && ! empty( $_REQUEST['locale'] ) ) {
 		$available_languages = bogo_available_languages();
 
 		if ( isset( $available_languages[$_REQUEST['locale']] ) )
@@ -284,7 +286,7 @@ function bogo_save_post( $post_id, $post ) {
 	}
 
 	if ( empty( $locale ) )
-		$locale = bogo_get_post_locale( $post_id );
+		$locale = bogo_get_default_locale();
 
 	if ( ! empty( $locale ) )
 		update_post_meta( $post_id, '_locale', $locale );
