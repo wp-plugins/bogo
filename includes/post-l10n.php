@@ -67,7 +67,10 @@ add_filter( 'post_row_actions', 'bogo_post_row_actions', 10, 2 );
 add_filter( 'page_row_actions', 'bogo_post_row_actions', 10, 2 );
 
 function bogo_post_row_actions( $actions, $post ) {
-	if ( 'trash' == $post->post_status )
+	$post_type_object = get_post_type_object( $post->post_type );
+
+	if ( ! current_user_can( $post_type_object->cap->edit_post, $post->ID )
+	|| 'trash' == $post->post_status )
 		return $actions;
 
 	$user_locale = bogo_get_user_locale();
@@ -78,19 +81,32 @@ function bogo_post_row_actions( $actions, $post ) {
 
 	$translations = bogo_get_post_translations( $post );
 
-	if ( isset( $translations[$user_locale] ) )
-		return $actions;
+	if ( ! empty( $translations[$user_locale] ) ) {
+		$translation = $translations[$user_locale];
+
+		if ( empty( $translation->ID ) || $translation->ID == $post->ID )
+			return $actions;
+
+		$title = __( 'Edit %s translation of this item', 'bogo' );
+		$text = __( 'Edit %s translation', 'bogo' );
+
+		$edit_link = get_edit_post_link( $translation->ID );
+
+	} else {
+		$title = __( 'Translate this item into %s', 'bogo' );
+		$text = __( 'Translate into %s', 'bogo' );
+
+		$edit_link = admin_url( 'post-new.php?post_type=' . $post->post_type
+			. '&locale=' . $user_locale
+			. '&original_post=' . $post->ID );
+	}
 
 	$language = bogo_languages( $user_locale );
 
 	if ( empty( $language ) )
 		$language = $user_locale;
 
-	$edit_link = admin_url( 'post-new.php?post_type=' . $post->post_type
-		. '&locale=' . $user_locale
-		. '&original_post=' . $post->ID );
-
-	$actions['translate'] = '<a title="' . esc_attr( sprintf( __( 'Translate this item into %s', 'bogo' ), $language ) ) . '" href="' . $edit_link . '">' . esc_html( sprintf( __( 'Translate into %s', 'bogo' ), $language ) ) . '</a>';
+	$actions['translate'] = '<a title="' . esc_attr( sprintf( $title, $language ) ) . '" href="' . $edit_link . '">' . esc_html( sprintf( $text, $language ) ) . '</a>';
 
 	return $actions;
 }

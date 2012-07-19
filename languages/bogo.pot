@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bogo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-18 19:39+0900\n"
+"POT-Creation-Date: 2012-07-19 12:48+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
 "Language-Team: \n"
@@ -268,26 +268,36 @@ msgstr ""
 msgid "Show all locales"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:93
+#: bogo/includes/post-l10n.php:90
+#, php-format
+msgid "Edit %s translation of this item"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:91
+#, php-format
+msgid "Edit %s translation"
+msgstr ""
+
+#: bogo/includes/post-l10n.php:96
 #, php-format
 msgid "Translate this item into %s"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:93
+#: bogo/includes/post-l10n.php:97
 #, php-format
 msgid "Translate into %s"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:106
-#: bogo/includes/post-l10n.php:138
+#: bogo/includes/post-l10n.php:122
+#: bogo/includes/post-l10n.php:154
 msgid "Language"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:154
+#: bogo/includes/post-l10n.php:170
 msgid "Translations"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:208
+#: bogo/includes/post-l10n.php:224
 #, php-format
 msgid "Add %s translation"
 msgstr ""
