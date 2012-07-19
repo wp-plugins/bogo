@@ -177,4 +177,44 @@ function bogo_m17n_headers() {
 		echo '<link rel="alternate" hreflang="' . esc_attr( $language['hreflang'] ) . '" href="' . esc_url( $language['href'] ) . '" />' . "\n";
 }
 
+function bogo_language_selector( $args = '' ) {
+	$defaults = array();
+
+	$args = wp_parse_args( $args, $defaults );
+
+	$locale = get_locale();
+	$available_languages = bogo_available_languages( 'orderby=value' );
+
+	$translations = array();
+
+	if ( is_singular() ) {
+		$post_id = get_queried_object_id();
+
+		if ( $post_id )
+			$translations = bogo_get_post_translations( $post_id );
+	}
+
+	echo '<ul class="language-selector">';
+
+	foreach ( $available_languages as $code => $name ) {
+		echo '<li>';
+
+		if ( is_singular() ) {
+			if ( empty( $translations[$code] ) || $locale == $code )
+				echo esc_html( $name );
+			else
+				echo '<a href="' . get_permalink( $translations[$code] ) . '">' . esc_html( $name ) . '</a>';
+		} else {
+			if ( $locale == $code )
+				echo esc_html( $name );
+			else
+				echo '<a href="' . esc_url( bogo_get_url_with_lang( null, $code ) ) . '">' . esc_html( $name ) . '</a>';
+		}
+
+		echo '</li>';
+	}
+
+	echo '</ul>' . "\n";
+}
+
 ?>
