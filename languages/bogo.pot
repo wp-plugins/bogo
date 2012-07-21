@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bogo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 12:48+0900\n"
+"POT-Creation-Date: 2012-07-21 17:24+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
 "Language-Team: \n"
@@ -14,6 +14,10 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SearchPath-0: bogo\n"
+
+#: bogo/bogo.php:4
+msgid "A multilingualization plugin doesn't do what it shouldn't."
+msgstr ""
 
 #: bogo/includes/functions.php:23
 msgid "Afrikaans"
@@ -300,5 +304,9 @@ msgstr ""
 #: bogo/includes/post-l10n.php:224
 #, php-format
 msgid "Add %s translation"
+msgstr ""
+
+#: bogo/includes/widgets.php:26
+msgid "Displayed on pages in:"
 msgstr ""
 
