@@ -44,6 +44,7 @@ if ( ! defined( 'BOGO_PLUGIN_URL' ) )
 require_once BOGO_PLUGIN_DIR . '/includes/functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/rewrite.php';
 require_once BOGO_PLUGIN_DIR . '/includes/link-template.php';
+require_once BOGO_PLUGIN_DIR . '/includes/widgets.php';
 require_once BOGO_PLUGIN_DIR . '/includes/post-l10n-functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/user-l10n-functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/post-l10n.php';
