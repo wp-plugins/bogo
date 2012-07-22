@@ -307,19 +307,28 @@ function bogo_save_post( $post_id, $post ) {
 		update_post_meta( $post_id, '_original_post', $original );
 }
 
-/*
- * Original slug is not passed as an argument in WP 3.4
- * http://core.trac.wordpress.org/changeset/21177
- */
+/* Note: WordPress 3.5 and higher will have $original_slug argument for wp_unique_post_slug filter.
+ * http://core.trac.wordpress.org/changeset/21177 */
 
-if ( version_compare( get_bloginfo( 'version' ), '3.5', '>=' ) ) {
+add_filter( 'wp_unique_post_slug', 'bogo_unique_post_slug', 10, 5 );
 
-add_filter( 'wp_unique_post_slug', 'bogo_unique_post_slug', 10, 6 );
-
-function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent, $original ) {
+function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent ) {
 	global $wp_rewrite;
 
-	if ( in_array( $status, array( 'draft', 'pending', 'auto-draft', 'attachment' ) ) )
+	if ( 5 < func_num_args() )
+		$original = func_get_arg( 5 );
+	elseif ( ! empty( $_REQUEST['post_name'] ) )
+		$original = $_REQUEST['post_name'];
+	elseif ( ! empty( $_REQUEST['post_title'] ) )
+		$original = sanitize_title( $_REQUEST['post_title'] );
+	elseif ( ! empty( $_REQUEST['new_slug'] ) )
+		$original = $_REQUEST['new_slug'];
+	elseif ( ! empty( $_REQUEST['new_title'] ) )
+		$original = sanitize_title( $_REQUEST['new_title'] );
+	elseif ( $post = get_post( $post_id ) )
+		$original = sanitize_title( $post->post_name ? $post->post_name : $post->post_title,
+			$post->ID );
+	else
 		return $slug;
 
 	$feeds = is_array( $wp_rewrite->feeds ) ? $wp_rewrite->feeds : array();
@@ -329,13 +338,15 @@ function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent, $origi
 
 	$locale = get_post_meta( $post_id, '_locale', true );
 
+	if ( empty( $locale ) )
+		return $slug;
+
 	$args = array(
 		'posts_per_page' => 1,
 		'post__not_in' => array( $post_id ),
 		'post_type' => $type,
 		'name' => $original,
-		'meta_key' => '_locale',
-		'meta_value' => $locale );
+		'lang' => $locale );
 
 	$hierarchical = in_array( $type, get_post_types( array( 'hierarchical' => true ) ) );
 
@@ -353,8 +364,6 @@ function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent, $origi
 		$slug = $original;
 
 	return $slug;
-}
-
 }
 
 ?>
