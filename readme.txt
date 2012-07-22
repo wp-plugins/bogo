@@ -22,7 +22,3 @@ Note that you need language (.mo) files installed beforehand. See [Codex](http:/
 
 1. Upload the entire `bogo` folder to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
-
-== Screenshots ==
-
-1. screenshot-1.png
