@@ -276,13 +276,14 @@ function bogo_translation_default_excerpt( $excerpt, $post ) {
 add_action( 'save_post', 'bogo_save_post', 10, 2 );
 
 function bogo_save_post( $post_id, $post ) {
+	$available_languages = bogo_available_languages();
 	$locale = get_post_meta( $post_id, '_locale', true );
 
-	if ( empty( $locale ) && ! empty( $_REQUEST['locale'] ) ) {
-		$available_languages = bogo_available_languages();
-
-		if ( isset( $available_languages[$_REQUEST['locale']] ) )
+	if ( empty( $locale ) ) {
+		if ( ! empty( $_REQUEST['locale'] ) && isset( $available_languages[$_REQUEST['locale']] ) )
 			$locale = $_REQUEST['locale'];
+		else
+			$locale = bogo_get_user_locale();
 	}
 
 	if ( empty( $locale ) )
