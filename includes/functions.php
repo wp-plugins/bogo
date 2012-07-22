@@ -128,6 +128,7 @@ function bogo_available_languages( $args = '' ) {
 	$langs = array();
 
 	$installed_locales = get_available_languages();
+	$installed_locales[] = bogo_get_default_locale();
 	$installed_locales[] = 'en_US';
 	$installed_locales = array_unique( $installed_locales );
 
