@@ -9,6 +9,16 @@ function bogo_get_post_locale( $post_id ) {
 	return $locale;
 }
 
+function bogo_localizable_post_types() {
+	$localizable = array( 'post', 'page' );
+
+	return apply_filters( 'bogo_localizable_post_types', $localizable );
+}
+
+function bogo_is_localizable_post_type( $post_type ) {
+	return ! empty( $post_type ) && in_array( $post_type, bogo_localizable_post_types() );
+}
+
 function bogo_get_post_translations( $post_id = 0 ) {
 	$post = get_post( $post_id );
 

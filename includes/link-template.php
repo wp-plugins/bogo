@@ -3,6 +3,9 @@
 add_filter( 'post_link', 'bogo_post_link', 10, 3 );
 
 function bogo_post_link( $permalink, $post, $leavename ) {
+	if ( ! bogo_is_localizable_post_type( $post->post_type ) )
+		return $permalink;
+
 	$locale = bogo_get_post_locale( $post->ID );
 
 	if ( bogo_is_default_locale( $locale ) )
@@ -24,6 +27,9 @@ function bogo_post_link( $permalink, $post, $leavename ) {
 add_filter( 'page_link', 'bogo_page_link', 10, 3 );
 
 function bogo_page_link( $permalink, $id, $sample ) {
+	if ( ! bogo_is_localizable_post_type( 'page' ) )
+		return $permalink;
+
 	if ( 'page' == get_option( 'show_on_front' ) && $id == get_option( 'page_on_front' ) )
 		return $permalink;
 
@@ -48,6 +54,9 @@ function bogo_page_link( $permalink, $id, $sample ) {
 add_filter( 'post_type_link', 'bogo_post_type_link', 10, 4 );
 
 function bogo_post_type_link( $permalink, $post, $leavename, $sample ) {
+	if ( ! bogo_is_localizable_post_type( $post->post_type ) )
+		return $permalink;
+
 	$locale = bogo_get_post_locale( $post->ID );
 
 	if ( bogo_is_default_locale( $locale ) )
