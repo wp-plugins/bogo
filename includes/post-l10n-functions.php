@@ -51,15 +51,13 @@ function bogo_get_post_translations( $post_id = 0 ) {
 		$translations[$locale] = get_post( $original );
 	}
 
-	$available_languages = bogo_available_languages();
-
 	foreach ( $posts as $p ) {
 		if ( $p->ID == $post->ID )
 			continue;
 
 		$locale = bogo_get_post_locale( $p->ID );
 
-		if ( ! isset( $available_languages[$locale] ) )
+		if ( ! bogo_is_available_locale( $locale ) )
 			continue;
 
 		if ( ! isset( $translations[$locale] ) )

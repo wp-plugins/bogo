@@ -125,12 +125,11 @@ function bogo_add_l10n_meta_boxes( $post_type, $post ) {
 
 function bogo_l10n_meta_box( $post ) {
 	$initial = ( 'auto-draft' == $post->post_status );
-	$available_languages = bogo_available_languages();
 
 	if ( $initial ) {
 		$locale = isset( $_REQUEST['locale'] ) ? $_REQUEST['locale'] : '';
 
-		if ( empty( $locale ) || ! isset( $available_languages[$locale] ) )
+		if ( ! bogo_is_available_locale( $locale ) )
 			$locale = bogo_get_user_locale();
 
 		$original_post = empty( $_REQUEST['original_post'] ) ? '' : $_REQUEST['original_post'];
@@ -276,11 +275,10 @@ function bogo_translation_default_excerpt( $excerpt, $post ) {
 add_action( 'save_post', 'bogo_save_post', 10, 2 );
 
 function bogo_save_post( $post_id, $post ) {
-	$available_languages = bogo_available_languages();
 	$locale = get_post_meta( $post_id, '_locale', true );
 
 	if ( empty( $locale ) ) {
-		if ( ! empty( $_REQUEST['locale'] ) && isset( $available_languages[$_REQUEST['locale']] ) )
+		if ( bogo_is_available_locale( $_REQUEST['locale'] ) )
 			$locale = $_REQUEST['locale'];
 		else
 			$locale = bogo_get_user_locale();

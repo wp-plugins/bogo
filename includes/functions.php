@@ -1,29 +1,5 @@
 <?php
 
-function bogo_get_default_locale() {
-	if ( defined( 'WPLANG' ) )
-		$locale = WPLANG;
-
-	if ( is_multisite() ) {
-		if ( defined( 'WP_INSTALLING' ) || ( false === $ms_locale = get_option( 'WPLANG' ) ) )
-			$ms_locale = get_site_option( 'WPLANG' );
-
-		if ( $ms_locale !== false )
-			$locale = $ms_locale;
-	}
-
-	if ( empty( $locale ) )
-		$locale = 'en_US';
-
-	return $locale;
-}
-
-function bogo_is_default_locale( $locale ) {
-	$default_locale = bogo_get_default_locale();
-
-	return ! empty( $locale ) && $locale == bogo_get_default_locale();
-}
-
 function bogo_languages( $locale = '' ) {
 	$languages = array(
 		'af' => __( 'Afrikaans', 'bogo' ),
@@ -100,27 +76,28 @@ function bogo_languages( $locale = '' ) {
 	return null;		
 }
 
-function bogo_language_tag( $locale ) {
-	// http://www.ietf.org/rfc/bcp/bcp47.txt
-	$tag = preg_replace( '/[^0-9a-zA-Z]+/', '-', $locale );
-	$tag = trim( $tag, '-' );
+function bogo_get_default_locale() {
+	if ( defined( 'WPLANG' ) )
+		$locale = WPLANG;
 
-	return apply_filters( 'bogo_language_tag', $tag, $locale );
+	if ( is_multisite() ) {
+		if ( defined( 'WP_INSTALLING' ) || ( false === $ms_locale = get_option( 'WPLANG' ) ) )
+			$ms_locale = get_site_option( 'WPLANG' );
+
+		if ( $ms_locale !== false )
+			$locale = $ms_locale;
+	}
+
+	if ( empty( $locale ) )
+		$locale = 'en_US';
+
+	return $locale;
 }
 
-function bogo_lang_slug( $locale ) {
-	$tag = bogo_language_tag( $locale );
-	$slug = $tag;
+function bogo_is_default_locale( $locale ) {
+	$default_locale = bogo_get_default_locale();
 
-	if ( false !== $pos = strpos( $tag, '-' ) )
-		$slug = substr( $tag, 0, $pos );
-
-	$variations = preg_grep( '/^' . $slug . '/', array_keys( bogo_available_languages() ) );
-
-	if ( 1 < count( $variations ) )
-		$slug = $tag;
-
-	return apply_filters( 'bogo_lang_slug', $slug, $locale );
+	return ! empty( $locale ) && $locale == bogo_get_default_locale();
 }
 
 function bogo_available_languages( $args = '' ) {
@@ -165,6 +142,33 @@ function bogo_available_languages( $args = '' ) {
 	$langs = apply_filters( 'bogo_available_languages', $langs, $args );
 
 	return $langs;
+}
+
+function bogo_is_available_locale( $locale ) {
+	return ! empty( $locale ) && array_key_exists( $locale, (array) bogo_available_languages() );
+}
+
+function bogo_language_tag( $locale ) {
+	// http://www.ietf.org/rfc/bcp/bcp47.txt
+	$tag = preg_replace( '/[^0-9a-zA-Z]+/', '-', $locale );
+	$tag = trim( $tag, '-' );
+
+	return apply_filters( 'bogo_language_tag', $tag, $locale );
+}
+
+function bogo_lang_slug( $locale ) {
+	$tag = bogo_language_tag( $locale );
+	$slug = $tag;
+
+	if ( false !== $pos = strpos( $tag, '-' ) )
+		$slug = substr( $tag, 0, $pos );
+
+	$variations = preg_grep( '/^' . $slug . '/', array_keys( bogo_available_languages() ) );
+
+	if ( 1 < count( $variations ) )
+		$slug = $tag;
+
+	return apply_filters( 'bogo_lang_slug', $slug, $locale );
 }
 
 function bogo_get_closest_locale( $var ) {

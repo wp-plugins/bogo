@@ -81,8 +81,7 @@ function bogo_switch_user_locale() {
 
 	$locale = isset( $_REQUEST['locale'] ) ? $_REQUEST['locale'] : '';
 
-	if ( ! in_array( $locale, array_keys( bogo_available_languages() ) )
-	|| $locale == bogo_get_user_locale() )
+	if ( ! bogo_is_available_locale( $locale ) || $locale == bogo_get_user_locale() )
 		return;
 
 	update_user_option( get_current_user_id(), 'locale', $locale, true );
