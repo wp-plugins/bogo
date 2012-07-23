@@ -3,10 +3,9 @@
 add_filter( 'post_link', 'bogo_post_link', 10, 3 );
 
 function bogo_post_link( $permalink, $post, $leavename ) {
-	$default_locale = bogo_get_default_locale();
 	$locale = bogo_get_post_locale( $post->ID );
 
-	if ( $default_locale == $locale )
+	if ( bogo_is_default_locale( $locale ) )
 		return $permalink;
 
 	$sample = ( isset( $post->filter ) && 'sample' == $post->filter );
@@ -28,10 +27,9 @@ function bogo_page_link( $permalink, $id, $sample ) {
 	if ( 'page' == get_option( 'show_on_front' ) && $id == get_option( 'page_on_front' ) )
 		return $permalink;
 
-	$default_locale = bogo_get_default_locale();
 	$locale = bogo_get_post_locale( $id );
 
-	if ( $default_locale == $locale )
+	if ( bogo_is_default_locale( $locale ) )
 		return $permalink;
 
 	$post = get_post( $id );
@@ -50,10 +48,9 @@ function bogo_page_link( $permalink, $id, $sample ) {
 add_filter( 'post_type_link', 'bogo_post_type_link', 10, 4 );
 
 function bogo_post_type_link( $permalink, $post, $leavename, $sample ) {
-	$default_locale = bogo_get_default_locale();
 	$locale = bogo_get_post_locale( $post->ID );
 
-	if ( $default_locale == $locale )
+	if ( bogo_is_default_locale( $locale ) )
 		return $permalink;
 
 	$permalink_structure = get_option( 'permalink_structure' );
@@ -128,10 +125,9 @@ function bogo_term_link( $link, $term, $taxonomy ) {
 }
 
 function bogo_get_general_link( $link ) {
-	$default_locale = bogo_get_default_locale();
 	$locale = get_locale();
 
-	if ( $default_locale == $locale )
+	if ( bogo_is_default_locale( $locale ) )
 		return $link;
 
 	$permalink_structure = get_option( 'permalink_structure' );

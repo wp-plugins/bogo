@@ -18,6 +18,12 @@ function bogo_get_default_locale() {
 	return $locale;
 }
 
+function bogo_is_default_locale( $locale ) {
+	$default_locale = bogo_get_default_locale();
+
+	return ! empty( $locale ) && $locale == bogo_get_default_locale();
+}
+
 function bogo_languages( $locale = '' ) {
 	$languages = array(
 		'af' => __( 'Afrikaans', 'bogo' ),
