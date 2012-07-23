@@ -275,20 +275,21 @@ function bogo_translation_default_excerpt( $excerpt, $post ) {
 add_action( 'save_post', 'bogo_save_post', 10, 2 );
 
 function bogo_save_post( $post_id, $post ) {
-	$locale = get_post_meta( $post_id, '_locale', true );
+	$old_locale = get_post_meta( $post_id, '_locale', true );
 
-	if ( empty( $locale ) ) {
-		if ( bogo_is_available_locale( $_REQUEST['locale'] ) )
+	if ( empty( $old_locale ) ) {
+		if ( ! empty( $_REQUEST['locale'] ) && bogo_is_available_locale( $_REQUEST['locale'] ) )
 			$locale = $_REQUEST['locale'];
-		else
+		elseif ( 'auto-draft' == get_post_status( $post_id ) )
 			$locale = bogo_get_user_locale();
+		else
+			$locale = bogo_default_locale();
 	}
 
-	if ( empty( $locale ) )
-		$locale = bogo_get_default_locale();
-
-	if ( ! empty( $locale ) )
+	if ( ! empty( $locale ) && $locale != $old_locale )
 		update_post_meta( $post_id, '_locale', $locale );
+	else
+		$locale = $old_locale;
 
 	$original = get_post_meta( $post_id, '_original_post', true );
 
