@@ -186,7 +186,7 @@ function bogo_m17n_headers() {
 		echo '<link rel="alternate" hreflang="' . esc_attr( $language['hreflang'] ) . '" href="' . esc_url( $language['href'] ) . '" />' . "\n";
 }
 
-function bogo_language_selector( $args = '' ) {
+function bogo_language_switch( $args = '' ) {
 	$defaults = array();
 
 	$args = wp_parse_args( $args, $defaults );

@@ -50,11 +50,15 @@ require_once BOGO_PLUGIN_DIR . '/includes/user-l10n-functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/post-l10n.php';
 require_once BOGO_PLUGIN_DIR . '/includes/user-l10n.php';
 
+add_action( 'plugins_loaded', 'bogo_plugins_loaded' );
+
+function bogo_plugins_loaded() {
+	load_plugin_textdomain( 'bogo', 'wp-content/plugins/bogo/languages', 'bogo/languages' );
+}
+
 add_action( 'init', 'bogo_init' );
 
 function bogo_init() {
-	load_plugin_textdomain( 'bogo', 'wp-content/plugins/bogo/languages', 'bogo/languages' );
-
 	if ( ! ( is_admin() || is_robots() || is_feed() || is_trackback() ) ) {
 		$locale = get_locale();
 
