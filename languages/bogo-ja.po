@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bogo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 19:11+0900\n"
+"POT-Creation-Date: 2012-07-25 19:14+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
 "Language-Team: Takayuki Miyoshi <takayukister at gmail.com>\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: bogo/bogo.php:4
-msgid "A multilingualization plugin doesn't do what it shouldn't."
-msgstr "余計なことをしない多言語化プラグイン。"
+msgid "A straight-forward multilingualization plugin. No more double-digit custom DB tables or hidden HTML comments that could cause you headaches later on."
+msgstr "独自テーブルをたくさん作ったり後で頭痛を起こすような HTML コメントの混入をしたりしない、とても素直な多言語化プラグイン。"
 
 #: bogo/includes/functions.php:5
 msgid "Afrikaans"
@@ -305,12 +305,12 @@ msgid "Add %s translation"
 msgstr "%sの翻訳を作成"
 
 #: bogo/includes/widgets.php:15
-msgid "Language switch widget by Bogo plugin"
+msgid "Language switcher widget by Bogo plugin"
 msgstr "Bogo プラグインの言語切り替えウィジェット"
 
 #: bogo/includes/widgets.php:20
 #: bogo/includes/widgets.php:28
-msgid "Language Switch"
+msgid "Language Switcher"
 msgstr "言語切り替え"
 
 #: bogo/includes/widgets.php:45
@@ -320,6 +320,9 @@ msgstr "タイトル:"
 #: bogo/includes/widgets.php:83
 msgid "Displayed on pages in:"
 msgstr "次の言語のページで表示:"
+
+#~ msgid "A multilingualization plugin doesn't do what it shouldn't."
+#~ msgstr "余計なことをしない多言語化プラグイン。"
 
 #~ msgid "Localization"
 #~ msgstr "翻訳"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bogo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 19:11+0900\n"
+"POT-Creation-Date: 2012-07-25 19:14+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: bogo\n"
 
 #: bogo/bogo.php:4
-msgid "A multilingualization plugin doesn't do what it shouldn't."
+msgid "A straight-forward multilingualization plugin. No more double-digit custom DB tables or hidden HTML comments that could cause you headaches later on."
 msgstr ""
 
 #: bogo/includes/functions.php:5
@@ -307,12 +307,12 @@ msgid "Add %s translation"
 msgstr ""
 
 #: bogo/includes/widgets.php:15
-msgid "Language switch widget by Bogo plugin"
+msgid "Language switcher widget by Bogo plugin"
 msgstr ""
 
 #: bogo/includes/widgets.php:20
 #: bogo/includes/widgets.php:28
-msgid "Language Switch"
+msgid "Language Switcher"
 msgstr ""
 
 #: bogo/includes/widgets.php:45

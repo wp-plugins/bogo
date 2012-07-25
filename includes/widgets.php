@@ -1,23 +1,23 @@
 <?php
 
-/* Language Switch Widget */
+/* Language Switcher Widget */
 
 add_action( 'widgets_init', 'bogo_widgets_init' );
 
 function bogo_widgets_init() {
-	register_widget( 'Bogo_Widget_Language_Switch' );
+	register_widget( 'Bogo_Widget_Language_Switcher' );
 }
 
-class Bogo_Widget_Language_Switch extends WP_Widget {
+class Bogo_Widget_Language_Switcher extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array(
-			'description' => __( 'Language switch widget by Bogo plugin', 'bogo' ) );
+			'description' => __( 'Language switcher widget by Bogo plugin', 'bogo' ) );
 
 		$control_ops = array();
 
-		WP_Widget::__construct( 'bogo_language_switch',
-			__( 'Language Switch', 'bogo' ),
+		WP_Widget::__construct( 'bogo_language_switcher',
+			__( 'Language Switcher', 'bogo' ),
 			$widget_ops, $control_ops );
 	}
 
@@ -25,7 +25,7 @@ class Bogo_Widget_Language_Switch extends WP_Widget {
 		extract( $args );
 
 		$title = apply_filters( 'widget_title',
-			empty( $instance['title'] ) ? __( 'Language Switch', 'bogo' ) : $instance['title'],
+			empty( $instance['title'] ) ? __( 'Language Switcher', 'bogo' ) : $instance['title'],
 			$instance, $this->id_base );
 
 		echo $before_widget;
@@ -33,7 +33,7 @@ class Bogo_Widget_Language_Switch extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
-		echo bogo_language_switch();
+		echo bogo_language_switcher();
 
 		echo $after_widget;
 	}
