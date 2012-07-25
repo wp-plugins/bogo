@@ -8,7 +8,7 @@ Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A multilingualization plugin doesn't do what it shouldn't.
+A straight-forward multilingualization plugin. No more double-digit custom DB tables or hidden HTML comments that could cause you headaches later on.
 
 == Description ==
 

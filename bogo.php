@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Bogo
-Description: A multilingualization plugin doesn't do what it shouldn't.
+Description: A straight-forward multilingualization plugin. No more double-digit custom DB tables or hidden HTML comments that could cause you headaches later on.
 Plugin URI: http://ideasilo.wordpress.com/2009/05/05/bogo/
 Author: Takayuki Miyoshi
 Author URI: http://ideasilo.wordpress.com/
