@@ -229,6 +229,13 @@ function bogo_http_accept_languages() {
 	return array_reverse( array_keys( $languages ) );
 }
 
+function bogo_url( $url = null, $lang = null ) {
+	if ( ! $lang )
+		$lang = get_locale();
+
+	return bogo_get_url_with_lang( $url, $lang );
+}
+
 function bogo_get_url_with_lang( $url = null, $lang = null ) {
 	if ( ! $url ) {
 		if ( ! $url = redirect_canonical( $url, false ) ) {
