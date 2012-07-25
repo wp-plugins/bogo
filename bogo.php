@@ -73,8 +73,10 @@ function bogo_locale( $locale ) {
 	if ( is_admin() )
 		return bogo_get_user_locale();
 
-	if ( ( $lang = get_query_var( 'lang' ) ) && $closest = bogo_get_closest_locale( $lang ) )
-		return $closest;
+	if ( isset( $GLOBALS['wp_query'] ) && $lang = get_query_var( 'lang' ) ) {
+		if ( $closest = bogo_get_closest_locale( $lang ) )
+			return $closest;
+	}
 
 	if ( $default_locale = bogo_get_default_locale() )
 		return $default_locale;
