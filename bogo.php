@@ -49,6 +49,7 @@ require_once BOGO_PLUGIN_DIR . '/includes/post-l10n-functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/user-l10n-functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/post-l10n.php';
 require_once BOGO_PLUGIN_DIR . '/includes/user-l10n.php';
+require_once BOGO_PLUGIN_DIR . '/includes/post-template.php';
 
 add_action( 'plugins_loaded', 'bogo_plugins_loaded' );
 
