@@ -233,10 +233,18 @@ function bogo_url( $url = null, $lang = null ) {
 	if ( ! $lang )
 		$lang = get_locale();
 
-	return bogo_get_url_with_lang( $url, $lang );
+	$args = array(
+		'using_permalinks' => (bool) get_option( 'permalink_structure' ) );
+
+	return bogo_get_url_with_lang( $url, $lang, $args );
 }
 
-function bogo_get_url_with_lang( $url = null, $lang = null ) {
+function bogo_get_url_with_lang( $url = null, $lang = null, $args = '' ) {
+	$defaults = array(
+		'using_permalinks' => true );
+
+	$args = wp_parse_args( $args, $defaults );
+
 	if ( ! $url ) {
 		if ( ! $url = redirect_canonical( $url, false ) ) {
 			$url = is_ssl() ? 'https://' : 'http://';
@@ -244,13 +252,17 @@ function bogo_get_url_with_lang( $url = null, $lang = null ) {
 			$url .= $_SERVER['REQUEST_URI'];
 		}
 
-		if ( $query = @parse_url( $url, PHP_URL_QUERY ) ) {
-			parse_str( $query, $query_vars );
-			$url = remove_query_arg( array_keys( $query_vars ), $url );
-		}
-
 		if ( $frag = strstr( $url, '#' ) )
 			$url = substr( $url, 0, - strlen( $frag ) );
+
+		if ( $query = @parse_url( $url, PHP_URL_QUERY ) ) {
+			parse_str( $query, $query_vars );
+
+			foreach ( array_keys( $query_vars ) as $qv ) {
+				if ( ! get_query_var( $qv ) )
+					$url = remove_query_arg( $qv, $url );
+			}
+		}
 	}
 
 	$default_locale = bogo_get_default_locale();
@@ -259,6 +271,15 @@ function bogo_get_url_with_lang( $url = null, $lang = null ) {
 		$lang = $default_locale;
 
 	$home = trailingslashit( home_url() );
+
+	$url = remove_query_arg( 'lang', $url );
+
+	if ( ! $args['using_permalinks'] ) {
+		if ( $lang != $default_locale )
+			$url = add_query_arg( array( 'lang' => bogo_lang_slug( $lang ) ), $url );
+
+		return $url;
+	}
 
 	$available_languages = bogo_available_languages();
 	$available_languages = array_map( 'bogo_lang_slug', array_keys( $available_languages ) );

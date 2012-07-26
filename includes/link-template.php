@@ -7,19 +7,14 @@ function bogo_post_link( $permalink, $post, $leavename ) {
 		return $permalink;
 
 	$locale = bogo_get_post_locale( $post->ID );
-
-	if ( bogo_is_default_locale( $locale ) )
-		return $permalink;
-
 	$sample = ( isset( $post->filter ) && 'sample' == $post->filter );
-
 	$permalink_structure = get_option( 'permalink_structure' );
 
-	if ( empty( $permalink_structure )
-	|| ! $sample && in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) )
-		return add_query_arg( array( 'lang' => bogo_lang_slug( $locale ) ), $permalink );
+	$using_permalinks = $permalink_structure &&
+		( $sample || ! in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) );
 
-	$permalink = bogo_get_url_with_lang( $permalink, $locale );
+	$permalink = bogo_get_url_with_lang( $permalink, $locale,
+		array( 'using_permalinks' => $using_permalinks ) );
 
 	return $permalink;
 }
@@ -34,19 +29,14 @@ function bogo_page_link( $permalink, $id, $sample ) {
 		return $permalink;
 
 	$locale = bogo_get_post_locale( $id );
-
-	if ( bogo_is_default_locale( $locale ) )
-		return $permalink;
-
 	$post = get_post( $id );
-
 	$permalink_structure = get_option( 'permalink_structure' );
 
-	if ( empty( $permalink_structure )
-	|| ! $sample && in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) )
-		return add_query_arg( array( 'lang' => bogo_lang_slug( $locale ) ), $permalink );
+	$using_permalinks = $permalink_structure &&
+		( $sample || ! in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) );
 
-	$permalink = bogo_get_url_with_lang( $permalink, $locale );
+	$permalink = bogo_get_url_with_lang( $permalink, $locale,
+		array( 'using_permalinks' => $using_permalinks ) );
 
 	return $permalink;
 }
@@ -58,17 +48,13 @@ function bogo_post_type_link( $permalink, $post, $leavename, $sample ) {
 		return $permalink;
 
 	$locale = bogo_get_post_locale( $post->ID );
-
-	if ( bogo_is_default_locale( $locale ) )
-		return $permalink;
-
 	$permalink_structure = get_option( 'permalink_structure' );
 
-	if ( empty( $permalink_structure )
-	|| ! $sample && in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) )
-		return add_query_arg( array( 'lang' => bogo_lang_slug( $locale ) ), $permalink );
+	$using_permalinks = $permalink_structure &&
+		( $sample || ! in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) ) );
 
-	$permalink = bogo_get_url_with_lang( $permalink, $locale );
+	$permalink = bogo_get_url_with_lang( $permalink, $locale,
+		array( 'using_permalinks' => $using_permalinks ) );
 
 	return $permalink;
 }
@@ -134,17 +120,7 @@ function bogo_term_link( $link, $term, $taxonomy ) {
 }
 
 function bogo_get_general_link( $link ) {
-	$locale = get_locale();
-
-	if ( bogo_is_default_locale( $locale ) )
-		return $link;
-
-	$permalink_structure = get_option( 'permalink_structure' );
-
-	if ( empty( $permalink_structure ) )
-		return add_query_arg( array( 'lang' => bogo_lang_slug( $locale ) ), $link );
-
-	return bogo_get_url_with_lang( $link, $locale );
+	return bogo_url( $link, get_locale() );
 }
 
 add_action( 'wp_head', 'bogo_m17n_headers' );
@@ -171,7 +147,8 @@ function bogo_m17n_headers() {
 
 		foreach ( array_keys( $available_languages ) as $lang ) {
 			if ( $locale != $lang ) {
-				$url = bogo_get_url_with_lang( null, $lang );
+				$url = bogo_url( null, $lang );
+
 				$languages[] = array(
 					'hreflang' => bogo_language_tag( $lang ),
 					'href' => $url );
@@ -217,7 +194,7 @@ function bogo_language_switcher( $args = '' ) {
 			if ( $locale == $code )
 				echo esc_html( $name );
 			else
-				echo '<a rel="alternate" hreflang="' . bogo_language_tag( $code ) . '" href="' . esc_url( bogo_get_url_with_lang( null, $code ) ) . '">' . esc_html( $name ) . '</a>';
+				echo '<a rel="alternate" hreflang="' . bogo_language_tag( $code ) . '" href="' . esc_url( bogo_url( null, $code ) ) . '">' . esc_html( $name ) . '</a>';
 		}
 
 		echo '</li>';
