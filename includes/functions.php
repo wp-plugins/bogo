@@ -114,6 +114,7 @@ function bogo_available_languages( $args = '' ) {
 	$installed_locales[] = bogo_get_default_locale();
 	$installed_locales[] = 'en_US';
 	$installed_locales = array_unique( $installed_locales );
+	$installed_locales = array_filter( $installed_locales );
 
 	foreach ( $installed_locales as $locale ) {
 		if ( in_array( $locale, (array) $args['exclude'] ) )
