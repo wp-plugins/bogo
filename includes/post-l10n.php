@@ -312,7 +312,7 @@ function bogo_save_post( $post_id, $post ) {
 		elseif ( 'auto-draft' == get_post_status( $post_id ) )
 			$locale = bogo_get_user_locale();
 		else
-			$locale = bogo_default_locale();
+			$locale = bogo_get_default_locale();
 	}
 
 	if ( ! empty( $locale ) && $locale != $old_locale )
