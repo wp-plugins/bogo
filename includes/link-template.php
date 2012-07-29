@@ -182,8 +182,24 @@ function bogo_language_switcher( $args = '' ) {
 
 	echo '<ul class="language-switcher">';
 
+	$total = count( $available_languages );
+	$count = 0;
+
 	foreach ( $available_languages as $code => $name ) {
-		$class = trim( $code . ( $locale == $code ? ' current' : '' ) );
+		$count += 1;
+		$class = array();
+		$class[] = $code;
+
+		if ( $locale == $code )
+			$class[] = 'current';
+
+		if ( 1 == $count )
+			$class[] = 'first';
+
+		if ( $total == $count )
+			$class[] = 'last';
+
+		$class = implode( ' ', $class );
 
 		echo '<li class="' . esc_attr( $class ) . '">';
 
