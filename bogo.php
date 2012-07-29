@@ -154,13 +154,19 @@ function bogo_parse_query( $query ) {
 		return;
 
 	if ( '' != $qv['pagename'] ) {
-		$reqpage = bogo_get_page_by_path( $qv['pagename'], $locale );
+		$query->queried_object = bogo_get_page_by_path( $qv['pagename'], $locale );
 
-		if ( $reqpage ) {
-			$qv['page_id'] = $reqpage->ID;
-			$qv['pagename'] = '';
-			$qv['bogo_suppress_locale_query'] = true;
-			return;
+		if ( ! empty( $query->queried_object ) )
+			$query->queried_object_id = (int) $query->queried_object->ID;
+		else
+			unset( $query->queried_object );
+
+		if  ( 'page' == get_option( 'show_on_front' )
+		&& isset( $query->queried_object_id )
+		&& $query->queried_object_id == get_option( 'page_for_posts' ) ) {
+			$query->is_page = false;
+			$query->is_home = true;
+			$query->is_posts_page = true;
 		}
 	}
 }

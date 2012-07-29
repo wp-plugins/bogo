@@ -169,7 +169,7 @@ function bogo_language_switcher( $args = '' ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	$locale = get_locale();
-	$available_languages = bogo_available_languages( 'orderby=value' );
+	$available_languages = bogo_available_languages();
 
 	$translations = array();
 
