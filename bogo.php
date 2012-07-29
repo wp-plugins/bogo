@@ -95,7 +95,8 @@ function bogo_locale( $locale ) {
 		$available_languages = implode( '|', $available_languages );
 		$pattern = '#^' . preg_quote( $home ) . '(' . $available_languages . ')(/|$)' . '#';
 
-		if ( preg_match( $pattern, $url, $matches ) && $closest = bogo_get_closest_locale( $matches[1] ) )
+		if ( preg_match( $pattern, $url, $matches )
+		&& $closest = bogo_get_closest_locale( $matches[1] ) )
 			return $closest;
 	}
 
@@ -137,7 +138,10 @@ function bogo_parse_query( $query ) {
 	if ( is_admin() ) {
 		$locale = $lang;
 	} else {
-		$locale = bogo_get_closest_locale( $lang );
+		if ( $lang )
+			$locale = bogo_get_closest_locale( $lang );
+		else
+			$locale = get_locale();
 
 		if ( empty( $locale ) )
 			$locale = bogo_get_default_locale();
