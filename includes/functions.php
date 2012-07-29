@@ -293,4 +293,24 @@ function bogo_get_url_with_lang( $url = null, $lang = null, $args = '' ) {
 	return $url;
 }
 
+function bogo_get_prop( $prop ) {
+	$option = get_option( 'bogo' );
+
+	if ( ! is_array( $option ) )
+		$option = array();
+
+	return isset( $option[$prop] ) ? $option[$prop] : '';
+}
+
+function bogo_set_prop( $prop, $value ) {
+	$option = get_option( 'bogo' );
+
+	if ( ! is_array( $option ) )
+		$option = array();
+
+	$option[$prop] = $value;
+
+	update_option( 'bogo', $option );
+}
+
 ?>
