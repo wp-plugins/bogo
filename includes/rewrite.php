@@ -1,12 +1,5 @@
 <?php
 
-add_action( 'activate_' . BOGO_PLUGIN_BASENAME, 'bogo_flush_rewrite_rules' );
-
-function bogo_flush_rewrite_rules() {
-	bogo_add_rewrite_tags();
-	flush_rewrite_rules();
-}
-
 add_action( 'init', 'bogo_add_rewrite_tags' );
 
 function bogo_add_rewrite_tags() {
@@ -17,9 +10,16 @@ function bogo_add_rewrite_tags() {
 	if ( empty( $langs ) )
 		return;
 
-	$langs = implode( '|', $langs );
+	$lang_rewrite_regex = '(' . implode( '|', $langs ) . ')';
 
-	add_rewrite_tag( '%lang%', '(' . $langs . ')', 'lang=' );
+	add_rewrite_tag( '%lang%', $lang_rewrite_regex, 'lang=' );
+
+	$old_regex = bogo_get_prop( 'lang_rewrite_regex' );
+
+	if ( $lang_rewrite_regex != $old_regex ) {
+		bogo_set_prop( 'lang_rewrite_regex', $lang_rewrite_regex );
+		flush_rewrite_rules();
+	}
 }
 
 add_filter( 'root_rewrite_rules', 'bogo_root_rewrite_rules' );
