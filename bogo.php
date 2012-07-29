@@ -120,46 +120,40 @@ add_action( 'parse_query', 'bogo_parse_query' );
 function bogo_parse_query( $query ) {
 	$qv = &$query->query_vars;
 
-	if ( ! empty( $qv['bogo_suppress_locale_query'] ) )
-		return;
+	$lang = isset( $qv['lang'] ) ? $qv['lang'] : '';
 
 	if ( isset( $qv['post_type'] ) && 'any' != $qv['post_type'] ) {
 		$localizable = array_filter( (array) $qv['post_type'], 'bogo_is_localizable_post_type' );
 
 		if ( empty( $localizable ) ) {
-			$qv['bogo_suppress_locale_query'] = true;
+			$qv['lang'] = '';
 			return;
 		}
 	}
 
-	$lang = isset( $qv['lang'] ) ? $qv['lang'] : '';
-
-	if ( is_admin() ) {
+	if ( $query->is_admin )
 		$locale = $lang;
-	} else {
+	else
 		$locale = bogo_get_closest_locale( $lang );
 
-		if ( empty( $locale ) )
+	if ( ! bogo_is_available_locale( $locale ) ) {
+		if ( $query->is_main_query() && ! $query->is_admin ) {
 			$locale = bogo_get_default_locale();
-	}
-
-	if ( empty( $locale ) || ! bogo_is_available_locale( $locale ) ) {
-		$qv['bogo_suppress_locale_query'] = true;
-		return;
+		} else {
+			$qv['lang'] = '';
+			return;
+		}
 	}
 
 	$qv['lang'] = $locale;
 
-	if ( is_admin() )
-		return;
-
-	if ( '' != $qv['pagename'] ) {
+	if ( ! $query->is_admin && '' != $qv['pagename'] ) {
 		$reqpage = bogo_get_page_by_path( $qv['pagename'], $locale );
 
 		if ( $reqpage ) {
 			$qv['page_id'] = $reqpage->ID;
 			$qv['pagename'] = '';
-			$qv['bogo_suppress_locale_query'] = true;
+			$qv['lang'] = '';
 			return;
 		}
 	}
@@ -171,9 +165,6 @@ function bogo_posts_join( $join, $query ) {
 	global $wpdb;
 
 	$qv = &$query->query_vars;
-
-	if ( ! empty( $qv['bogo_suppress_locale_query'] ) )
-		return $join;
 
 	$locale = empty( $qv['lang'] ) ? '' : $qv['lang'];
 
@@ -194,9 +185,6 @@ function bogo_posts_where( $where, $query ) {
 	global $wpdb;
 
 	$qv = &$query->query_vars;
-
-	if ( ! empty( $qv['bogo_suppress_locale_query'] ) )
-		return $where;
 
 	$locale = empty( $qv['lang'] ) ? '' : $qv['lang'];
 
