@@ -282,15 +282,46 @@ function bogo_get_url_with_lang( $url = null, $lang = null, $args = '' ) {
 		return $url;
 	}
 
-	$available_languages = bogo_available_languages();
-	$available_languages = array_map( 'bogo_lang_slug', array_keys( $available_languages ) );
+	$available_languages = array_keys( bogo_available_languages() );
+	$available_languages = array_map( 'bogo_lang_slug', $available_languages );
 
 	$url = preg_replace(
-		'#^' . preg_quote( $home ) . '((' . implode( '|', $available_languages ) . ')/)?' . '#',
+		'#^' . preg_quote( $home ) . '((' . implode( '|', $available_languages ) . ')/)?#',
 		$home . ( $lang == $default_locale ? '' : bogo_lang_slug( $lang ) . '/' ),
 		trailingslashit( $url ) );
 
 	return $url;
+}
+
+function bogo_get_lang_from_url( $url = '' ) {
+	if ( ! $url ) {
+		$url = is_ssl() ? 'https://' : 'http://';
+		$url .= $_SERVER['HTTP_HOST'];
+		$url .= $_SERVER['REQUEST_URI'];
+	}
+
+	if ( $frag = strstr( $url, '#' ) )
+		$url = substr( $url, 0, - strlen( $frag ) );
+
+	$home = trailingslashit( home_url() );
+
+	$available_languages = array_keys( bogo_available_languages() );
+	$available_languages = array_map( 'bogo_lang_slug', $available_languages );
+
+	$regex = '#^' . preg_quote( $home ) . '(' . implode( '|', $available_languages ) . ')/#';
+
+	if ( preg_match( $regex, trailingslashit( $url ), $matches ) )
+		return $matches[1];
+
+	if ( $query = @parse_url( $url, PHP_URL_QUERY ) ) {
+		parse_str( $query, $query_vars );
+
+		if ( isset( $query_vars['lang'] )
+		&& in_array( $query_vars['lang'], $available_languages ) )
+			return $query_vars['lang'];
+	}
+
+	return false;
 }
 
 function bogo_get_prop( $prop ) {

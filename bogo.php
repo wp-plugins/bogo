@@ -100,7 +100,9 @@ function bogo_locale( $locale ) {
 			return $closest;
 	}
 
-	if ( ! empty( $_REQUEST['lang'] ) && $closest = bogo_get_closest_locale( $_REQUEST['lang'] ) )
+	$lang = bogo_get_lang_from_url();
+
+	if ( $lang && $closest = bogo_get_closest_locale( $lang ) )
 		return $closest;
 
 	$locale = $default_locale;
