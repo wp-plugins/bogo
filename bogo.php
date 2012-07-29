@@ -143,10 +143,26 @@ function bogo_parse_query( $query ) {
 			$locale = bogo_get_default_locale();
 	}
 
-	if ( empty( $locale ) || ! bogo_is_available_locale( $locale ) )
+	if ( empty( $locale ) || ! bogo_is_available_locale( $locale ) ) {
 		$qv['bogo_suppress_locale_query'] = true;
-	else
-		$qv['lang'] = $locale;
+		return;
+	}
+
+	$qv['lang'] = $locale;
+
+	if ( is_admin() )
+		return;
+
+	if ( '' != $qv['pagename'] ) {
+		$reqpage = bogo_get_page_by_path( $qv['pagename'], $locale );
+
+		if ( $reqpage ) {
+			$qv['page_id'] = $reqpage->ID;
+			$qv['pagename'] = '';
+			$qv['bogo_suppress_locale_query'] = true;
+			return;
+		}
+	}
 }
 
 add_filter( 'posts_join', 'bogo_posts_join', 10, 2 );

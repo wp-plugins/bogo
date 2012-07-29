@@ -77,4 +77,69 @@ function bogo_get_post_translations( $post_id = 0 ) {
 	return array_filter( $translations );
 }
 
+function bogo_get_page_by_path( $page_path, $locale = null, $post_type = 'page' ) {
+	global $wpdb;
+
+	if ( ! bogo_is_available_locale( $locale ) )
+		$locale = bogo_get_default_locale();
+
+	$page_path = rawurlencode( urldecode( $page_path ) );
+	$page_path = str_replace( '%2F', '/', $page_path );
+	$page_path = str_replace( '%20', ' ', $page_path );
+
+	$parts = explode( '/', trim( $page_path, '/' ) );
+	$parts = array_map( 'esc_sql', $parts );
+	$parts = array_map( 'sanitize_title_for_query', $parts );
+
+	$in_string = "'" . implode( "','", $parts ) . "'";
+	$post_type_sql = $post_type;
+	$wpdb->escape_by_ref( $post_type_sql );
+
+	$q = "SELECT ID, post_name, post_parent FROM $wpdb->posts";
+	$q .= " LEFT JOIN $wpdb->postmeta ON ID = $wpdb->postmeta.post_id AND meta_key = '_locale'";
+	$q .= " WHERE 1=1";
+	$q .= " AND post_name IN ($in_string)";
+	$q .= " AND (post_type = '$post_type_sql' OR post_type = 'attachment')";
+	$q .= " AND (1=0";
+	$q .= $wpdb->prepare( " OR meta_value LIKE %s", $locale );
+	$q .= bogo_is_default_locale( $locale ) ? " OR meta_id IS NULL" : "";
+	$q .= ")";
+
+	$pages = $wpdb->get_results( $q, OBJECT_K );
+
+	$revparts = array_reverse( $parts );
+
+	$foundid = 0;
+
+	foreach ( (array) $pages as $page ) {
+		if ( $page->post_name != $revparts[0] )
+			continue;
+
+		$count = 0;
+		$p = $page;
+
+		while ( $p->post_parent != 0 && isset( $pages[$p->post_parent] ) ) {
+			$count++;
+			$parent = $pages[$p->post_parent];
+
+			if ( ! isset( $revparts[$count] ) || $parent->post_name != $revparts[$count] )
+				break;
+
+			$p = $parent;
+		}
+
+		if ( $p->post_parent == 0
+		&& $count + 1 == count( $revparts )
+		&& $p->post_name == $revparts[$count] ) {
+			$foundid = $page->ID;
+			break;
+		}
+	}
+
+	if ( $foundid )
+		return get_page( $foundid );
+
+	return null;
+}
+
 ?>
