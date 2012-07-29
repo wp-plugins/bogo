@@ -183,7 +183,9 @@ function bogo_language_switcher( $args = '' ) {
 	echo '<ul class="language-switcher">';
 
 	foreach ( $available_languages as $code => $name ) {
-		echo '<li class="' . esc_attr( $code ) . '">';
+		$class = trim( $code . ( $locale == $code ? ' current' : '' ) );
+
+		echo '<li class="' . esc_attr( $class ) . '">';
 
 		if ( is_singular() ) {
 			if ( empty( $translations[$code] ) || $locale == $code )
