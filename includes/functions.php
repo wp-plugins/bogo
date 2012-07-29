@@ -288,7 +288,7 @@ function bogo_get_url_with_lang( $url = null, $lang = null, $args = '' ) {
 	$url = preg_replace(
 		'#^' . preg_quote( $home ) . '((' . implode( '|', $available_languages ) . ')/)?' . '#',
 		$home . ( $lang == $default_locale ? '' : bogo_lang_slug( $lang ) . '/' ),
-		$url );
+		trailingslashit( $url ) );
 
 	return $url;
 }
