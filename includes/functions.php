@@ -175,7 +175,7 @@ function bogo_lang_slug( $locale ) {
 function bogo_get_closest_locale( $var ) {
 	$var = strtolower( $var );
 
-	if ( ! preg_match( '/^([a-z]{2})(?:-([a-z]{2}))?/', $var, $matches ) )
+	if ( ! preg_match( '/^([a-z]{2})(?:[_-]([a-z]{2}))?/', $var, $matches ) )
 		return false;
 
 	$language_code = $matches[1];

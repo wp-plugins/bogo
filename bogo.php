@@ -93,7 +93,7 @@ function bogo_locale( $locale ) {
 		$available_languages = bogo_available_languages();
 		$available_languages = array_map( 'bogo_lang_slug', array_keys( $available_languages ) );
 		$available_languages = implode( '|', $available_languages );
-		$pattern = '#^' . preg_quote( $home ) . '(' . $available_languages . ')(/|$)' . '#';
+		$pattern = '#^' . preg_quote( $home ) . '(' . $available_languages . ')(/|$)#';
 
 		if ( preg_match( $pattern, $url, $matches )
 		&& $closest = bogo_get_closest_locale( $matches[1] ) )
