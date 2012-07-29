@@ -188,7 +188,8 @@ function bogo_language_switcher( $args = '' ) {
 	foreach ( $available_languages as $code => $name ) {
 		$count += 1;
 		$class = array();
-		$class[] = $code;
+		$class[] = bogo_language_tag( $code );
+		$class[] = bogo_lang_slug( $code );
 
 		if ( $locale == $code )
 			$class[] = 'current';
@@ -199,7 +200,7 @@ function bogo_language_switcher( $args = '' ) {
 		if ( $total == $count )
 			$class[] = 'last';
 
-		$class = implode( ' ', $class );
+		$class = implode( ' ', array_unique( $class ) );
 
 		echo '<li class="' . esc_attr( $class ) . '">';
 
