@@ -42,6 +42,7 @@ function bogo_get_post_translations( $post_id = 0 ) {
 		$original = $post->ID;
 
 	$args = array(
+		'bogo_suppress_locale_query' => true,
 		'posts_per_page' => -1,
 		'post_status' => 'any',
 		'post_type' => $post->post_type,
