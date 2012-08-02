@@ -163,6 +163,8 @@ function bogo_m17n_headers() {
 		echo '<link rel="alternate" hreflang="' . esc_attr( $language['hreflang'] ) . '" href="' . esc_url( $language['href'] ) . '" />' . "\n";
 }
 
+add_shortcode( 'bogo', 'bogo_language_switcher' );
+
 function bogo_language_switcher( $args = '' ) {
 	$defaults = array();
 
