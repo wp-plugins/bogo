@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: Bogo
-Description: A straight-forward multilingualization plugin. No more double-digit custom DB tables or hidden HTML comments that could cause you headaches later on.
-Plugin URI: http://ideasilo.wordpress.com/2009/05/05/bogo/
+Description: A straight-forward multilingual plugin. No more double-digit custom DB tables or hidden HTML comments that could cause you headaches later on.
+Plugin URI: http://ideasilo.wordpress.com/bogo/
 Author: Takayuki Miyoshi
 Author URI: http://ideasilo.wordpress.com/
 Text Domain: bogo
 Domain Path: /languages/
-Version: 2.0-dev
+Version: 2.0
 */
 
 /*  Copyright 2007-2012 Takayuki Miyoshi (email: takayukister at gmail.com)
@@ -27,7 +27,7 @@ Version: 2.0-dev
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-define( 'BOGO_VERSION', '2.0-dev' );
+define( 'BOGO_VERSION', '2.0' );
 
 if ( ! defined( 'BOGO_PLUGIN_BASENAME' ) )
 	define( 'BOGO_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
