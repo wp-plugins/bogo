@@ -72,6 +72,9 @@ add_filter( 'locale', 'bogo_locale' );
 function bogo_locale( $locale ) {
 	global $wp_rewrite, $wp_query;
 
+	if ( ! did_action( 'plugins_loaded' ) )
+		return $locale;
+
 	if ( is_admin() )
 		return bogo_get_user_locale();
 
