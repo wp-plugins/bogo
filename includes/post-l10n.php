@@ -301,6 +301,9 @@ function bogo_translation_default_excerpt( $excerpt, $post ) {
 add_action( 'save_post', 'bogo_save_post', 10, 2 );
 
 function bogo_save_post( $post_id, $post ) {
+	if ( did_action( 'import_start' ) && ! did_action( 'import_end' ) ) // Importing
+		return;
+
 	if ( ! bogo_is_localizable_post_type( $post->post_type ) )
 		return;
 
