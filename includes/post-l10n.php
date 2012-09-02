@@ -323,19 +323,39 @@ function bogo_save_post( $post_id, $post ) {
 	else
 		$locale = $old_locale;
 
-	$original = get_post_meta( $post_id, '_original_post', true );
+	if ( $original = get_post_meta( $post_id, '_original_post', true ) )
+		return;
 
-	if ( empty( $original ) && ! empty( $_REQUEST['original_post'] ) ) {
+	if ( ! empty( $_REQUEST['original_post'] ) ) {
 		$original = get_post_meta( $_REQUEST['original_post'], '_original_post', true );
 
 		if ( empty( $original ) )
 			$original = (int) $_REQUEST['original_post'];
+
+		update_post_meta( $post_id, '_original_post', $original );
+		return;
 	}
 
-	if ( ! empty( $original )
-	&& $original != $post_id
-	&& bogo_get_post_locale( $original ) != $locale )
-		update_post_meta( $post_id, '_original_post', $original );
+	$original = $post_id;
+
+	while ( 1 ) {
+		$q = new WP_Query();
+
+		$posts = $q->query( array(
+			'bogo_suppress_locale_query' => true,
+			'posts_per_page' => 1,
+			'post_status' => 'any',
+			'post_type' => $post->post_type,
+			'meta_key' => '_original_post',
+			'meta_value' => $original ) );
+
+		if ( empty( $posts ) ) {
+			update_post_meta( $post_id, '_original_post', $original );
+			return;
+		}
+
+		$original += 1;
+	}
 }
 
 /* Note: WordPress 3.5 and higher will have $original_slug argument for wp_unique_post_slug filter.
