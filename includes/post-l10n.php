@@ -372,11 +372,11 @@ function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent ) {
 	if ( 5 < func_num_args() )
 		$original = func_get_arg( 5 );
 	elseif ( ! empty( $_REQUEST['post_name'] ) )
-		$original = $_REQUEST['post_name'];
+		$original = urlencode( $_REQUEST['post_name'] );
 	elseif ( ! empty( $_REQUEST['post_title'] ) )
 		$original = sanitize_title( $_REQUEST['post_title'] );
 	elseif ( ! empty( $_REQUEST['new_slug'] ) )
-		$original = $_REQUEST['new_slug'];
+		$original = urlencode( $_REQUEST['new_slug'] );
 	elseif ( ! empty( $_REQUEST['new_title'] ) )
 		$original = sanitize_title( $_REQUEST['new_title'] );
 	elseif ( $post = get_post( $post_id ) )
