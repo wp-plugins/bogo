@@ -162,6 +162,9 @@ function bogo_l10n_meta_box( $post ) {
 	} else {
 		$locale = bogo_get_post_locale( $post->ID );
 		$original_post = get_post_meta( $post->ID, '_original_post', true );
+
+		if ( empty( $original_post ) )
+			$original_post = $post->ID;
 	}
 
 	$lang = bogo_languages( $locale );
