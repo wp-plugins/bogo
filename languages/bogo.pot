@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bogo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-25 19:14+0900\n"
+"POT-Creation-Date: 2012-09-28 05:56+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
 "Language-Team: \n"
@@ -13,6 +13,7 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
 "X-Poedit-Basepath: ../..\n"
+"X-Generator: Poedit 1.5.3\n"
 "X-Poedit-SearchPath-0: bogo\n"
 
 #: bogo/bogo.php:4
@@ -263,8 +264,7 @@ msgstr ""
 msgid "Traditional Chinese"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:20
-#: bogo/includes/user-l10n.php:25
+#: bogo/includes/post-l10n.php:20 bogo/includes/user-l10n.php:25
 msgid "Locale"
 msgstr ""
 
@@ -292,16 +292,15 @@ msgstr ""
 msgid "Translate into %s"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:148
-#: bogo/includes/post-l10n.php:179
+#: bogo/includes/post-l10n.php:148 bogo/includes/post-l10n.php:182
 msgid "Language"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:195
+#: bogo/includes/post-l10n.php:198
 msgid "Translations"
 msgstr ""
 
-#: bogo/includes/post-l10n.php:249
+#: bogo/includes/post-l10n.php:252
 #, php-format
 msgid "Add %s translation"
 msgstr ""
@@ -310,8 +309,7 @@ msgstr ""
 msgid "Language switcher widget by Bogo plugin"
 msgstr ""
 
-#: bogo/includes/widgets.php:20
-#: bogo/includes/widgets.php:28
+#: bogo/includes/widgets.php:20 bogo/includes/widgets.php:28
 msgid "Language Switcher"
 msgstr ""
 
@@ -322,4 +320,3 @@ msgstr ""
 #: bogo/includes/widgets.php:83
 msgid "Displayed on pages in:"
 msgstr ""
-
