@@ -29,6 +29,7 @@ function bogo_languages( $locale = '' ) {
 		'hr' => __( 'Croatian', 'bogo' ),
 		'hu_HU' => __( 'Hungarian', 'bogo' ),
 		'id_ID' => __( 'Indonesian', 'bogo' ),
+		'ga_IE' => __( 'Irish', 'bogo' ),
 		'is_IS' => __( 'Icelandic', 'bogo' ),
 		'it_IT' => __( 'Italian', 'bogo' ),
 		'ja' => __( 'Japanese', 'bogo' ),
