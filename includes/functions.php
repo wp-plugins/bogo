@@ -58,6 +58,7 @@ function bogo_languages( $locale = '' ) {
 		'su_ID' => __( 'Sundanese', 'bogo' ),
 		'tg' => __( 'Tajik', 'bogo' ),
 		'th' => __( 'Thai', 'bogo' ),
+		'tl' => __( 'Tagalog', 'bogo' ),
 		'tr' => __( 'Turkish', 'bogo' ),
 		'uk_UA' => __( 'Ukrainian', 'bogo' ),
 		'uz_UZ' => __( 'Uzbek', 'bogo' ),
