@@ -1,8 +1,8 @@
 === Bogo ===
 Contributors: takayukister
 Tags: multilingual, localization, language, locale, admin
-Requires at least: 3.4
-Tested up to: 3.4.2
+Requires at least: 3.5
+Tested up to: 3.5.1
 Donate link: http://www.pledgie.com/campaigns/17860
 Stable tag: 2.0.1
 License: GPLv2 or later
