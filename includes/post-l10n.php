@@ -361,31 +361,12 @@ function bogo_save_post( $post_id, $post ) {
 	}
 }
 
-/* Note: WordPress 3.5 and higher will have $original_slug argument for wp_unique_post_slug filter.
- * http://core.trac.wordpress.org/changeset/21177 */
+add_filter( 'wp_unique_post_slug', 'bogo_unique_post_slug', 10, 6 );
 
-add_filter( 'wp_unique_post_slug', 'bogo_unique_post_slug', 10, 5 );
-
-function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent ) {
+function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent, $original ) {
 	global $wp_rewrite;
 
 	if ( ! bogo_is_localizable_post_type( $type ) )
-		return $slug;
-
-	if ( 5 < func_num_args() )
-		$original = func_get_arg( 5 );
-	elseif ( ! empty( $_REQUEST['post_name'] ) )
-		$original = urlencode( $_REQUEST['post_name'] );
-	elseif ( ! empty( $_REQUEST['post_title'] ) )
-		$original = sanitize_title( $_REQUEST['post_title'] );
-	elseif ( ! empty( $_REQUEST['new_slug'] ) )
-		$original = urlencode( $_REQUEST['new_slug'] );
-	elseif ( ! empty( $_REQUEST['new_title'] ) )
-		$original = sanitize_title( $_REQUEST['new_title'] );
-	elseif ( $post = get_post( $post_id ) )
-		$original = sanitize_title( $post->post_name ? $post->post_name : $post->post_title,
-			$post->ID );
-	else
 		return $slug;
 
 	$feeds = is_array( $wp_rewrite->feeds ) ? $wp_rewrite->feeds : array();
