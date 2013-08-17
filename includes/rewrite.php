@@ -170,6 +170,37 @@ function bogo_taxonomy_rewrite_rules( $taxonomy_rewrite, $taxonomy, $ep_mask = E
 	return array_merge( $extra, $taxonomy_rewrite );
 }
 
+add_filter( 'rewrite_rules_array', 'bogo_rewrite_rules_array' );
+
+function bogo_rewrite_rules_array( $rules ) {
+	global $wp_rewrite;
+
+	$post_types = array_diff(
+		(array) bogo_localizable_post_types(),
+		array( 'post', 'page' ) );
+
+	if ( empty( $post_types ) )
+		return $rules;
+
+	foreach ( $post_types as $post_type ) {
+		if ( ! $post_type_obj = get_post_type_object( $post_type ) )
+			continue;
+
+		$permastruct = $wp_rewrite->get_extra_permastruct( $post_type );
+
+		$permastruct = preg_replace(
+			'#^' . $wp_rewrite->front . '#',
+			'/%lang%' . $wp_rewrite->front,
+			$permastruct );
+
+		$rules = array_merge(
+			bogo_generate_rewrite_rules( $permastruct, $post_type_obj->rewrite ),
+			$rules );
+	}
+
+	return $rules;
+}
+
 function bogo_generate_rewrite_rules( $permalink_structure, $args = '' ) {
 	global $wp_rewrite;
 
