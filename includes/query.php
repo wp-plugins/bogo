@@ -112,4 +112,20 @@ function bogo_posts_where( $where, $query ) {
 	return $where;
 }
 
+add_filter( 'option_sticky_posts', 'bogo_option_sticky_posts' );
+
+function bogo_option_sticky_posts( $posts ) {
+	if ( is_admin() )
+		return $posts;
+
+	$locale = get_locale();
+
+	foreach ( $posts as $key => $post_id ) {
+		if ( $locale != bogo_get_post_locale( $post_id ) )
+			unset( $posts[$key] );
+	}
+
+	return $posts;
+}
+
 ?>
