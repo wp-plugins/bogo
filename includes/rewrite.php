@@ -188,10 +188,17 @@ function bogo_rewrite_rules_array( $rules ) {
 
 		$permastruct = $wp_rewrite->get_extra_permastruct( $post_type );
 
-		$permastruct = preg_replace(
-			'#^' . $wp_rewrite->front . '#',
-			'/%lang%' . $wp_rewrite->front,
-			$permastruct );
+		if ( $post_type_obj->rewrite['with_front'] ) {
+			$permastruct = preg_replace(
+				'#^' . $wp_rewrite->front . '#',
+				'/%lang%' . $wp_rewrite->front,
+				$permastruct );
+		} else {
+			$permastruct = preg_replace(
+				'#^' . $wp_rewrite->root . '#',
+				'/%lang%/' . $wp_rewrite->root,
+				$permastruct );
+		}
 
 		$rules = array_merge(
 			bogo_generate_rewrite_rules( $permastruct, $post_type_obj->rewrite ),
