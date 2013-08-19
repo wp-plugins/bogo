@@ -186,6 +186,9 @@ function bogo_rewrite_rules_array( $rules ) {
 		if ( ! $post_type_obj = get_post_type_object( $post_type ) )
 			continue;
 
+		if ( false === $post_type_obj->rewrite )
+			continue;
+
 		$permastruct = $wp_rewrite->get_extra_permastruct( $post_type );
 
 		if ( $post_type_obj->rewrite['with_front'] ) {
