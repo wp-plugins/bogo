@@ -222,6 +222,32 @@ function bogo_rewrite_rules_array( $rules ) {
 		$rules = array_merge(
 			bogo_generate_rewrite_rules( $permastruct, $post_type_obj->rewrite ),
 			$rules );
+
+		foreach ( get_object_taxonomies( $post_type ) as $tax ) {
+			if ( ! $tax_obj = get_taxonomy( $tax ) )
+				continue;
+
+			if ( false === $tax_obj->rewrite )
+				continue;
+
+			$permastruct = $wp_rewrite->get_extra_permastruct( $tax );
+
+			if ( $tax_obj->rewrite['with_front'] ) {
+				$permastruct = preg_replace(
+					'#^' . $wp_rewrite->front . '#',
+					'/%lang%' . $wp_rewrite->front,
+					$permastruct );
+			} else {
+				$permastruct = preg_replace(
+					'#^' . $wp_rewrite->root . '#',
+					'/%lang%/' . $wp_rewrite->root,
+					$permastruct );
+			}
+
+			$rules = array_merge(
+				bogo_generate_rewrite_rules( $permastruct, $tax_obj->rewrite ),
+				$rules );
+		}
 	}
 
 	return $rules;
