@@ -173,7 +173,7 @@ function bogo_rewrite_rules_array( $rules ) {
 
 	$post_types = array_diff(
 		(array) bogo_localizable_post_types(),
-		array( 'post', 'page' ) );
+		get_post_types( array( '_builtin' => true ) ) );
 
 	if ( empty( $post_types ) )
 		return $rules;
