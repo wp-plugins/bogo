@@ -174,6 +174,17 @@ function bogo_lang_slug( $locale ) {
 	return apply_filters( 'bogo_lang_slug', $slug, $locale );
 }
 
+function bogo_get_lang_regex() {
+	$langs = array_keys( bogo_available_languages() );
+	$langs = array_map( 'bogo_lang_slug', $langs );
+	$langs = array_filter( $langs );
+
+	if ( empty( $langs ) )
+		return '';
+
+	return '(' . implode( '|', $langs ) . ')';
+}
+
 function bogo_get_closest_locale( $var ) {
 	$var = strtolower( $var );
 

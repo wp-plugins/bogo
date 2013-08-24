@@ -3,21 +3,17 @@
 add_action( 'init', 'bogo_add_rewrite_tags' );
 
 function bogo_add_rewrite_tags() {
-	$langs = array_keys( bogo_available_languages() );
-	$langs = array_map( 'bogo_lang_slug', $langs );
-	$langs = array_filter( $langs );
+	$regex = bogo_get_lang_regex();
 
-	if ( empty( $langs ) )
+	if ( empty( $regex ) )
 		return;
 
-	$lang_rewrite_regex = '(' . implode( '|', $langs ) . ')';
-
-	add_rewrite_tag( '%lang%', $lang_rewrite_regex, 'lang=' );
+	add_rewrite_tag( '%lang%', $regex, 'lang=' );
 
 	$old_regex = bogo_get_prop( 'lang_rewrite_regex' );
 
-	if ( $lang_rewrite_regex != $old_regex ) {
-		bogo_set_prop( 'lang_rewrite_regex', $lang_rewrite_regex );
+	if ( $regex != $old_regex ) {
+		bogo_set_prop( 'lang_rewrite_regex', $regex );
 		flush_rewrite_rules();
 	}
 }
@@ -182,12 +178,32 @@ function bogo_rewrite_rules_array( $rules ) {
 	if ( empty( $post_types ) )
 		return $rules;
 
+	$lang_regex = bogo_get_lang_regex();
+
 	foreach ( $post_types as $post_type ) {
 		if ( ! $post_type_obj = get_post_type_object( $post_type ) )
 			continue;
 
 		if ( false === $post_type_obj->rewrite )
 			continue;
+
+		if ( $post_type_obj->has_archive ) {
+			if ( $post_type_obj->has_archive === true )
+				$archive_slug = $post_type_obj->rewrite['slug'];
+			else
+				$archive_slug = $post_type_obj->has_archive;
+
+			if ( $post_type_obj->rewrite['with_front'] )
+				$archive_slug = substr( $wp_rewrite->front, 1 ) . $archive_slug;
+			else
+				$archive_slug = $wp_rewrite->root . $archive_slug;
+
+			$extra_rules = array(
+				"{$lang_regex}/{$archive_slug}/?$"
+					=> 'index.php?lang=$matches[1]&post_type=' . $post_type );
+
+			$rules = array_merge( $extra_rules, $rules );
+		}
 
 		$permastruct = $wp_rewrite->get_extra_permastruct( $post_type );
 
