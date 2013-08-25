@@ -1,6 +1,6 @@
 <?php
 
-function bogo_languages( $locale = '' ) {
+function bogo_languages() {
 	$languages = array(
 		'af' => __( 'Afrikaans', 'bogo' ),
 		'ar' => __( 'Arabic', 'bogo' ),
@@ -67,15 +67,16 @@ function bogo_languages( $locale = '' ) {
 		'zh_TW' => __( 'Traditional Chinese', 'bogo' )
 	);
 
-	$languages = apply_filters( 'bogo_languages', $languages );
+	return apply_filters( 'bogo_languages', $languages );
+}
 
-	if ( empty( $locale ) )
-		return $languages;
+function bogo_get_language( $locale ) {
+	$languages = bogo_languages();
 
-	if ( ! empty( $languages[$locale] ) )
+	if ( isset( $languages[$locale] ) )
 		return $languages[$locale];
 
-	return null;		
+	return null;
 }
 
 function bogo_get_default_locale() {
@@ -122,7 +123,7 @@ function bogo_available_languages( $args = '' ) {
 		if ( in_array( $locale, (array) $args['exclude'] ) )
 			continue;
 
-		$lang = bogo_languages( $locale );
+		$lang = bogo_get_language( $locale );
 
 		if ( empty( $lang ) )
 			$lang = "[$locale]";

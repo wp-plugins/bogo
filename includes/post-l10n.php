@@ -41,7 +41,7 @@ function bogo_manage_posts_custom_column( $column_name, $post_id ) {
 	if ( empty( $locale ) )
 		return;
 
-	$language = bogo_languages( $locale );
+	$language = bogo_get_language( $locale );
 
 	if ( empty( $language ) )
 		$language = $locale;
@@ -124,7 +124,7 @@ function bogo_post_row_actions( $actions, $post ) {
 			. '&original_post=' . $post->ID );
 	}
 
-	$language = bogo_languages( $user_locale );
+	$language = bogo_get_language( $user_locale );
 
 	if ( empty( $language ) )
 		$language = $user_locale;
@@ -167,7 +167,7 @@ function bogo_l10n_meta_box( $post ) {
 			$original_post = $post->ID;
 	}
 
-	$lang = bogo_languages( $locale );
+	$lang = bogo_get_language( $locale );
 
 	if ( empty( $lang ) )
 		$lang = $locale;
@@ -209,7 +209,7 @@ function bogo_metabox_translations( $post ) {
 		else
 			echo get_the_title( $translation->ID );
 
-		$lang = bogo_languages( $locale );
+		$lang = bogo_get_language( $locale );
 
 		if ( empty( $lang ) )
 			$lang = $locale;
@@ -239,7 +239,7 @@ function bogo_metabox_add_translation( $post ) {
 	if ( isset( $translations[$locale] ) )
 		return;
 
-	$lang = bogo_languages( $locale );
+	$lang = bogo_get_language( $locale );
 
 	if ( empty( $lang ) )
 		$lang = $locale;

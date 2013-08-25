@@ -41,7 +41,7 @@ add_action( 'admin_bar_menu', 'bogo_admin_bar_menu' );
 
 function bogo_admin_bar_menu( $wp_admin_bar ) {
 	$current_locale = bogo_get_user_locale();
-	$current_language = bogo_languages( $current_locale );
+	$current_language = bogo_get_language( $current_locale );
 
 	if ( ! $current_language )
 		$current_language = $current_locale;
