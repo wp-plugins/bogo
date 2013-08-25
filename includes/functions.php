@@ -1,6 +1,11 @@
 <?php
 
 function bogo_languages() {
+	global $bogo_languages;
+
+	if ( isset( $bogo_languages ) )
+		return $bogo_languages;
+
 	$languages = array(
 		'af' => __( 'Afrikaans', 'bogo' ),
 		'ar' => __( 'Arabic', 'bogo' ),
