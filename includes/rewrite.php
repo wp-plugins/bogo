@@ -187,24 +187,6 @@ function bogo_rewrite_rules_array( $rules ) {
 		if ( false === $post_type_obj->rewrite )
 			continue;
 
-		if ( $post_type_obj->has_archive ) {
-			if ( $post_type_obj->has_archive === true )
-				$archive_slug = $post_type_obj->rewrite['slug'];
-			else
-				$archive_slug = $post_type_obj->has_archive;
-
-			if ( $post_type_obj->rewrite['with_front'] )
-				$archive_slug = substr( $wp_rewrite->front, 1 ) . $archive_slug;
-			else
-				$archive_slug = $wp_rewrite->root . $archive_slug;
-
-			$extra_rules = array(
-				"{$lang_regex}/{$archive_slug}/?$"
-					=> 'index.php?lang=$matches[1]&post_type=' . $post_type );
-
-			$rules = array_merge( $extra_rules, $rules );
-		}
-
 		$permastruct = $wp_rewrite->get_extra_permastruct( $post_type );
 
 		if ( $post_type_obj->rewrite['with_front'] ) {
@@ -222,6 +204,36 @@ function bogo_rewrite_rules_array( $rules ) {
 		$rules = array_merge(
 			bogo_generate_rewrite_rules( $permastruct, $post_type_obj->rewrite ),
 			$rules );
+
+		if ( $post_type_obj->has_archive ) {
+			if ( $post_type_obj->has_archive === true )
+				$archive_slug = $post_type_obj->rewrite['slug'];
+			else
+				$archive_slug = $post_type_obj->has_archive;
+
+			if ( $post_type_obj->rewrite['with_front'] )
+				$archive_slug = substr( $wp_rewrite->front, 1 ) . $archive_slug;
+			else
+				$archive_slug = $wp_rewrite->root . $archive_slug;
+
+			$extra_rules = array(
+				"{$lang_regex}/{$archive_slug}/?$"
+					=> 'index.php?lang=$matches[1]&post_type=' . $post_type );
+
+			$rules = $extra_rules + $rules;
+
+			if ( $post_type_obj->rewrite['feeds'] && $wp_rewrite->feeds ) {
+				$feeds = '(' . trim( implode( '|', $wp_rewrite->feeds ) ) . ')';
+
+				$extra_rules = array(
+					"{$lang_regex}/{$archive_slug}/feed/$feeds/?$"
+						=> 'index.php?lang=$matches[1]&post_type=' . $post_type . '&feed=$matches[2]',
+					"{$lang_regex}/{$archive_slug}/$feeds/?$"
+						=> 'index.php?lang=$matches[1]&post_type=' . $post_type . '&feed=$matches[2]' );
+
+				$rules = $extra_rules + $rules;
+			}
+		}
 
 		foreach ( get_object_taxonomies( $post_type ) as $tax ) {
 			if ( ! $tax_obj = get_taxonomy( $tax ) )
