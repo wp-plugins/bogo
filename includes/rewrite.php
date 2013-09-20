@@ -233,6 +233,13 @@ function bogo_rewrite_rules_array( $rules ) {
 
 				$rules = $extra_rules + $rules;
 			}
+
+			if ( $post_type_obj->rewrite['pages'] ) {
+				$extra_rules = array(
+					"{$lang_regex}/{$archive_slug}/{$wp_rewrite->pagination_base}/([0-9]{1,})/?$" => 'index.php?lang=$matches[1]&post_type=' . $post_type . '&paged=$matches[2]' );
+
+				$rules = $extra_rules + $rules;
+			}
 		}
 
 		foreach ( get_object_taxonomies( $post_type ) as $tax ) {
