@@ -25,11 +25,23 @@ function bogo_page_link( $permalink, $id, $sample ) {
 	if ( ! bogo_is_localizable_post_type( 'page' ) )
 		return $permalink;
 
-	if ( 'page' == get_option( 'show_on_front' ) && $id == get_option( 'page_on_front' ) )
-		return $permalink;
-
 	$locale = bogo_get_post_locale( $id );
 	$post = get_post( $id );
+
+	if ( 'page' == get_option( 'show_on_front' ) ) {
+		$front_page_id = get_option( 'page_on_front' );
+
+		if ( $id == $front_page_id )
+			return $permalink;
+
+		$translations = bogo_get_post_translations( $front_page_id );
+
+		if ( ! empty( $translations[$locale] ) ) {
+			if ( $translations[$locale]->ID == $id )
+				return bogo_url( home_url( '/' ), $locale );
+		}
+	}
+
 	$permalink_structure = get_option( 'permalink_structure' );
 
 	$using_permalinks = $permalink_structure &&
