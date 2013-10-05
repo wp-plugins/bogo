@@ -41,6 +41,24 @@ function bogo_parse_query( $query ) {
 	if ( is_admin() )
 		return;
 
+	if ( $query->is_home && 'page' == get_option( 'show_on_front' ) && get_option( 'page_on_front' ) ) {
+		$query_keys = array_keys( wp_parse_args( $query->query ) );
+		$query_keys = array_diff( $query_keys,
+			array( 'preview', 'page', 'paged', 'cpage', 'lang' ) );
+
+		if ( empty( $query_keys ) ) {
+			$query->is_page = true;
+			$query->is_singular = true;
+			$query->is_home = false;
+			$qv['page_id'] = get_option( 'page_on_front' );
+
+			if ( ! empty( $qv['paged'] ) ) {
+				$qv['page'] = $qv['paged'];
+				unset( $qv['paged'] );
+			}
+		}
+	}
+
 	if ( '' != $qv['pagename'] ) {
 		$query->queried_object = bogo_get_page_by_path( $qv['pagename'], $locale );
 
@@ -126,6 +144,52 @@ function bogo_option_sticky_posts( $posts ) {
 	}
 
 	return $posts;
+}
+
+add_filter( 'option_page_on_front', 'bogo_option_page_on_front' );
+
+function bogo_option_page_on_front( $page_id ) {
+	global $wpdb;
+
+	if ( ! bogo_is_localizable_post_type( 'page' ) )
+		return $page_id;
+
+	if ( empty( $page_id ) )
+		return $page_id;
+
+	if ( is_admin() )
+		return $page_id;
+
+	$locale = get_locale();
+
+	if ( bogo_get_post_locale( $page_id ) == $locale )
+		return $page_id;
+
+	$original = get_post_meta( $page_id, '_original_post', true );
+
+	if ( empty( $original ) )
+		$original = $page_id;
+
+	$q = "SELECT ID FROM $wpdb->posts AS posts";
+	$q .= " LEFT JOIN $wpdb->postmeta AS pm1";
+	$q .= " ON posts.ID = pm1.post_id AND pm1.meta_key = '_original_post'";
+	$q .= " LEFT JOIN $wpdb->postmeta AS pm2";
+	$q .= " ON posts.ID = pm2.post_id AND pm2.meta_key = '_locale'";
+	$q .= " WHERE 1=1";
+	$q .= " AND post_type = 'page'";
+	$q .= $wpdb->prepare( " AND (ID = %d OR pm1.meta_value = %d)",
+		$original, $original );
+	$q .= " AND (1=0";
+	$q .= $wpdb->prepare( " OR pm2.meta_value LIKE %s", $locale );
+	$q .= bogo_is_default_locale( $locale ) ? " OR pm2.meta_id IS NULL" : "";
+	$q .= ")";
+
+	$translation = absint( $wpdb->get_var( $q ) );
+
+	if ( $translation )
+		return $translation;
+
+	return $page_id;
 }
 
 ?>
