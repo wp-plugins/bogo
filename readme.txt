@@ -2,9 +2,9 @@
 Contributors: takayukister
 Tags: multilingual, localization, language, locale, admin
 Requires at least: 3.5
-Tested up to: 3.5.1
+Tested up to: 3.6.1
 Donate link: http://www.pledgie.com/campaigns/17860
-Stable tag: 2.0.1
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,3 +57,12 @@ Here are some technical details for those interested. Bogo plugin assigns [one l
 
 1. You can switch your admin language in the Admin Bar.
 1. The Language Post Box manages language and translations of the Post/Page.
+
+== Changelog ==
+
+= 2.1 =
+
+* Correctly handle Custom Post Type's localized permalinks.
+* Correctly handle sticky posts and front page's translation.
+* Add locale class to post_class.
+* The required WordPress version has been changed and now requires WordPress 3.5 or higher.
