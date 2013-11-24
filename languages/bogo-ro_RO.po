@@ -1,0 +1,335 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bogo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-06 02:39+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Inbox Translation <office@inboxtranslation.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: bogo\n"
+
+#: bogo/bogo.php:4
+msgid ""
+"A straight-forward multilingualization plugin. No more double-digit custom "
+"DB tables or hidden HTML comments that could cause you headaches later on."
+msgstr ""
+"Un plugin multilingvistic simplu. Fără multe tabele de baze de date sau "
+"comentarii HTML ascunse care ar putea sa îți provoace dureri de cap mai "
+"târziu."
+
+#: bogo/includes/functions.php:10
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: bogo/includes/functions.php:11
+msgid "Arabic"
+msgstr "Arabă"
+
+#: bogo/includes/functions.php:12
+msgid "Belarusian"
+msgstr "Bielorusă"
+
+#: bogo/includes/functions.php:13
+msgid "Bulgarian"
+msgstr "Bulgară"
+
+#: bogo/includes/functions.php:14
+msgid "Bangla"
+msgstr "Bengaleză"
+
+#: bogo/includes/functions.php:15
+msgid "Catalan"
+msgstr "Catalană"
+
+#: bogo/includes/functions.php:16
+msgid "Czech"
+msgstr "Cehă"
+
+#: bogo/includes/functions.php:17
+msgid "Welsh"
+msgstr "Galeză"
+
+#: bogo/includes/functions.php:18
+msgid "Danish"
+msgstr "Daneză"
+
+#: bogo/includes/functions.php:19
+msgid "German"
+msgstr "Germană"
+
+#: bogo/includes/functions.php:20
+msgid "Greek"
+msgstr "Greacă"
+
+#: bogo/includes/functions.php:21
+msgid "British English"
+msgstr "Engleză britanică"
+
+#: bogo/includes/functions.php:22
+msgid "English"
+msgstr "Engleză"
+
+#: bogo/includes/functions.php:23
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: bogo/includes/functions.php:24
+msgid "Spanish"
+msgstr "Spaniolă"
+
+#: bogo/includes/functions.php:25
+msgid "Estonian"
+msgstr "Estonă"
+
+#: bogo/includes/functions.php:26
+msgid "Basque"
+msgstr "Bască"
+
+#: bogo/includes/functions.php:27
+msgid "Persian"
+msgstr "Persană"
+
+#: bogo/includes/functions.php:28
+msgid "Finnish"
+msgstr "Finlandeză"
+
+#: bogo/includes/functions.php:29
+msgid "Faroese"
+msgstr "Feroeză"
+
+#: bogo/includes/functions.php:30
+msgid "French"
+msgstr "Franceză"
+
+#: bogo/includes/functions.php:31
+msgid "Georgian"
+msgstr "Georgiană"
+
+#: bogo/includes/functions.php:32
+msgid "Galician"
+msgstr "Galiciană"
+
+#: bogo/includes/functions.php:33
+msgid "Hebrew"
+msgstr "Ebraică"
+
+#: bogo/includes/functions.php:34
+msgid "Croatian"
+msgstr "Croată"
+
+#: bogo/includes/functions.php:35
+msgid "Hungarian"
+msgstr "Ungară"
+
+#: bogo/includes/functions.php:36
+msgid "Indonesian"
+msgstr "Indoneziană"
+
+#: bogo/includes/functions.php:37
+msgid "Irish"
+msgstr "Irlandeză"
+
+#: bogo/includes/functions.php:38
+msgid "Icelandic"
+msgstr "Islandeză"
+
+#: bogo/includes/functions.php:39
+msgid "Italian"
+msgstr "Italiană"
+
+#: bogo/includes/functions.php:40
+msgid "Japanese"
+msgstr "Japoneză"
+
+#: bogo/includes/functions.php:41
+msgid "Khmer"
+msgstr "Khmeră"
+
+#: bogo/includes/functions.php:42
+msgid "Korean"
+msgstr "Coreeană"
+
+#: bogo/includes/functions.php:43
+msgid "Lithuanian"
+msgstr "Lituaniană"
+
+#: bogo/includes/functions.php:44
+msgid "Latvian"
+msgstr "Letonă"
+
+#: bogo/includes/functions.php:45
+msgid "Malagasy"
+msgstr "Malgaşă"
+
+#: bogo/includes/functions.php:46
+msgid "Macedonian"
+msgstr "Macedonă"
+
+#: bogo/includes/functions.php:47
+msgid "Mongolian"
+msgstr "Mongolă"
+
+#: bogo/includes/functions.php:48
+msgid "Malay"
+msgstr "Malaieză"
+
+#: bogo/includes/functions.php:49
+msgid "Norwegian"
+msgstr "Norvegiană"
+
+#: bogo/includes/functions.php:50
+msgid "Nias"
+msgstr "Nias"
+
+#: bogo/includes/functions.php:51
+msgid "Dutch"
+msgstr "Olandeză"
+
+#: bogo/includes/functions.php:52
+msgid "Polish"
+msgstr "Poloneză"
+
+#: bogo/includes/functions.php:53
+msgid "Brazilian Portuguese"
+msgstr "Portugheză braziliană"
+
+#: bogo/includes/functions.php:54
+msgid "Portuguese"
+msgstr "Portugheză"
+
+#: bogo/includes/functions.php:55
+msgid "Romanian"
+msgstr "Română"
+
+#: bogo/includes/functions.php:56
+msgid "Russian"
+msgstr "Rusă"
+
+#: bogo/includes/functions.php:57
+msgid "Sinhala"
+msgstr "Singaleză"
+
+#: bogo/includes/functions.php:58
+msgid "Slovak"
+msgstr "Slovacă"
+
+#: bogo/includes/functions.php:59
+msgid "Slovenian"
+msgstr "Slovenă"
+
+#: bogo/includes/functions.php:60
+msgid "Albanian"
+msgstr "Albaneză"
+
+#: bogo/includes/functions.php:61
+msgid "Serbian"
+msgstr "Sârbă"
+
+#: bogo/includes/functions.php:62
+msgid "Swedish"
+msgstr "Suedeză"
+
+#: bogo/includes/functions.php:63
+msgid "Sundanese"
+msgstr "Sudaneză"
+
+#: bogo/includes/functions.php:64
+msgid "Tajik"
+msgstr "Tadjică"
+
+#: bogo/includes/functions.php:65
+msgid "Thai"
+msgstr "Thailandeză"
+
+#: bogo/includes/functions.php:66
+msgid "Tagalog"
+msgstr "Tagalog"
+
+#: bogo/includes/functions.php:67
+msgid "Turkish"
+msgstr "Turcă"
+
+#: bogo/includes/functions.php:68
+msgid "Ukrainian"
+msgstr "Ucraineană"
+
+#: bogo/includes/functions.php:69
+msgid "Uzbek"
+msgstr "Uzbecă"
+
+#: bogo/includes/functions.php:70
+msgid "Vietnamese"
+msgstr "Vietnameză"
+
+#: bogo/includes/functions.php:71
+msgid "Chinese"
+msgstr "Chineză"
+
+#: bogo/includes/functions.php:72
+msgid "Traditional Chinese"
+msgstr "Chineză tradiţională"
+
+#: bogo/includes/post-l10n.php:20 bogo/includes/user-l10n.php:25
+msgid "Locale"
+msgstr "Localizare"
+
+#: bogo/includes/post-l10n.php:74
+msgid "Show all locales"
+msgstr "Arată toate localizările"
+
+#: bogo/includes/post-l10n.php:113
+#, php-format
+msgid "Edit %s translation of this item"
+msgstr "Editează traducerea %s a acestui obiect"
+
+#: bogo/includes/post-l10n.php:114
+#, php-format
+msgid "Edit %s translation"
+msgstr "Editează traducerea %s"
+
+#: bogo/includes/post-l10n.php:119
+#, php-format
+msgid "Translate this item into %s"
+msgstr "Tradu acest obiect în %s"
+
+#: bogo/includes/post-l10n.php:120
+#, php-format
+msgid "Translate into %s"
+msgstr "Tradu în %s"
+
+#: bogo/includes/post-l10n.php:148 bogo/includes/post-l10n.php:182
+msgid "Language"
+msgstr "Limba"
+
+#: bogo/includes/post-l10n.php:198
+msgid "Translations"
+msgstr "Traduceri"
+
+#: bogo/includes/post-l10n.php:252
+#, php-format
+msgid "Add %s translation"
+msgstr "Adaugă traducerea %s"
+
+#: bogo/includes/widgets.php:15
+msgid "Language switcher widget by Bogo plugin"
+msgstr "Widget-ul de schimbare a limbii oferit de Bogo plugin"
+
+#: bogo/includes/widgets.php:20 bogo/includes/widgets.php:28
+msgid "Language Switcher"
+msgstr "Comutator de limbă"
+
+#: bogo/includes/widgets.php:45
+msgid "Title:"
+msgstr "Titlu"
+
+#: bogo/includes/widgets.php:83
+msgid "Displayed on pages in:"
+msgstr "Afişat pe pagini în:"

@@ -52,7 +52,7 @@ function bogo_languages() {
 		'pl_PL' => __( 'Polish', 'bogo' ),
 		'pt_BR' => __( 'Brazilian Portuguese', 'bogo' ),
 		'pt_PT' => __( 'Portuguese', 'bogo' ),
-		'ro' => __( 'Romanian', 'bogo' ),
+		'ro_RO' => __( 'Romanian', 'bogo' ),
 		'ru_RU' => __( 'Russian', 'bogo' ),
 		'si_LK' => __( 'Sinhala', 'bogo' ),
 		'sk' => __( 'Slovak', 'bogo' ),
