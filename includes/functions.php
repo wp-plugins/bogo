@@ -55,7 +55,7 @@ function bogo_languages() {
 		'ro_RO' => __( 'Romanian', 'bogo' ),
 		'ru_RU' => __( 'Russian', 'bogo' ),
 		'si_LK' => __( 'Sinhala', 'bogo' ),
-		'sk' => __( 'Slovak', 'bogo' ),
+		'sk_SK' => __( 'Slovak', 'bogo' ),
 		'sl_SI' => __( 'Slovenian', 'bogo' ),
 		'sq' => __( 'Albanian', 'bogo' ),
 		'sr_CS' => __( 'Serbian', 'bogo' ),
