@@ -37,8 +37,11 @@ function bogo_page_link( $permalink, $id, $sample ) {
 		$translations = bogo_get_post_translations( $front_page_id );
 
 		if ( ! empty( $translations[$locale] ) ) {
-			if ( $translations[$locale]->ID == $id )
-				return bogo_url( home_url( '/' ), $locale );
+			if ( $translations[$locale]->ID == $id ) {
+				$home = set_url_scheme( get_option( 'home' ) );
+				$home = trailingslashit( $home );
+				return bogo_url( $home, $locale );
+			}
 		}
 	}
 

@@ -97,7 +97,9 @@ function bogo_locale( $locale ) {
 		$url .= $_SERVER['HTTP_HOST'];
 		$url .= $_SERVER['REQUEST_URI'];
 
-		$home = trailingslashit( home_url() );
+		$home = set_url_scheme( get_option( 'home' ) );
+		$home = trailingslashit( $home );
+
 		$available_languages = bogo_available_languages();
 		$available_languages = array_map( 'bogo_lang_slug', array_keys( $available_languages ) );
 		$available_languages = implode( '|', $available_languages );

@@ -290,7 +290,8 @@ function bogo_get_url_with_lang( $url = null, $lang = null, $args = '' ) {
 	if ( ! $lang )
 		$lang = $default_locale;
 
-	$home = trailingslashit( home_url() );
+	$home = set_url_scheme( get_option( 'home' ) );
+	$home = trailingslashit( $home );
 
 	$url = remove_query_arg( 'lang', $url );
 
@@ -322,7 +323,8 @@ function bogo_get_lang_from_url( $url = '' ) {
 	if ( $frag = strstr( $url, '#' ) )
 		$url = substr( $url, 0, - strlen( $frag ) );
 
-	$home = trailingslashit( home_url() );
+	$home = set_url_scheme( get_option( 'home' ) );
+	$home = trailingslashit( $home );
 
 	$available_languages = array_keys( bogo_available_languages() );
 	$available_languages = array_map( 'bogo_lang_slug', $available_languages );
