@@ -138,6 +138,15 @@ function bogo_get_general_link( $link ) {
 	return bogo_url( $link, get_locale() );
 }
 
+add_filter( 'home_url', 'bogo_home_url' );
+
+function bogo_home_url( $url ) {
+	if ( is_admin() || ! did_action( 'template_redirect' ) )
+		return $url;
+
+	return bogo_url( $url );
+}
+
 add_action( 'wp_head', 'bogo_m17n_headers' );
 
 function bogo_m17n_headers() {
