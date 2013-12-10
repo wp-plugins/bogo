@@ -58,7 +58,7 @@ function bogo_languages() {
 		'sk_SK' => __( 'Slovak', 'bogo' ),
 		'sl_SI' => __( 'Slovenian', 'bogo' ),
 		'sq' => __( 'Albanian', 'bogo' ),
-		'sr_CS' => __( 'Serbian', 'bogo' ),
+		'sr_RS' => __( 'Serbian', 'bogo' ),
 		'sv_SE' => __( 'Swedish', 'bogo' ),
 		'su_ID' => __( 'Sundanese', 'bogo' ),
 		'tg' => __( 'Tajik', 'bogo' ),

@@ -1,0 +1,334 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bogo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-06 02:39+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: bogo\n"
+
+#: bogo/bogo.php:4
+msgid ""
+"A straight-forward multilingualization plugin. No more double-digit custom "
+"DB tables or hidden HTML comments that could cause you headaches later on."
+msgstr ""
+"Jednostvna multilingualization plugin . Nema više dvocifren običaj DB tabele "
+"ili skrivene HTML komentare koji vam može izazvati glavobolje kasnije ."
+
+#: bogo/includes/functions.php:10
+msgid "Afrikaans"
+msgstr "Afrikanski"
+
+#: bogo/includes/functions.php:11
+msgid "Arabic"
+msgstr "Arapski"
+
+#: bogo/includes/functions.php:12
+msgid "Belarusian"
+msgstr "Beloruski"
+
+#: bogo/includes/functions.php:13
+msgid "Bulgarian"
+msgstr "Bugarski"
+
+#: bogo/includes/functions.php:14
+msgid "Bangla"
+msgstr "Bangla"
+
+#: bogo/includes/functions.php:15
+msgid "Catalan"
+msgstr "Katalonski"
+
+#: bogo/includes/functions.php:16
+msgid "Czech"
+msgstr "Češki"
+
+#: bogo/includes/functions.php:17
+msgid "Welsh"
+msgstr "Velški"
+
+#: bogo/includes/functions.php:18
+msgid "Danish"
+msgstr "Danski"
+
+#: bogo/includes/functions.php:19
+msgid "German"
+msgstr "Nemački"
+
+#: bogo/includes/functions.php:20
+msgid "Greek"
+msgstr "Grčki"
+
+#: bogo/includes/functions.php:21
+msgid "British English"
+msgstr "Britanski Engleski"
+
+#: bogo/includes/functions.php:22
+msgid "English"
+msgstr "Engleski"
+
+#: bogo/includes/functions.php:23
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: bogo/includes/functions.php:24
+msgid "Spanish"
+msgstr "Španski"
+
+#: bogo/includes/functions.php:25
+msgid "Estonian"
+msgstr "Estonski"
+
+#: bogo/includes/functions.php:26
+msgid "Basque"
+msgstr "Baskijski"
+
+#: bogo/includes/functions.php:27
+msgid "Persian"
+msgstr "Persijski"
+
+#: bogo/includes/functions.php:28
+msgid "Finnish"
+msgstr "Finski"
+
+#: bogo/includes/functions.php:29
+msgid "Faroese"
+msgstr "Farski"
+
+#: bogo/includes/functions.php:30
+msgid "French"
+msgstr "Francuski"
+
+#: bogo/includes/functions.php:31
+msgid "Georgian"
+msgstr "Gruzijski"
+
+#: bogo/includes/functions.php:32
+msgid "Galician"
+msgstr "Galicijski"
+
+#: bogo/includes/functions.php:33
+msgid "Hebrew"
+msgstr "Hebrejski"
+
+#: bogo/includes/functions.php:34
+msgid "Croatian"
+msgstr "Hrvatski"
+
+#: bogo/includes/functions.php:35
+msgid "Hungarian"
+msgstr "Madjarski"
+
+#: bogo/includes/functions.php:36
+msgid "Indonesian"
+msgstr "Indonežanski"
+
+#: bogo/includes/functions.php:37
+msgid "Irish"
+msgstr "Irski"
+
+#: bogo/includes/functions.php:38
+msgid "Icelandic"
+msgstr "Islandski"
+
+#: bogo/includes/functions.php:39
+msgid "Italian"
+msgstr "Italijanski"
+
+#: bogo/includes/functions.php:40
+msgid "Japanese"
+msgstr "Japanski"
+
+#: bogo/includes/functions.php:41
+msgid "Khmer"
+msgstr "Khmer"
+
+#: bogo/includes/functions.php:42
+msgid "Korean"
+msgstr "Korejski"
+
+#: bogo/includes/functions.php:43
+msgid "Lithuanian"
+msgstr "Litvanski"
+
+#: bogo/includes/functions.php:44
+msgid "Latvian"
+msgstr "Letonski"
+
+#: bogo/includes/functions.php:45
+msgid "Malagasy"
+msgstr "Malagajski"
+
+#: bogo/includes/functions.php:46
+msgid "Macedonian"
+msgstr "Makedonski"
+
+#: bogo/includes/functions.php:47
+msgid "Mongolian"
+msgstr "Mongolski"
+
+#: bogo/includes/functions.php:48
+msgid "Malay"
+msgstr "Malazijski"
+
+#: bogo/includes/functions.php:49
+msgid "Norwegian"
+msgstr "Norveški"
+
+#: bogo/includes/functions.php:50
+msgid "Nias"
+msgstr "Nias"
+
+#: bogo/includes/functions.php:51
+msgid "Dutch"
+msgstr "Holandski"
+
+#: bogo/includes/functions.php:52
+msgid "Polish"
+msgstr "Poljski"
+
+#: bogo/includes/functions.php:53
+msgid "Brazilian Portuguese"
+msgstr "Brazilski Portugalski"
+
+#: bogo/includes/functions.php:54
+msgid "Portuguese"
+msgstr "Portugalski"
+
+#: bogo/includes/functions.php:55
+msgid "Romanian"
+msgstr "Rumunski"
+
+#: bogo/includes/functions.php:56
+msgid "Russian"
+msgstr "Ruski"
+
+#: bogo/includes/functions.php:57
+msgid "Sinhala"
+msgstr "Sinhala"
+
+#: bogo/includes/functions.php:58
+msgid "Slovak"
+msgstr "Slovački"
+
+#: bogo/includes/functions.php:59
+msgid "Slovenian"
+msgstr "Slovenski"
+
+#: bogo/includes/functions.php:60
+msgid "Albanian"
+msgstr "Albanski"
+
+#: bogo/includes/functions.php:61
+msgid "Serbian"
+msgstr "Srpski"
+
+#: bogo/includes/functions.php:62
+msgid "Swedish"
+msgstr "Švedski"
+
+#: bogo/includes/functions.php:63
+msgid "Sundanese"
+msgstr "Sudanski"
+
+#: bogo/includes/functions.php:64
+msgid "Tajik"
+msgstr "Tajik"
+
+#: bogo/includes/functions.php:65
+msgid "Thai"
+msgstr "Tajlandski"
+
+#: bogo/includes/functions.php:66
+msgid "Tagalog"
+msgstr "Tagalog"
+
+#: bogo/includes/functions.php:67
+msgid "Turkish"
+msgstr "Turski"
+
+#: bogo/includes/functions.php:68
+msgid "Ukrainian"
+msgstr "Ukrajinski"
+
+#: bogo/includes/functions.php:69
+msgid "Uzbek"
+msgstr "Uzbekistanski"
+
+#: bogo/includes/functions.php:70
+msgid "Vietnamese"
+msgstr "Vijetnamski"
+
+#: bogo/includes/functions.php:71
+msgid "Chinese"
+msgstr "Kineski"
+
+#: bogo/includes/functions.php:72
+msgid "Traditional Chinese"
+msgstr "Tradicionalni Kineski"
+
+#: bogo/includes/post-l10n.php:20 bogo/includes/user-l10n.php:25
+msgid "Locale"
+msgstr "Lokalni"
+
+#: bogo/includes/post-l10n.php:74
+msgid "Show all locales"
+msgstr "Prikaži sve lokalne"
+
+#: bogo/includes/post-l10n.php:113
+#, php-format
+msgid "Edit %s translation of this item"
+msgstr "Edituj %s prevod ove stavke"
+
+#: bogo/includes/post-l10n.php:114
+#, php-format
+msgid "Edit %s translation"
+msgstr "Edituj %s prevod "
+
+#: bogo/includes/post-l10n.php:119
+#, php-format
+msgid "Translate this item into %s"
+msgstr "Prevedi ovu stavku na %s"
+
+#: bogo/includes/post-l10n.php:120
+#, php-format
+msgid "Translate into %s"
+msgstr "Prevedi na %s"
+
+#: bogo/includes/post-l10n.php:148 bogo/includes/post-l10n.php:182
+msgid "Language"
+msgstr "Jezik"
+
+#: bogo/includes/post-l10n.php:198
+msgid "Translations"
+msgstr "Prevodi"
+
+#: bogo/includes/post-l10n.php:252
+#, php-format
+msgid "Add %s translation"
+msgstr "Dodaj %s prevod"
+
+#: bogo/includes/widgets.php:15
+msgid "Language switcher widget by Bogo plugin"
+msgstr "Widget za menjanje jezika"
+
+#: bogo/includes/widgets.php:20 bogo/includes/widgets.php:28
+msgid "Language Switcher"
+msgstr "Menjanje jezika"
+
+#: bogo/includes/widgets.php:45
+msgid "Title:"
+msgstr "Naslov:"
+
+#: bogo/includes/widgets.php:83
+msgid "Displayed on pages in:"
+msgstr "Prikazano na stranicama u"
