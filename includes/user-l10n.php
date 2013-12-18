@@ -1,22 +1,23 @@
 <?php
 
 add_action( 'personal_options_update', 'bogo_update_user_option' );
+add_action( 'edit_user_profile_update', 'bogo_update_user_option' );
 
-function bogo_update_user_option() {
+function bogo_update_user_option( $user_id ) {
 	if ( ! isset( $_POST['own_locale'] ) || empty( $_POST['own_locale'] ) )
 		$locale = null;
 	else
 		$locale = trim( $_POST['own_locale'] );
 
-	update_user_option( get_current_user_id(), 'locale', $locale, true );
+	update_user_option( $user_id, 'locale', $locale, true );
 }
 
 add_action( 'personal_options', 'bogo_select_own_locale' );
 
-function bogo_select_own_locale() {
+function bogo_select_own_locale( $profileuser ) {
 	$available_languages = bogo_available_languages( 'orderby=value' );
 
-	$selected = bogo_get_user_locale();
+	$selected = bogo_get_user_locale( $profileuser->ID );
 
 ?>
 
