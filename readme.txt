@@ -2,9 +2,9 @@
 Contributors: takayukister
 Tags: multilingual, localization, language, locale, admin
 Requires at least: 3.5
-Tested up to: 3.7.1
+Tested up to: 3.8
 Donate link: http://www.pledgie.com/campaigns/17860
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,11 @@ Here are some technical details for those interested. Bogo plugin assigns [one l
 1. The Language Post Box manages language and translations of the Post/Page.
 
 == Changelog ==
+
+= 2.1.2 =
+
+* Bug fixed: Admin couldn't change other users' locale settings.
+* Translation for Serbian (sr_RS) has been created.
 
 = 2.1.1 =
 
