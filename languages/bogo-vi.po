@@ -1,0 +1,335 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bogo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-06 02:39+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese WPress-based blog | http://rongsay.info "
+"<me@rongsay.info>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: bogo\n"
+
+#: bogo/bogo.php:4
+msgid ""
+"A straight-forward multilingualization plugin. No more double-digit custom "
+"DB tables or hidden HTML comments that could cause you headaches later on."
+msgstr ""
+"Một plugin multilingualization dễ sử dụng. Không tạo thêm database tùy chỉnh "
+"hoặc HTML ẩn có thể gây ra khó khăn sau này."
+
+#: bogo/includes/functions.php:10
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: bogo/includes/functions.php:11
+msgid "Arabic"
+msgstr "Tiếng ả Rập"
+
+#: bogo/includes/functions.php:12
+msgid "Belarusian"
+msgstr "Belarus"
+
+#: bogo/includes/functions.php:13
+msgid "Bulgarian"
+msgstr "Tiếng Bulgaria"
+
+#: bogo/includes/functions.php:14
+msgid "Bangla"
+msgstr "Bangla"
+
+#: bogo/includes/functions.php:15
+msgid "Catalan"
+msgstr "Tiếng Catalan"
+
+#: bogo/includes/functions.php:16
+msgid "Czech"
+msgstr "Séc"
+
+#: bogo/includes/functions.php:17
+msgid "Welsh"
+msgstr "Tiếng Wales"
+
+#: bogo/includes/functions.php:18
+msgid "Danish"
+msgstr "Đan Mạch"
+
+#: bogo/includes/functions.php:19
+msgid "German"
+msgstr "Đức"
+
+#: bogo/includes/functions.php:20
+msgid "Greek"
+msgstr "Hy Lạp"
+
+#: bogo/includes/functions.php:21
+msgid "British English"
+msgstr "Từ tiếng Anh"
+
+#: bogo/includes/functions.php:22
+msgid "English"
+msgstr "Tiếng Anh"
+
+#: bogo/includes/functions.php:23
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: bogo/includes/functions.php:24
+msgid "Spanish"
+msgstr "Tiếng Tây Ban Nha"
+
+#: bogo/includes/functions.php:25
+msgid "Estonian"
+msgstr "Estonia"
+
+#: bogo/includes/functions.php:26
+msgid "Basque"
+msgstr "Tiếng Basque"
+
+#: bogo/includes/functions.php:27
+msgid "Persian"
+msgstr "Ba tư"
+
+#: bogo/includes/functions.php:28
+msgid "Finnish"
+msgstr "Phần Lan"
+
+#: bogo/includes/functions.php:29
+msgid "Faroese"
+msgstr "Tiếng Faroe"
+
+#: bogo/includes/functions.php:30
+msgid "French"
+msgstr "Tiếng Pháp"
+
+#: bogo/includes/functions.php:31
+msgid "Georgian"
+msgstr "Gruzia"
+
+#: bogo/includes/functions.php:32
+msgid "Galician"
+msgstr "Trung tâm"
+
+#: bogo/includes/functions.php:33
+msgid "Hebrew"
+msgstr "Tiếng Do Thái"
+
+#: bogo/includes/functions.php:34
+msgid "Croatian"
+msgstr "Croatia"
+
+#: bogo/includes/functions.php:35
+msgid "Hungarian"
+msgstr "Hungary"
+
+#: bogo/includes/functions.php:36
+msgid "Indonesian"
+msgstr "Indonesia"
+
+#: bogo/includes/functions.php:37
+msgid "Irish"
+msgstr "Ai-Len"
+
+#: bogo/includes/functions.php:38
+msgid "Icelandic"
+msgstr "Tiếng băng đảo"
+
+#: bogo/includes/functions.php:39
+msgid "Italian"
+msgstr "Ý"
+
+#: bogo/includes/functions.php:40
+msgid "Japanese"
+msgstr "Tiếng Nhật"
+
+#: bogo/includes/functions.php:41
+msgid "Khmer"
+msgstr "Khmer"
+
+#: bogo/includes/functions.php:42
+msgid "Korean"
+msgstr "Hàn Quốc"
+
+#: bogo/includes/functions.php:43
+msgid "Lithuanian"
+msgstr "Lithuanian"
+
+#: bogo/includes/functions.php:44
+msgid "Latvian"
+msgstr "Latvia"
+
+#: bogo/includes/functions.php:45
+msgid "Malagasy"
+msgstr "Madagascar"
+
+#: bogo/includes/functions.php:46
+msgid "Macedonian"
+msgstr "Macedonia"
+
+#: bogo/includes/functions.php:47
+msgid "Mongolian"
+msgstr "Mông Cổ"
+
+#: bogo/includes/functions.php:48
+msgid "Malay"
+msgstr "Mã lai"
+
+#: bogo/includes/functions.php:49
+msgid "Norwegian"
+msgstr "Na Uy"
+
+#: bogo/includes/functions.php:50
+msgid "Nias"
+msgstr "Nias"
+
+#: bogo/includes/functions.php:51
+msgid "Dutch"
+msgstr "Hà Lan"
+
+#: bogo/includes/functions.php:52
+msgid "Polish"
+msgstr "Ba Lan"
+
+#: bogo/includes/functions.php:53
+msgid "Brazilian Portuguese"
+msgstr "Brazil Bồ Đào Nha"
+
+#: bogo/includes/functions.php:54
+msgid "Portuguese"
+msgstr "Tiếng Bồ Đào Nha"
+
+#: bogo/includes/functions.php:55
+msgid "Romanian"
+msgstr "Rumani"
+
+#: bogo/includes/functions.php:56
+msgid "Russian"
+msgstr "Nga"
+
+#: bogo/includes/functions.php:57
+msgid "Sinhala"
+msgstr "Sinhala"
+
+#: bogo/includes/functions.php:58
+msgid "Slovak"
+msgstr "Tiếng Slovak"
+
+#: bogo/includes/functions.php:59
+msgid "Slovenian"
+msgstr "Tiếng Slovenia"
+
+#: bogo/includes/functions.php:60
+msgid "Albanian"
+msgstr "Albania"
+
+#: bogo/includes/functions.php:61
+msgid "Serbian"
+msgstr "Serbia"
+
+#: bogo/includes/functions.php:62
+msgid "Swedish"
+msgstr "Thụy Điển"
+
+#: bogo/includes/functions.php:63
+msgid "Sundanese"
+msgstr "Tiếng Sunda"
+
+#: bogo/includes/functions.php:64
+msgid "Tajik"
+msgstr "Tajikistan"
+
+#: bogo/includes/functions.php:65
+msgid "Thai"
+msgstr "Thái Lan"
+
+#: bogo/includes/functions.php:66
+msgid "Tagalog"
+msgstr "Tiếng Tagalog"
+
+#: bogo/includes/functions.php:67
+msgid "Turkish"
+msgstr "Thổ Nhĩ Kỳ"
+
+#: bogo/includes/functions.php:68
+msgid "Ukrainian"
+msgstr "Tiếng Ukraina"
+
+#: bogo/includes/functions.php:69
+msgid "Uzbek"
+msgstr "Tiếng Uzbek"
+
+#: bogo/includes/functions.php:70
+msgid "Vietnamese"
+msgstr "Việt Nam"
+
+#: bogo/includes/functions.php:71
+msgid "Chinese"
+msgstr "Trung Quốc"
+
+#: bogo/includes/functions.php:72
+msgid "Traditional Chinese"
+msgstr "Trung Quốc Truyền thống"
+
+#: bogo/includes/post-l10n.php:20 bogo/includes/user-l10n.php:25
+msgid "Locale"
+msgstr "Miền địa phương"
+
+#: bogo/includes/post-l10n.php:74
+msgid "Show all locales"
+msgstr "Hiển thị tất cả các miền địa phương"
+
+#: bogo/includes/post-l10n.php:113
+#, php-format
+msgid "Edit %s translation of this item"
+msgstr "Chỉnh sửa %s bản dịch của khoản mục này"
+
+#: bogo/includes/post-l10n.php:114
+#, php-format
+msgid "Edit %s translation"
+msgstr "Chỉnh sửa %s dịch"
+
+#: bogo/includes/post-l10n.php:119
+#, php-format
+msgid "Translate this item into %s"
+msgstr "Dịch khoản mục này vào %s"
+
+#: bogo/includes/post-l10n.php:120
+#, php-format
+msgid "Translate into %s"
+msgstr "Dịch sang %s"
+
+#: bogo/includes/post-l10n.php:148 bogo/includes/post-l10n.php:182
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+#: bogo/includes/post-l10n.php:198
+msgid "Translations"
+msgstr "Bản dịch"
+
+#: bogo/includes/post-l10n.php:252
+#, php-format
+msgid "Add %s translation"
+msgstr "Thêm %s dịch"
+
+#: bogo/includes/widgets.php:15
+msgid "Language switcher widget by Bogo plugin"
+msgstr "Ngôn ngữ switcher Random Pages created by Bogo plugin"
+
+#: bogo/includes/widgets.php:20 bogo/includes/widgets.php:28
+msgid "Language Switcher"
+msgstr "Ngôn ngữ Switcher"
+
+#: bogo/includes/widgets.php:45
+msgid "Title:"
+msgstr "Tiêu đề:"
+
+#: bogo/includes/widgets.php:83
+msgid "Displayed on pages in:"
+msgstr "Hiển thị trên các trang trong:"
