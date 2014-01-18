@@ -60,9 +60,7 @@ function bogo_plugins_loaded() {
 add_action( 'init', 'bogo_init' );
 
 function bogo_init() {
-	global $bogo_languages;
-
-	$bogo_languages = bogo_languages();
+	bogo_languages();
 
 	if ( ! ( is_admin() || is_robots() || is_feed() || is_trackback() ) ) {
 		$locale = get_locale();
