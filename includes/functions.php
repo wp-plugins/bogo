@@ -30,6 +30,7 @@ function bogo_languages() {
 		'fr_FR' => __( 'French', 'bogo' ),
 		'ge_GE' => __( 'Georgian', 'bogo' ),
 		'gl_ES' => __( 'Galician', 'bogo' ),
+		'ht' => __( 'Haitian', 'bogo' ),
 		'he_IL' => __( 'Hebrew', 'bogo' ),
 		'hr' => __( 'Croatian', 'bogo' ),
 		'hu_HU' => __( 'Hungarian', 'bogo' ),
