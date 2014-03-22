@@ -67,7 +67,7 @@ function bogo_languages() {
 		'th' => __( 'Thai', 'bogo' ),
 		'tl' => __( 'Tagalog', 'bogo' ),
 		'tr' => __( 'Turkish', 'bogo' ),
-		'uk_UA' => __( 'Ukrainian', 'bogo' ),
+		'uk' => __( 'Ukrainian', 'bogo' ),
 		'uz_UZ' => __( 'Uzbek', 'bogo' ),
 		'vi' => __( 'Vietnamese', 'bogo' ),
 		'zh_CN' => __( 'Chinese', 'bogo' ),
