@@ -186,7 +186,8 @@ function bogo_m17n_headers() {
 add_shortcode( 'bogo', 'bogo_language_switcher' );
 
 function bogo_language_switcher( $args = '' ) {
-	$defaults = array();
+	$defaults = array(
+		'echo' => false );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -198,11 +199,12 @@ function bogo_language_switcher( $args = '' ) {
 	if ( is_singular() ) {
 		$post_id = get_queried_object_id();
 
-		if ( $post_id )
+		if ( $post_id ) {
 			$translations = bogo_get_post_translations( $post_id );
+		}
 	}
 
-	echo '<ul class="language-switcher">';
+	$output = '<ul class="language-switcher">';
 
 	$total = count( $available_languages );
 	$count = 0;
@@ -213,35 +215,46 @@ function bogo_language_switcher( $args = '' ) {
 		$class[] = bogo_language_tag( $code );
 		$class[] = bogo_lang_slug( $code );
 
-		if ( $locale == $code )
+		if ( $locale == $code ) {
 			$class[] = 'current';
+		}
 
-		if ( 1 == $count )
+		if ( 1 == $count ) {
 			$class[] = 'first';
+		}
 
-		if ( $total == $count )
+		if ( $total == $count ) {
 			$class[] = 'last';
+		}
 
 		$class = implode( ' ', array_unique( $class ) );
 
-		echo '<li class="' . esc_attr( $class ) . '">';
+		$output .= '<li class="' . esc_attr( $class ) . '">';
 
 		if ( is_singular() ) {
-			if ( empty( $translations[$code] ) || $locale == $code )
-				echo esc_html( $name );
-			else
-				echo '<a rel="alternate" hreflang="' . bogo_language_tag( $code ) . '" href="' . get_permalink( $translations[$code] ) . '">' . esc_html( $name ) . '</a>';
+			if ( empty( $translations[$code] ) || $locale == $code ) {
+				$output .= esc_html( $name );
+			} else {
+				$output .= '<a rel="alternate" hreflang="' . bogo_language_tag( $code ) . '" href="' . get_permalink( $translations[$code] ) . '">' . esc_html( $name ) . '</a>';
+			}
 		} else {
-			if ( $locale == $code )
-				echo esc_html( $name );
-			else
-				echo '<a rel="alternate" hreflang="' . bogo_language_tag( $code ) . '" href="' . esc_url( bogo_url( null, $code ) ) . '">' . esc_html( $name ) . '</a>';
+			if ( $locale == $code ) {
+				$output .= esc_html( $name );
+			} else {
+				$output .= '<a rel="alternate" hreflang="' . bogo_language_tag( $code ) . '" href="' . esc_url( bogo_url( null, $code ) ) . '">' . esc_html( $name ) . '</a>';
+			}
 		}
 
-		echo '</li>';
+		$output .= '</li>';
 	}
 
-	echo '</ul>' . "\n";
+	$output .= '</ul>' . "\n";
+
+	if ( $args['echo'] ) {
+		echo $output;
+	} else {
+		return $output;
+	}
 }
 
 ?>
