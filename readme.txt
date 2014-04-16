@@ -2,7 +2,7 @@
 Contributors: takayukister
 Tags: multilingual, localization, language, locale, admin
 Requires at least: 3.5
-Tested up to: 3.8
+Tested up to: 3.9
 Donate link: http://www.pledgie.com/campaigns/17860
 Stable tag: 2.1.2
 License: GPLv2 or later
