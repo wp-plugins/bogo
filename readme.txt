@@ -4,7 +4,7 @@ Tags: multilingual, localization, language, locale, admin
 Requires at least: 3.5
 Tested up to: 3.9
 Donate link: http://www.pledgie.com/campaigns/17860
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,12 @@ Here are some technical details for those interested. Bogo plugin assigns [one l
 1. The Language Post Box manages language and translations of the Post/Page.
 
 == Changelog ==
+
+= 2.1.3 =
+
+* Fixed: Shortcode handler function echoed, not returned its output.
+* Use static variables instead of global variables.
+* Translations for French (fr_FR) and Vietnamese (vi) have been created.
 
 = 2.1.2 =
 
