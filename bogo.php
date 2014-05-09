@@ -44,6 +44,7 @@ if ( ! defined( 'BOGO_PLUGIN_URL' ) )
 require_once BOGO_PLUGIN_DIR . '/includes/functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/rewrite.php';
 require_once BOGO_PLUGIN_DIR . '/includes/link-template.php';
+require_once BOGO_PLUGIN_DIR . '/includes/nav-menu.php';
 require_once BOGO_PLUGIN_DIR . '/includes/widgets.php';
 require_once BOGO_PLUGIN_DIR . '/includes/post-l10n-functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/user-l10n-functions.php';
@@ -124,6 +125,32 @@ function bogo_query_vars( $query_vars ) {
 	$query_vars[] = 'lang';
 
 	return $query_vars;
+}
+
+add_action( 'admin_enqueue_scripts', 'bogo_admin_enqueue_scripts' );
+
+function bogo_admin_enqueue_scripts( $hook_suffix ) {
+	$locales = array();
+
+	if ( 'nav-menus.php' == $hook_suffix ) {
+		$nav_menu_id = absint( get_user_option( 'nav_menu_recently_edited' ) );
+		$nav_menu_items = wp_get_nav_menu_items( $nav_menu_id );
+
+		foreach ( (array) $nav_menu_items as $item ) {
+			$locales[$item->db_id] = $item->bogo_locales;
+		}
+	} else {
+		return;
+	}
+
+	wp_enqueue_script( 'bogo-admin',
+		plugins_url( 'includes/admin.js', BOGO_PLUGIN_BASENAME ),
+		array( 'jquery' ),
+		BOGO_VERSION, true );
+
+	wp_localize_script( 'bogo-admin', '_bogo', array(
+		'available_languages' => bogo_available_languages( 'orderby=value' ),
+		'locales' => $locales ) );
 }
 
 ?>
