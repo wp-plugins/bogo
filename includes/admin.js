@@ -26,7 +26,7 @@
 	}
 
 	_bogo.selector = function(id) {
-		var $selector = $('<div class="bogo-locale-options"></div>');
+		var $selector = $('<fieldset class="bogo-locale-options"></fieldset>');
 
 		if (_bogo.available_languages) {
 			$.each(_bogo.available_languages, function(i, val) {
@@ -45,19 +45,20 @@
 
 	_bogo.checkbox = function(id, locale, checked) {
 		var prefix = 'menu-item-bogo-locale';
+		var name_attr = prefix + '[' + id + '][' + locale + ']';
+		var id_attr = 'edit-' + prefix + '-' + id + '-' + locale;
+
 		var $cb = $('<input type="checkbox" />');
-
-		$cb.attr('name', prefix + '[' + id + '][' + locale + ']');
+		$cb.attr('name', name_attr);
+		$cb.attr('id', id_attr);
 		$cb.attr('value', 1);
+		$cb.prop('checked', checked);
 
-		if (checked) {
-			$cb.prop('checked', true);
-		}
+		var $label = $('<label class="bogo-locale-option"></label>');
+		$label.attr('for', id_attr);
+		$label.append(_bogo.langName(locale));
 
-		$cb = $('<span class="bogo-locale-option"></span>').append($cb);
-		$cb.append(_bogo.langName(locale));
-
-		return $cb;
+		return $label.prepend($cb);
 	}
 
 	_bogo.langName = function(locale) {

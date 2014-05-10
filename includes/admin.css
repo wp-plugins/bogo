@@ -1,0 +1,12 @@
+fieldset.bogo-locale-options {
+	padding-top: 8px;
+}
+
+fieldset.bogo-locale-options label.bogo-locale-option {
+	white-space: nowrap;
+	margin-right: 0.8em;
+}
+
+fieldset.bogo-locale-options label.bogo-locale-option input[type="checkbox"] {
+	width: 16px;	
+}

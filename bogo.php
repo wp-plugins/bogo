@@ -151,6 +151,10 @@ function bogo_admin_enqueue_scripts( $hook_suffix ) {
 	wp_localize_script( 'bogo-admin', '_bogo', array(
 		'available_languages' => bogo_available_languages( 'orderby=value' ),
 		'locales' => $locales ) );
+
+	wp_enqueue_style( 'bogo-admin',
+		plugins_url( 'includes/admin.css', BOGO_PLUGIN_BASENAME ),
+		array(), BOGO_VERSION, 'all' );
 }
 
 ?>
