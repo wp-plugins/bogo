@@ -1,5 +1,23 @@
 <?php
 
+add_filter( 'wp_get_nav_menu_items', 'bogo_get_nav_menu_items', 10, 3 );
+
+function bogo_get_nav_menu_items( $items, $menu, $args ) {
+	if ( is_admin() ) {
+		return $items;
+	}
+
+	$locale = get_locale();
+
+	foreach ( $items as $key => $item ) {
+		if ( ! in_array( $locale, $item->bogo_locales ) ) {
+			unset( $items[$key] );
+		}
+	}
+
+	return $items;
+}
+
 add_filter( 'wp_setup_nav_menu_item', 'bogo_setup_nav_menu_item' );
 
 function bogo_setup_nav_menu_item( $menu_item ) {
