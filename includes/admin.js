@@ -17,7 +17,7 @@
 
 			var id = $(this).attr('id').replace('menu-item-', '');
 			var $selector = _bogo.selector(id);
-			$(this).find('.menu-item-actions').first().before($selector);
+			$(this).find('.menu-item-settings').prepend($selector);
 		});
 	}
 
