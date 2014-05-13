@@ -10,8 +10,9 @@ fieldset.bogo-locale-options legend {
 }
 
 fieldset.bogo-locale-options label.bogo-locale-option {
+	display: inline-block;
 	white-space: nowrap;
-	margin-right: 0.4em;
+	margin: 6px 0.4em 0 0;
 	border: 1px solid #a7a7a7;
 	border-radius: 4px;
 	padding: 1px 4px 1px 2px;
@@ -24,5 +25,5 @@ fieldset.bogo-locale-options label.bogo-locale-option.checked {
 }
 
 fieldset.bogo-locale-options label.bogo-locale-option input[type="checkbox"] {
-	width: 16px;	
+	width: 16px;
 }
