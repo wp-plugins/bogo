@@ -28,11 +28,11 @@
 	_bogo.selector = function(id) {
 		var $selector = $('<fieldset class="bogo-locale-options"></fieldset>');
 
-		if (_bogo.available_languages) {
-			var $legend = $('<legend></legend>').append(_bogo.selector_legend);
+		if (_bogo.availableLanguages) {
+			var $legend = $('<legend></legend>').append(_bogo.selectorLegend);
 			$selector.append($legend);
 
-			$.each(_bogo.available_languages, function(i, val) {
+			$.each(_bogo.availableLanguages, function(i, val) {
 				var checked = false;
 
 				if (! _bogo.locales[id] || -1 < $.inArray(i, _bogo.locales[id])) {
@@ -69,7 +69,7 @@
 	}
 
 	_bogo.langName = function(locale) {
-		return _bogo.available_languages[locale] || '';
+		return _bogo.availableLanguages[locale] || '';
 	}
 
 })(jQuery);
