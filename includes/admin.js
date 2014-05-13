@@ -29,6 +29,9 @@
 		var $selector = $('<fieldset class="bogo-locale-options"></fieldset>');
 
 		if (_bogo.available_languages) {
+			var $legend = $('<legend></legend>').append(_bogo.selector_legend);
+			$selector.append($legend);
+
 			$.each(_bogo.available_languages, function(i, val) {
 				var checked = false;
 
@@ -57,6 +60,10 @@
 		var $label = $('<label class="bogo-locale-option"></label>');
 		$label.attr('for', id_attr);
 		$label.append(_bogo.langName(locale));
+
+		if (checked) {
+			$label.addClass('checked');
+		}
 
 		return $label.prepend($cb);
 	}

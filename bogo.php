@@ -150,7 +150,8 @@ function bogo_admin_enqueue_scripts( $hook_suffix ) {
 
 	wp_localize_script( 'bogo-admin', '_bogo', array(
 		'available_languages' => bogo_available_languages( 'orderby=value' ),
-		'locales' => $locales ) );
+		'locales' => $locales,
+		'selector_legend' => __( 'Displayed on pages in:', 'bogo' ) ) );
 
 	wp_enqueue_style( 'bogo-admin',
 		plugins_url( 'includes/admin.css', BOGO_PLUGIN_BASENAME ),

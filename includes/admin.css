@@ -1,10 +1,26 @@
 fieldset.bogo-locale-options {
-	padding-top: 8px;
+	margin: 6px 12px 2px 0;
+	padding: 4px 4px 8px;
+	border: 1px solid #dfdfdf;
+}
+
+fieldset.bogo-locale-options legend {
+	font-style: italic;
+	color: #666666;
 }
 
 fieldset.bogo-locale-options label.bogo-locale-option {
 	white-space: nowrap;
-	margin-right: 0.8em;
+	margin-right: 0.4em;
+	border: 1px solid #a7a7a7;
+	border-radius: 4px;
+	padding: 1px 4px 1px 2px;
+	background: #f1f1f1;
+}
+
+fieldset.bogo-locale-options label.bogo-locale-option.checked {
+	border: 1px solid #0074a2;
+	background: #d4eefe;
 }
 
 fieldset.bogo-locale-options label.bogo-locale-option input[type="checkbox"] {
