@@ -47,7 +47,7 @@
 	}
 
 	_bogo.checkbox = function(id, locale, checked) {
-		var prefix = 'menu-item-bogo-locale';
+		var prefix = _bogo.cbPrefix || 'bogo-locale';
 		var name_attr = prefix + '[' + id + '][' + locale + ']';
 		var id_attr = 'edit-' + prefix + '-' + id + '-' + locale;
 
