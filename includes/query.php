@@ -147,6 +147,7 @@ function bogo_option_sticky_posts( $posts ) {
 }
 
 add_filter( 'option_page_on_front', 'bogo_get_local_post' );
+add_filter( 'option_page_for_posts', 'bogo_get_local_post' );
 
 function bogo_get_local_post( $post_id ) {
 	global $wpdb;
