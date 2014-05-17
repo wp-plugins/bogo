@@ -195,13 +195,12 @@ function bogo_language_switcher( $args = '' ) {
 	$available_languages = bogo_available_languages();
 
 	$translations = array();
+	$is_singular = false;
+	$post_id = get_queried_object_id();
 
-	if ( is_singular() ) {
-		$post_id = get_queried_object_id();
-
-		if ( $post_id ) {
-			$translations = bogo_get_post_translations( $post_id );
-		}
+	if ( is_singular() || $post_id == get_option( 'page_for_posts' ) ) {
+		$translations = bogo_get_post_translations( $post_id );
+		$is_singular = true;
 	}
 
 	$output = '<ul class="language-switcher">';
@@ -231,7 +230,7 @@ function bogo_language_switcher( $args = '' ) {
 
 		$output .= '<li class="' . esc_attr( $class ) . '">';
 
-		if ( is_singular() ) {
+		if ( $is_singular ) {
 			if ( empty( $translations[$code] ) || $locale == $code ) {
 				$output .= esc_html( $name );
 			} else {
