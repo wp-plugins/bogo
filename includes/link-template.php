@@ -186,6 +186,8 @@ function bogo_m17n_headers() {
 add_shortcode( 'bogo', 'bogo_language_switcher' );
 
 function bogo_language_switcher( $args = '' ) {
+	global $wp_query;
+
 	$defaults = array(
 		'echo' => false );
 
@@ -198,7 +200,7 @@ function bogo_language_switcher( $args = '' ) {
 	$is_singular = false;
 	$post_id = get_queried_object_id();
 
-	if ( is_singular() || $post_id == get_option( 'page_for_posts' ) ) {
+	if ( is_singular() || ! empty( $wp_query->is_posts_page ) ) {
 		$translations = bogo_get_post_translations( $post_id );
 		$is_singular = true;
 	}
