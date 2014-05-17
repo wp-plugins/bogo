@@ -146,50 +146,6 @@ function bogo_option_sticky_posts( $posts ) {
 	return $posts;
 }
 
-add_filter( 'option_page_on_front', 'bogo_option_page_on_front' );
-
-function bogo_option_page_on_front( $page_id ) {
-	global $wpdb;
-
-	if ( ! bogo_is_localizable_post_type( 'page' ) )
-		return $page_id;
-
-	if ( empty( $page_id ) )
-		return $page_id;
-
-	if ( is_admin() )
-		return $page_id;
-
-	$locale = get_locale();
-
-	if ( bogo_get_post_locale( $page_id ) == $locale )
-		return $page_id;
-
-	$original = get_post_meta( $page_id, '_original_post', true );
-
-	if ( empty( $original ) )
-		$original = $page_id;
-
-	$q = "SELECT ID FROM $wpdb->posts AS posts";
-	$q .= " LEFT JOIN $wpdb->postmeta AS pm1";
-	$q .= " ON posts.ID = pm1.post_id AND pm1.meta_key = '_original_post'";
-	$q .= " LEFT JOIN $wpdb->postmeta AS pm2";
-	$q .= " ON posts.ID = pm2.post_id AND pm2.meta_key = '_locale'";
-	$q .= " WHERE 1=1";
-	$q .= " AND post_type = 'page'";
-	$q .= $wpdb->prepare( " AND (ID = %d OR pm1.meta_value = %d)",
-		$original, $original );
-	$q .= " AND (1=0";
-	$q .= $wpdb->prepare( " OR pm2.meta_value LIKE %s", $locale );
-	$q .= bogo_is_default_locale( $locale ) ? " OR pm2.meta_id IS NULL" : "";
-	$q .= ")";
-
-	$translation = absint( $wpdb->get_var( $q ) );
-
-	if ( $translation )
-		return $translation;
-
-	return $page_id;
-}
+add_filter( 'option_page_on_front', 'bogo_get_local_post' );
 
 ?>
