@@ -157,7 +157,7 @@ function bogo_admin_enqueue_scripts( $hook_suffix ) {
 		wp_localize_script( 'bogo-admin', '_bogo', array(
 			'availableLanguages' => bogo_available_languages( 'orderby=value' ),
 			'locales' => $locales,
-			'selectorLegend' => __( 'Displayed on pages in:', 'bogo' ),
+			'selectorLegend' => __( 'Displayed on pages in', 'bogo' ),
 			'cbPrefix' => $prefix ) );
 
 		wp_enqueue_style( 'bogo-admin',

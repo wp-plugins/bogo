@@ -87,7 +87,7 @@ function bogo_in_widget_form( $widget, $return, $instance ) {
 
 ?>
 <fieldset class="bogo-locale-options">
-<legend><?php echo esc_html( __( 'Displayed on pages in:', 'bogo' ) ); ?></legend>
+<legend><?php echo esc_html( __( 'Displayed on pages in', 'bogo' ) ); ?></legend>
 <?php foreach ( $available_languages as $locale => $language ) :
 	$checked = in_array( $locale, $selected_languages );
 	$id_attr = $widget->get_field_id( 'bogo_locales' ) . '-' . $locale;
