@@ -4,6 +4,10 @@ fieldset.bogo-locale-options {
 	border: 1px solid #dfdfdf;
 }
 
+.widget-content fieldset.bogo-locale-options {
+	margin-right: 0;
+}
+
 fieldset.bogo-locale-options legend {
 	font-style: italic;
 	color: #666666;
