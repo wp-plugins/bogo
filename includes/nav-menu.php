@@ -48,8 +48,7 @@ function bogo_update_nav_menu_item( $menu_id, $menu_item_id ) {
 
 	if ( isset( $_POST['menu-item-bogo-locale'][$menu_item_id] ) ) {
 		$locales = (array) $_POST['menu-item-bogo-locale'][$menu_item_id];
-		$locales = array_intersect(
-			array_keys( $locales ),
+		$locales = array_intersect( $locales,
 			array_keys( bogo_available_languages() ) );
 
 		foreach ( $locales as $locale ) {

@@ -48,13 +48,13 @@
 
 	_bogo.checkbox = function(id, locale, checked) {
 		var prefix = _bogo.cbPrefix || 'bogo-locale';
-		var name_attr = prefix + '[' + id + '][' + locale + ']';
+		var name_attr = prefix + '[' + id + '][]';
 		var id_attr = 'edit-' + prefix + '-' + id + '-' + locale;
 
 		var $cb = $('<input type="checkbox" />');
 		$cb.attr('name', name_attr);
 		$cb.attr('id', id_attr);
-		$cb.attr('value', 1);
+		$cb.attr('value', locale);
 		$cb.prop('checked', checked);
 
 		var $label = $('<label class="bogo-locale-option"></label>');
