@@ -150,29 +150,33 @@ function bogo_m17n_headers() {
 	$locale = get_locale();
 
 	if ( is_singular() ) {
-		$post_id = get_queried_object_id();
-
-		if ( ! $post_id || ! $translations = bogo_get_post_translations( $post_id ) )
+		if ( ! $post_id = get_queried_object_id() ) {
 			return;
+		}
+
+		if ( ! $translations = bogo_get_post_translations( $post_id ) ) {
+			return;
+		}
+
+		$translations[$locale] = get_post( $post_id );
 
 		foreach ( $translations as $lang => $translation ) {
-			if ( $locale != $lang )
-				$languages[] = array(
-					'hreflang' => bogo_language_tag( $lang ),
-					'href' => get_permalink( $translation ) );
+			$languages[] = array(
+				'hreflang' => bogo_language_tag( $lang ),
+				'href' => get_permalink( $translation ) );
 		}
 
 	} else {
 		$available_languages = bogo_available_languages();
 
-		foreach ( array_keys( $available_languages ) as $lang ) {
-			if ( $locale != $lang ) {
-				$url = bogo_url( null, $lang );
+		if ( count( $available_languages ) < 2 ) {
+			return;
+		}
 
-				$languages[] = array(
-					'hreflang' => bogo_language_tag( $lang ),
-					'href' => $url );
-			}
+		foreach ( array_keys( $available_languages ) as $lang ) {
+			$languages[] = array(
+				'hreflang' => bogo_language_tag( $lang ),
+				'href' => bogo_url( null, $lang ) );
 		}
 	}
 
