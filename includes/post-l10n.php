@@ -253,52 +253,26 @@ function bogo_metabox_add_translation( $post ) {
 <?php
 }
 
-add_filter( 'default_content', 'bogo_translation_default_content', 10, 2 );
+add_filter( 'default_title', 'bogo_translation_default', 10, 2 );
+add_filter( 'default_content', 'bogo_translation_default', 10, 2 );
+add_filter( 'default_excerpt', 'bogo_translation_default', 10, 2 );
 
-function bogo_translation_default_content( $content, $post ) {
-	if ( ! empty( $content ) )
-		return $content;
-
-	if ( ! empty( $_REQUEST['original_post'] ) ) {
-		$original = get_post( $_REQUEST['original_post'] );
-
-		if ( $original && ! empty( $original->post_content ) )
-			$content = $original->post_content;
+function bogo_translation_default( $value, $post ) {
+	if ( ! empty( $value )
+	|| empty( $_REQUEST['original_post'] )
+	|| ! $original = get_post( $_REQUEST['original_post'] ) ) {
+		return $value;
 	}
 
-	return $content;
-}
-
-add_filter( 'default_title', 'bogo_translation_default_title', 10, 2 );
-
-function bogo_translation_default_title( $title, $post ) {
-	if ( ! empty( $title ) )
-		return $title;
-
-	if ( ! empty( $_REQUEST['original_post'] ) ) {
-		$original = get_post( $_REQUEST['original_post'] );
-
-		if ( $original && ! empty( $original->post_title ) )
-			$title = $original->post_title;
+	if ( 'default_title' == current_filter() ) {
+		$value = $original->post_title;
+	} elseif ( 'default_content' == current_filter() ) {
+		$value = $original->post_content;
+	} elseif ( 'default_excerpt' == current_filter() ) {
+		$value = $original->post_excerpt;
 	}
 
-	return $title;
-}
-
-add_filter( 'default_excerpt', 'bogo_translation_default_excerpt', 10, 2 );
-
-function bogo_translation_default_excerpt( $excerpt, $post ) {
-	if ( ! empty( $excerpt ) )
-		return $excerpt;
-
-	if ( ! empty( $_REQUEST['original_post'] ) ) {
-		$original = get_post( $_REQUEST['original_post'] );
-
-		if ( $original && ! empty( $original->post_excerpt ) )
-			$excerpt = $original->post_excerpt;
-	}
-
-	return $excerpt;
+	return $value;
 }
 
 add_action( 'save_post', 'bogo_save_post', 10, 2 );
