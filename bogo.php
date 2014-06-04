@@ -47,8 +47,7 @@ require_once BOGO_PLUGIN_DIR . '/includes/link-template.php';
 require_once BOGO_PLUGIN_DIR . '/includes/nav-menu.php';
 require_once BOGO_PLUGIN_DIR . '/includes/widgets.php';
 require_once BOGO_PLUGIN_DIR . '/includes/post.php';
-require_once BOGO_PLUGIN_DIR . '/includes/user-l10n-functions.php';
-require_once BOGO_PLUGIN_DIR . '/includes/user-l10n.php';
+require_once BOGO_PLUGIN_DIR . '/includes/user.php';
 require_once BOGO_PLUGIN_DIR . '/includes/query.php';
 
 if ( is_admin() ) {
