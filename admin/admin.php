@@ -1,5 +1,7 @@
 <?php
 
+require_once BOGO_PLUGIN_DIR . '/admin/user.php';
+
 add_action( 'admin_enqueue_scripts', 'bogo_admin_enqueue_scripts' );
 
 function bogo_admin_enqueue_scripts( $hook_suffix ) {
