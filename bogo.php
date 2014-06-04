@@ -131,4 +131,6 @@ function bogo_query_vars( $query_vars ) {
 	return $query_vars;
 }
 
+add_shortcode( 'bogo', 'bogo_language_switcher' );
+
 ?>
