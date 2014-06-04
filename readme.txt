@@ -1,10 +1,10 @@
 === Bogo ===
 Contributors: takayukister
 Tags: multilingual, localization, language, locale, admin
-Requires at least: 3.5
-Tested up to: 3.9
+Requires at least: 3.7
+Tested up to: 3.9.1
 Donate link: http://www.pledgie.com/campaigns/17860
-Stable tag: 2.1.3
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,25 +60,13 @@ Here are some technical details for those interested. Bogo plugin assigns [one l
 
 == Changelog ==
 
+= 2.2 =
+
+* Support nav-menu locale settings.
+* Fix: Handle posts page localization properly.
+
 = 2.1.3 =
 
 * Fixed: Shortcode handler function echoed, not returned its output.
 * Use static variables instead of global variables.
 * Translations for French (fr_FR) and Vietnamese (vi) have been created.
-
-= 2.1.2 =
-
-* Bug fixed: Admin couldn't change other users' locale settings.
-* Translation for Serbian (sr_RS) has been created.
-
-= 2.1.1 =
-
-* Filter home_url() output to change it based on the current locale.
-* Translation for Romanian (ro_RO) has been created.
-
-= 2.1 =
-
-* Correctly handle Custom Post Type's localized permalinks.
-* Correctly handle sticky posts and front page's translation.
-* Add locale class to post_class.
-* The required WordPress version has been changed and now requires WordPress 3.5 or higher.

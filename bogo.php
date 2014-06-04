@@ -7,7 +7,7 @@ Author: Takayuki Miyoshi
 Author URI: http://ideasilo.wordpress.com/
 Text Domain: bogo
 Domain Path: /languages/
-Version: 2.1.3
+Version: 2.2
 */
 
 /*  Copyright 2007-2014 Takayuki Miyoshi (email: takayukister at gmail.com)
@@ -27,7 +27,7 @@ Version: 2.1.3
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-define( 'BOGO_VERSION', '2.1.3' );
+define( 'BOGO_VERSION', '2.2' );
 
 if ( ! defined( 'BOGO_PLUGIN_BASENAME' ) )
 	define( 'BOGO_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
