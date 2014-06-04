@@ -1,6 +1,7 @@
 <?php
 
 require_once BOGO_PLUGIN_DIR . '/admin/user.php';
+require_once BOGO_PLUGIN_DIR . '/admin/widgets.php';
 
 add_action( 'admin_enqueue_scripts', 'bogo_admin_enqueue_scripts' );
 
