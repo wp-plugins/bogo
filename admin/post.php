@@ -56,12 +56,11 @@ function bogo_manage_posts_custom_column( $column_name, $post_id ) {
 add_action( 'restrict_manage_posts', 'bogo_restrict_manage_posts' );
 
 function bogo_restrict_manage_posts() {
-	global $post_type_object;
+	global $post_type;
 
-	$post_type = $post_type_object->name;
-
-	if ( ! bogo_is_localizable_post_type( $post_type ) )
+	if ( ! bogo_is_localizable_post_type( $post_type ) ) {
 		return;
+	}
 
 	$available_languages = bogo_available_languages();
 	$current_locale = empty( $_GET['lang'] ) ? '' : $_GET['lang'];
