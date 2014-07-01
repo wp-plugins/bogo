@@ -38,12 +38,22 @@ function bogo_post_rewrite_rules( $post_rewrite ) {
 
 	$permastruct = $wp_rewrite->permalink_structure;
 
-	if ( ! apache_mod_loaded( 'mod_rewrite', true ) && ! iis7_supports_permalinks() )
-		$permastruct = preg_replace( '#^/index\.php#', '/index.php/%lang%', $permastruct );
-	elseif ( is_multisite() && ! is_subdomain_install() && is_main_site() )
-		$permastruct = preg_replace( '#^/blog#', '/%lang%/blog', $permastruct );
-	else
-		$permastruct = preg_replace( '#^/#', '/%lang%/', $permastruct );
+	// from wp-admin/includes/misc.php
+	$got_rewrite = apply_filters( 'got_rewrite',
+		apache_mod_loaded( 'mod_rewrite', true ) );
+	$got_url_rewrite = apply_filters( 'got_url_rewrite',
+		$got_rewrite || $GLOBALS['is_nginx'] || iis7_supports_permalinks() );
+
+	if ( ! $got_url_rewrite ) {
+		$permastruct = preg_replace(
+			'#^/index\.php#', '/index.php/%lang%', $permastruct );
+	} elseif ( is_multisite() && ! is_subdomain_install() && is_main_site() ) {
+		$permastruct = preg_replace(
+			'#^/blog#', '/%lang%/blog', $permastruct );
+	} else {
+		$permastruct = preg_replace(
+			'#^/#', '/%lang%/', $permastruct );
+	}
 
 	$extra = bogo_generate_rewrite_rules( $permastruct, array(
 		'ep_mask' => EP_PERMALINK,
