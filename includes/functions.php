@@ -129,6 +129,51 @@ function bogo_get_language( $locale ) {
 	return null;
 }
 
+function bogo_get_flag( $locale ) {
+	$dir = '/images/flag-icons';
+	$file = '';
+
+	$special_cases = array(
+		'ca' => 'catalonia',
+		'gd' => 'scotland',
+		'cy' => 'wales',
+		'am' => 'et',
+		'az' => 'az',
+		'bs' => 'ba',
+		'el' => 'gr',
+		'et' => 'ee',
+		'fi' => 'fi',
+		'ga' => 'ie',
+		'hr' => 'hr',
+		'ht' => 'ht',
+		'hy' => 'am',
+		'ja' => 'jp',
+		'kk' => 'kz',
+		'lo' => 'la',
+		'lv' => 'lv',
+		'mn' => 'mn',
+		'sq' => 'al',
+		'tg' => 'tj',
+		'th' => 'th',
+		'tl' => 'ph',
+		'uk' => 'ua',
+		'vi' => 'vn' );
+
+	if ( isset( $special_cases[$locale] ) ) {
+		$file = $special_cases[$locale] . '.png';
+	} elseif ( preg_match( '/_([A-Z]{2})$/', $locale, $matches ) ) {
+		$file = strtolower( $matches[1] ) . '.png';
+	}
+
+	$url = '';
+
+	if ( $file && file_exists( path_join( BOGO_PLUGIN_DIR . $dir, $file ) ) ) {
+		$url = path_join( BOGO_PLUGIN_URL . $dir, $file );
+	}
+
+	return apply_filters( 'bogo_get_flag', $url, $locale );
+}
+
 function bogo_get_default_locale() {
 	if ( defined( 'WPLANG' ) )
 		$locale = WPLANG;
