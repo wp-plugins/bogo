@@ -104,16 +104,15 @@ msgstr "ベンガル語"
 
 #: bogo/includes/functions.php:20
 msgid "Indian Bengali"
-msgstr "インドのベンガル語"
+msgstr "ベンガル語 (インド)"
 
 #: bogo/includes/functions.php:21
 msgid "Tibetan"
 msgstr "チベット語"
 
 #: bogo/includes/functions.php:22
-#, fuzzy
 msgid "Bosnian"
-msgstr "エストニア語"
+msgstr "ボスニア語"
 
 #: bogo/includes/functions.php:23
 msgid "Catalan"
@@ -156,14 +155,12 @@ msgid "English"
 msgstr "英語"
 
 #: bogo/includes/functions.php:33
-#, fuzzy
 msgid "Australian English"
-msgstr "英語 (英国)"
+msgstr "英語 (オーストラリア)"
 
 #: bogo/includes/functions.php:34
-#, fuzzy
 msgid "Canadian English"
-msgstr "英語"
+msgstr "英語 (カナダ)"
 
 #: bogo/includes/functions.php:35
 msgid "British English"
@@ -178,23 +175,20 @@ msgid "Spanish"
 msgstr "スペイン語"
 
 #: bogo/includes/functions.php:38
-#, fuzzy
 msgid "Chilean Spanish"
-msgstr "スペイン語"
+msgstr "スペイン語 (チリ)"
 
 #: bogo/includes/functions.php:39
-#, fuzzy
 msgid "Mexican Spanish"
-msgstr "スペイン語"
+msgstr "スペイン語 (メキシコ)"
 
 #: bogo/includes/functions.php:40
-#, fuzzy
 msgid "Peruvian Spanish"
-msgstr "スペイン語"
+msgstr "スペイン語 (ペルー)"
 
 #: bogo/includes/functions.php:41
 msgid "Venezuelan Spanish"
-msgstr "ベネズエラのスペイン語"
+msgstr "スペイン語 (ベネズエラ)"
 
 #: bogo/includes/functions.php:42
 msgid "Estonian"
@@ -221,9 +215,8 @@ msgid "French"
 msgstr "フランス語"
 
 #: bogo/includes/functions.php:48
-#, fuzzy
 msgid "Frisian"
-msgstr "ペルシア語"
+msgstr "フリジア語"
 
 #: bogo/includes/functions.php:49
 msgid "Irish"
@@ -231,7 +224,7 @@ msgstr "アイルランド語"
 
 #: bogo/includes/functions.php:50
 msgid "Scottish Gaelic"
-msgstr "スコットランドのゲール語"
+msgstr "ゲール語 (スコットランド)"
 
 #: bogo/includes/functions.php:51
 msgid "Galician"
@@ -262,9 +255,8 @@ msgid "Hungarian"
 msgstr "ハンガリー語"
 
 #: bogo/includes/functions.php:58
-#, fuzzy
 msgid "Armenian"
-msgstr "ルーマニア語"
+msgstr "アルメニア語"
 
 #: bogo/includes/functions.php:59
 msgid "Indonesian"
@@ -283,9 +275,8 @@ msgid "Japanese"
 msgstr "日本語"
 
 #: bogo/includes/functions.php:63
-#, fuzzy
 msgid "Javanese"
-msgstr "日本語"
+msgstr "ジャワ語"
 
 #: bogo/includes/functions.php:64
 msgid "Georgian"
@@ -332,9 +323,8 @@ msgid "Macedonian"
 msgstr "マケドニア語"
 
 #: bogo/includes/functions.php:75
-#, fuzzy
 msgid "Malayalam"
-msgstr "マレー語"
+msgstr "マラヤーラム語"
 
 #: bogo/includes/functions.php:76
 msgid "Mongolian"
@@ -386,7 +376,7 @@ msgstr "ポーランド語"
 
 #: bogo/includes/functions.php:88
 msgid "Brazilian Portuguese"
-msgstr "ブラジルのポルトガル語"
+msgstr "ポルトガル語 (ブラジル)"
 
 #: bogo/includes/functions.php:89
 msgid "Portuguese"
