@@ -260,4 +260,43 @@ function bogo_language_switcher( $args = '' ) {
 	}
 }
 
+add_filter( 'get_previous_post_join', 'bogo_adjacent_post_join', 10, 3 );
+add_filter( 'get_next_post_join', 'bogo_adjacent_post_join', 10, 3 );
+
+function bogo_adjacent_post_join( $join, $in_same_term, $excluded_terms ) {
+	global $wpdb;
+
+	$post = get_post();
+
+	if ( $post && bogo_is_localizable_post_type( get_post_type( $post ) ) ) {
+		$join .= " LEFT JOIN $wpdb->postmeta AS postmeta_bogo ON (p.ID = postmeta_bogo.post_id AND postmeta_bogo.meta_key = '_locale')";
+	}
+
+	return $join;
+}
+
+add_filter( 'get_previous_post_where', 'bogo_adjacent_post_where', 10, 3 );
+add_filter( 'get_next_post_where', 'bogo_adjacent_post_where', 10, 3 );
+
+function bogo_adjacent_post_where( $where, $in_same_term, $excluded_terms ) {
+	global $wpdb;
+
+	$post = get_post();
+
+	if ( $post && bogo_is_localizable_post_type( get_post_type( $post ) ) ) {
+		$locale = bogo_get_post_locale( $post->ID );
+
+		$where .= " AND (1=0";
+		$where .= $wpdb->prepare( " OR postmeta_bogo.meta_value LIKE %s", $locale );
+
+		if ( bogo_is_default_locale( $locale ) ) {
+			$where .= " OR postmeta_bogo.meta_id IS NULL";
+		}
+
+		$where .= ")";
+	}
+
+	return $where;
+}
+
 ?>
