@@ -29,17 +29,13 @@ Version: 2.2
 
 define( 'BOGO_VERSION', '2.2' );
 
-if ( ! defined( 'BOGO_PLUGIN_BASENAME' ) )
-	define( 'BOGO_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'BOGO_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
-if ( ! defined( 'BOGO_PLUGIN_NAME' ) )
-	define( 'BOGO_PLUGIN_NAME', trim( dirname( BOGO_PLUGIN_BASENAME ), '/' ) );
+define( 'BOGO_PLUGIN_NAME', trim( dirname( BOGO_PLUGIN_BASENAME ), '/' ) );
 
-if ( ! defined( 'BOGO_PLUGIN_DIR' ) )
-	define( 'BOGO_PLUGIN_DIR', untrailingslashit( dirname( __FILE__ ) ) );
+define( 'BOGO_PLUGIN_DIR', untrailingslashit( dirname( __FILE__ ) ) );
 
-if ( ! defined( 'BOGO_PLUGIN_URL' ) )
-	define( 'BOGO_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) ) );
+define( 'BOGO_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) ) );
 
 require_once BOGO_PLUGIN_DIR . '/includes/functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/rewrite.php';
