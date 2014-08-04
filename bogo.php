@@ -28,6 +28,7 @@ require_once BOGO_PLUGIN_DIR . '/includes/widgets.php';
 require_once BOGO_PLUGIN_DIR . '/includes/post.php';
 require_once BOGO_PLUGIN_DIR . '/includes/user.php';
 require_once BOGO_PLUGIN_DIR . '/includes/query.php';
+require_once BOGO_PLUGIN_DIR . '/includes/flags.php';
 
 if ( is_admin() ) {
 	require_once BOGO_PLUGIN_DIR . '/admin/admin.php';
