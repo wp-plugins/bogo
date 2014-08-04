@@ -129,6 +129,37 @@ function bogo_get_language( $locale ) {
 	return null;
 }
 
+add_action( 'wp_head', 'bogo_flag_css' );
+
+function bogo_flag_css() {
+	$flags = array();
+
+	if ( apply_filters( 'bogo_use_flags', true ) ) {
+		$locales = array_keys( bogo_available_languages() );
+
+		foreach ( $locales as $locale ) {
+			if ( $flag = bogo_get_flag( $locale ) ) {
+				$flags[$locale] = $flag;
+			}
+		}
+	}
+
+	if ( ! $flags ) {
+		return;
+	}
+
+	echo '<style type="text/css">' . "\n";
+
+	foreach ( $flags as $locale => $flag ) {
+		echo '.language-switcher .' . bogo_language_tag( $locale ) . ' {' . "\n";
+		echo '	background: url("' . $flag . '") no-repeat left center;' . "\n";
+		echo '	padding-left: 20px;' . "\n";
+		echo '}' . "\n";
+	}
+
+	echo '</style>' . "\n";
+}
+
 function bogo_get_flag( $locale ) {
 	$dir = '/images/flag-icons';
 	$file = '';
