@@ -207,7 +207,7 @@ function bogo_language_switcher( $args = '' ) {
 		$is_singular = true;
 	}
 
-	$output = '<ul class="language-switcher">';
+	$output = '<ul class="bogo-language-switcher">';
 
 	$total = count( $available_languages );
 	$count = 0;

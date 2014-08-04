@@ -19,13 +19,14 @@ function bogo_flag_css() {
 		return;
 	}
 
+	$side = is_rtl() ? 'right' : 'left';
+
 	echo '<style type="text/css">' . "\n";
 
 	foreach ( $flags as $locale => $flag ) {
-		echo '.language-switcher .' . bogo_language_tag( $locale ) . ' {' . "\n";
-		echo '	background: url("' . $flag . '") no-repeat left center;' . "\n";
-		echo '	padding-left: 20px;' . "\n";
-		echo '}' . "\n";
+		echo '.bogo-language-switcher .' . bogo_language_tag( $locale ) . ' {';
+		echo ' background: url("' . $flag . '") no-repeat ' . $side . ' center;';
+		echo ' }' . "\n";
 	}
 
 	echo '</style>' . "\n";

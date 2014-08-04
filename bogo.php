@@ -111,4 +111,18 @@ function bogo_query_vars( $query_vars ) {
 
 add_shortcode( 'bogo', 'bogo_language_switcher' );
 
+add_action( 'wp_enqueue_scripts', 'bogo_enqueue_scripts' );
+
+function bogo_enqueue_scripts() {
+	wp_enqueue_style( 'bogo',
+		plugins_url( 'includes/css/style.css', BOGO_PLUGIN_BASENAME ),
+		array(), BOGO_VERSION, 'all' );
+
+	if ( is_rtl() ) {
+		wp_enqueue_style( 'bogo-rtl',
+			plugins_url( 'includes/css/style-rtl.css', BOGO_PLUGIN_BASENAME ),
+			array(), BOGO_VERSION, 'all' );
+	}
+}
+
 ?>
