@@ -4,6 +4,12 @@ fieldset.bogo-locale-options {
 	border: 1px solid #dfdfdf;
 }
 
+#your-profile fieldset.bogo-locale-options {
+	margin: 0;
+	padding: 4px 0 0;
+	border: none;
+}
+
 .widget-content fieldset.bogo-locale-options {
 	margin-right: 0;
 }
