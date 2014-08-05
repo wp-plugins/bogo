@@ -9,8 +9,7 @@ function bogo_update_user_option( $user_id ) {
 
 		if ( isset( $_POST['bogo_accessible_locales'] ) ) {
 			$locales = (array) $_POST['bogo_accessible_locales'];
-			$locales = array_intersect( $locales,
-				array_keys( bogo_available_languages() ) );
+			$locales = bogo_filter_locales( $locales );
 
 			foreach ( $locales as $locale ) {
 				add_user_meta( $user_id, 'accessible_locale', $locale );
@@ -61,8 +60,7 @@ function bogo_set_accessible_locales( $profileuser ) {
 	if ( empty( $accessible_locales ) ) {
 		$accessible_locales = array_keys( $available_languages );
 	} else {
-		$accessible_locales = array_intersect( $accessible_locales,
-			array_keys( $available_languages ) );
+		$accessible_locales = bogo_filter_locales( $accessible_locales );
 	}
 
 ?>

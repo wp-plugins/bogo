@@ -202,6 +202,10 @@ function bogo_is_available_locale( $locale ) {
 	return ! empty( $locale ) && array_key_exists( $locale, (array) bogo_available_languages() );
 }
 
+function bogo_filter_locales( $locales, $filter = 'available' ) {
+	return array_intersect( $locales, array_keys( bogo_available_languages() ) );
+}
+
 function bogo_language_tag( $locale ) {
 	// http://www.ietf.org/rfc/bcp/bcp47.txt
 	$tag = preg_replace( '/[^0-9a-zA-Z]+/', '-', $locale );
