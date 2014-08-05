@@ -22,11 +22,11 @@ function bogo_update_user_option( $user_id ) {
 		}
 	}
 
-	if ( isset( $_POST['own_locale'] ) ) {
-		$locale = trim( $_POST['own_locale'] );
+	if ( isset( $_POST['bogo_own_locale'] ) ) {
+		$locale = trim( $_POST['bogo_own_locale'] );
 
 		if ( bogo_is_available_locale( $locale ) ) {
-			update_user_option( $user_id, 'locale', $locale, true );
+			update_user_meta( $user_id, 'locale', $locale );
 		}
 	}
 }
@@ -88,7 +88,7 @@ function bogo_select_own_locale( $profileuser ) {
 	$selected = bogo_get_user_locale( $profileuser->ID );
 
 ?>
-<select name="own_locale">
+<select name="bogo_own_locale">
 <?php foreach ( $available_languages as $locale => $lang ) : ?>
 <option value="<?php echo esc_attr( $locale ); ?>" <?php selected( $locale, $selected ); ?>><?php echo esc_html( $lang ); ?></option>
 <?php endforeach; ?>
