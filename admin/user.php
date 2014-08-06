@@ -4,20 +4,24 @@ add_action( 'personal_options_update', 'bogo_update_user_option' );
 add_action( 'edit_user_profile_update', 'bogo_update_user_option' );
 
 function bogo_update_user_option( $user_id ) {
+	global $wpdb;
+
+	$meta_key = $wpdb->get_blog_prefix() . 'accessible_locale';
+
 	if ( ! empty( $_POST['setting_bogo_accessible_locales'] ) ) {
-		delete_user_meta( $user_id, 'accessible_locale' );
+		delete_user_meta( $user_id, $meta_key );
 
 		if ( isset( $_POST['bogo_accessible_locales'] ) ) {
 			$locales = (array) $_POST['bogo_accessible_locales'];
 			$locales = bogo_filter_locales( $locales );
 
 			foreach ( $locales as $locale ) {
-				add_user_meta( $user_id, 'accessible_locale', $locale );
+				add_user_meta( $user_id, $meta_key, $locale );
 			}
 		}
 
-		if ( ! metadata_exists( 'user', $user_id, 'accessible_locale' ) ) {
-			add_user_meta( $user_id, 'accessible_locale', 'zxx' );
+		if ( ! metadata_exists( 'user', $user_id, $meta_key ) ) {
+			add_user_meta( $user_id, $meta_key, 'zxx' );
 			// zxx is a special code in ISO 639-2
 		}
 	}
@@ -55,7 +59,7 @@ function bogo_set_locale_options( $profileuser ) {
 
 function bogo_set_accessible_locales( $profileuser ) {
 	$available_languages = bogo_available_languages( 'orderby=value' );
-	$accessible_locales = get_user_meta( $profileuser->ID, 'accessible_locale' );
+	$accessible_locales = bogo_get_user_accessible_locales( $profileuser->ID );
 
 	if ( empty( $accessible_locales ) ) {
 		$accessible_locales = array_keys( $available_languages );
