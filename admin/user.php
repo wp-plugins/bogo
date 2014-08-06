@@ -30,7 +30,7 @@ function bogo_update_user_option( $user_id ) {
 		$locale = trim( $_POST['bogo_own_locale'] );
 
 		if ( bogo_is_available_locale( $locale ) ) {
-			update_user_meta( $user_id, 'locale', $locale );
+			update_user_option( $user_id, 'locale', $locale, true );
 		}
 	}
 }

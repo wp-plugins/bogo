@@ -59,12 +59,31 @@ function bogo_switch_user_locale() {
 }
 
 function bogo_get_user_locale( $user_id = 0 ) {
+	if ( ! $user_id = absint( $user_id ) ) {
+		$user_id = get_current_user_id();
+	}
+
 	$locale = get_user_option( 'locale', $user_id );
 
-	if ( empty( $locale ) )
-		$locale = bogo_get_default_locale();
+	if ( user_can( $user_id, 'bogo_access_locale', $locale ) ) {
+		return $locale;
+	}
 
-	return $locale;
+	$default_locale = bogo_get_default_locale();
+
+	if ( user_can( $user_id, 'bogo_access_locale', $default_locale ) ) {
+		return $default_locale;
+	}
+
+	$available_locales = array_keys( bogo_available_languages() );
+
+	foreach ( $available_locales as $locale ) {
+		if ( user_can( $user_id, 'bogo_access_locale', $locale ) ) {
+			return $locale;
+		}
+	}
+
+	return $default_locale;
 }
 
 function bogo_get_user_accessible_locales( $user_id ) {
