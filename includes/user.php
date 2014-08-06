@@ -75,9 +75,7 @@ function bogo_get_user_locale( $user_id = 0 ) {
 		return $default_locale;
 	}
 
-	$available_locales = array_keys( bogo_available_languages() );
-
-	foreach ( $available_locales as $locale ) {
+	foreach ( (array) bogo_available_locales() as $locale ) {
 		if ( user_can( $user_id, 'bogo_access_locale', $locale ) ) {
 			return $locale;
 		}

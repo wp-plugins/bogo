@@ -153,22 +153,20 @@ function bogo_is_default_locale( $locale ) {
 	return ! empty( $locale ) && $locale == bogo_get_default_locale();
 }
 
-function bogo_available_languages( $args = '' ) {
+function bogo_available_locales( $args = '' ) {
 	$defaults = array(
 		'exclude' => array(),
-		'orderby' => 'key',
-		'order' => 'ASC',
 		'current_user_can_access' => false );
 
 	$args = wp_parse_args( $args, $defaults );
-
-	$langs = array();
 
 	$installed_locales = get_available_languages();
 	$installed_locales[] = bogo_get_default_locale();
 	$installed_locales[] = 'en_US';
 	$installed_locales = array_unique( $installed_locales );
 	$installed_locales = array_filter( $installed_locales );
+
+	$available_locales = array();
 
 	foreach ( $installed_locales as $locale ) {
 		if ( in_array( $locale, (array) $args['exclude'] ) ) {
@@ -180,24 +178,42 @@ function bogo_available_languages( $args = '' ) {
 			continue;
 		}
 
+		$available_locales[] = $locale;
+	}
+
+	return $available_locales;
+}
+
+function bogo_available_languages( $args = '' ) {
+	$defaults = array(
+		'exclude' => array(),
+		'orderby' => 'key',
+		'order' => 'ASC',
+		'current_user_can_access' => false );
+
+	$args = wp_parse_args( $args, $defaults );
+
+	$langs = array();
+
+	$available_locales = bogo_available_locales( $args );
+
+	foreach ( $available_locales as $locale ) {
 		$lang = bogo_get_language( $locale );
-
-		if ( empty( $lang ) )
-			$lang = "[$locale]";
-
-		$langs[$locale] = $lang;
+		$langs[$locale] = empty( $lang ) ? "[$locale]" : $lang;
 	}
 
 	if ( 'value' == $args['orderby'] ) {
 		natcasesort( $langs );
 
-		if ( 'DESC' == $args['order'] )
+		if ( 'DESC' == $args['order'] ) {
 			$langs = array_reverse( $langs );
+		}
 	} else {
-		if ( 'DESC' == $args['order'] )
+		if ( 'DESC' == $args['order'] ) {
 			krsort( $langs );
-		else
+		} else {
 			ksort( $langs );
+		}
 	}
 
 	$langs = apply_filters( 'bogo_available_languages', $langs, $args );
@@ -206,11 +222,11 @@ function bogo_available_languages( $args = '' ) {
 }
 
 function bogo_is_available_locale( $locale ) {
-	return ! empty( $locale ) && array_key_exists( $locale, (array) bogo_available_languages() );
+	return ! empty( $locale ) && in_array( $locale, bogo_available_locales() );
 }
 
 function bogo_filter_locales( $locales, $filter = 'available' ) {
-	return array_intersect( $locales, array_keys( bogo_available_languages() ) );
+	return array_intersect( $locales, bogo_available_locales() );
 }
 
 function bogo_language_tag( $locale ) {
@@ -228,7 +244,7 @@ function bogo_lang_slug( $locale ) {
 	if ( false !== $pos = strpos( $tag, '-' ) )
 		$slug = substr( $tag, 0, $pos );
 
-	$variations = preg_grep( '/^' . $slug . '/', array_keys( bogo_available_languages() ) );
+	$variations = preg_grep( '/^' . $slug . '/', bogo_available_locales() );
 
 	if ( 1 < count( $variations ) )
 		$slug = $tag;
@@ -237,8 +253,7 @@ function bogo_lang_slug( $locale ) {
 }
 
 function bogo_get_lang_regex() {
-	$langs = array_keys( bogo_available_languages() );
-	$langs = array_map( 'bogo_lang_slug', $langs );
+	$langs = array_map( 'bogo_lang_slug', bogo_available_locales() );
 	$langs = array_filter( $langs );
 
 	if ( empty( $langs ) )
@@ -256,7 +271,7 @@ function bogo_get_closest_locale( $var ) {
 	$language_code = $matches[1];
 	$region_code = isset( $matches[2] ) ? $matches[2] : '';
 
-	$locales = array_keys( bogo_available_languages() );
+	$locales = bogo_available_locales();
 
 	if ( $region_code ) {
 		$locale = $language_code . '_' . strtoupper( $region_code );
@@ -358,8 +373,7 @@ function bogo_get_url_with_lang( $url = null, $lang = null, $args = '' ) {
 		return $url;
 	}
 
-	$available_languages = array_keys( bogo_available_languages() );
-	$available_languages = array_map( 'bogo_lang_slug', $available_languages );
+	$available_languages = array_map( 'bogo_lang_slug', bogo_available_locales() );
 
 	$url = preg_replace(
 		'#^' . preg_quote( $home ) . '((' . implode( '|', $available_languages ) . ')/)?#',
@@ -382,8 +396,7 @@ function bogo_get_lang_from_url( $url = '' ) {
 	$home = set_url_scheme( get_option( 'home' ) );
 	$home = trailingslashit( $home );
 
-	$available_languages = array_keys( bogo_available_languages() );
-	$available_languages = array_map( 'bogo_lang_slug', $available_languages );
+	$available_languages = array_map( 'bogo_lang_slug', bogo_available_locales() );
 
 	$regex = '#^' . preg_quote( $home ) . '(' . implode( '|', $available_languages ) . ')/#';
 

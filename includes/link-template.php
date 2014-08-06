@@ -147,7 +147,6 @@ add_action( 'wp_head', 'bogo_m17n_headers' );
 
 function bogo_m17n_headers() {
 	$languages = array();
-	$locale = get_locale();
 
 	if ( is_singular() ) {
 		if ( ! $post_id = get_queried_object_id() ) {
@@ -158,6 +157,7 @@ function bogo_m17n_headers() {
 			return;
 		}
 
+		$locale = get_locale();
 		$translations[$locale] = get_post( $post_id );
 
 		foreach ( $translations as $lang => $translation ) {
@@ -167,24 +167,26 @@ function bogo_m17n_headers() {
 		}
 
 	} else {
-		$available_languages = bogo_available_languages();
+		$available_locales = bogo_available_locales();
 
-		if ( count( $available_languages ) < 2 ) {
+		if ( count( $available_locales ) < 2 ) {
 			return;
 		}
 
-		foreach ( array_keys( $available_languages ) as $lang ) {
+		foreach ( $available_locales as $locale ) {
 			$languages[] = array(
-				'hreflang' => bogo_language_tag( $lang ),
-				'href' => bogo_url( null, $lang ) );
+				'hreflang' => bogo_language_tag( $locale ),
+				'href' => bogo_url( null, $locale ) );
 		}
 	}
 
-	if ( ! $languages )
+	if ( ! $languages ) {
 		return;
+	}
 
-	foreach ( $languages as $language )
+	foreach ( $languages as $language ) {
 		echo '<link rel="alternate" hreflang="' . esc_attr( $language['hreflang'] ) . '" href="' . esc_url( $language['href'] ) . '" />' . "\n";
+	}
 }
 
 function bogo_language_switcher( $args = '' ) {

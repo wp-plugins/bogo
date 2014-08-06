@@ -34,7 +34,7 @@ function bogo_setup_nav_menu_item( $menu_item ) {
 	if ( $menu_item->bogo_locales ) {
 		$menu_item->bogo_locales = bogo_filter_locales( $menu_item->bogo_locales );
 	} else {
-		$menu_item->bogo_locales = array_keys( bogo_available_languages() );
+		$menu_item->bogo_locales = bogo_available_locales();
 	}
 
 	return $menu_item;

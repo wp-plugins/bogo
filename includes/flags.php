@@ -6,7 +6,7 @@ function bogo_flag_css() {
 	$flags = array();
 
 	if ( apply_filters( 'bogo_use_flags', true ) ) {
-		$locales = array_keys( bogo_available_languages() );
+		$locales = bogo_available_locales();
 
 		foreach ( $locales as $locale ) {
 			if ( $flag = bogo_get_flag( $locale ) ) {
