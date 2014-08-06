@@ -66,9 +66,10 @@ function bogo_get_user_locale( $user_id = 0 ) {
 	return $locale;
 }
 
-function bogo_get_user_accessible_locales( $user_id = 0 ) {
+function bogo_get_user_accessible_locales( $user_id ) {
 	global $wpdb;
 
+	$user_id = absint( $user_id );
 	$meta_key = $wpdb->get_blog_prefix() . 'accessible_locale';
 
 	return get_user_meta( $user_id, $meta_key );

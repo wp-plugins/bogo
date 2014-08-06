@@ -157,7 +157,8 @@ function bogo_available_languages( $args = '' ) {
 	$defaults = array(
 		'exclude' => array(),
 		'orderby' => 'key',
-		'order' => 'ASC' );
+		'order' => 'ASC',
+		'current_user_can_access' => false );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -170,8 +171,14 @@ function bogo_available_languages( $args = '' ) {
 	$installed_locales = array_filter( $installed_locales );
 
 	foreach ( $installed_locales as $locale ) {
-		if ( in_array( $locale, (array) $args['exclude'] ) )
+		if ( in_array( $locale, (array) $args['exclude'] ) ) {
 			continue;
+		}
+
+		if ( $args['current_user_can_access']
+		&& ! current_user_can( 'bogo_access_locale', $locale ) ) {
+			continue;
+		}
 
 		$lang = bogo_get_language( $locale );
 
