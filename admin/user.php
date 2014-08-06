@@ -88,7 +88,10 @@ function bogo_set_accessible_locales( $profileuser ) {
 }
 
 function bogo_select_own_locale( $profileuser ) {
-	$available_languages = bogo_available_languages( 'orderby=value' );
+	$available_languages = bogo_available_languages( array(
+		'orderby' => 'value',
+		'current_user_can_access' => true ) );
+
 	$selected = bogo_get_user_locale( $profileuser->ID );
 
 ?>

@@ -16,8 +16,9 @@ function bogo_admin_bar_menu( $wp_admin_bar ) {
 		'id' => 'bogo-user-locale',
 		'title' => '&#10004; ' . $current_language ) );
 
-	$available_languages = bogo_available_languages(
-		array( 'exclude' => array( $current_locale ) ) );
+	$available_languages = bogo_available_languages( array(
+		'exclude' => array( $current_locale ),
+		'current_user_can_access' => true ) );
 
 	foreach ( $available_languages as $locale => $lang ) {
 		$url = admin_url( 'profile.php?action=bogo-switch-locale&locale=' . $locale );
