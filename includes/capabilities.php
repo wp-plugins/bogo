@@ -1,30 +1,35 @@
 <?php
 
-add_filter( 'user_has_cap', 'bogo_user_has_cap', 10, 4 );
+add_filter( 'map_meta_cap', 'bogo_map_meta_cap', 10, 4 );
 
-function bogo_user_has_cap( $capabilities, $caps_in_question, $args, $user ) {
-	if ( in_array( 'bogo_access_locale', $caps_in_question ) ) {
+function bogo_map_meta_cap( $caps, $cap, $user_id, $args ) {
+	$meta_caps = array(
+		'bogo_access_all_locales' => 'manage_options',
+		'bogo_access_locale' => 'read' );
 
-		if ( ! empty( $capabilities['manage_options'] ) ) {
-			$capabilities['bogo_access_locale'] = true;
-			return $capabilities;
-		}
+	$meta_caps = apply_filters( 'bogo_map_meta_cap', $meta_caps );
 
-		$locale = $args[2];
-		$accessible_locales = get_user_meta( $user->ID, 'accessible_locale' );
+	$caps = array_diff( $caps, array_keys( $meta_caps ) );
 
-		if ( empty( $accessible_locales ) ) {
-			$capabilities['bogo_access_locale'] = true;
-		} else {
+	if ( isset( $meta_caps[$cap] ) ) {
+		$caps[] = $meta_caps[$cap];
+	}
+
+	if ( 'bogo_access_locale' == $cap
+	&& ! user_can( $user_id, 'bogo_access_all_locales' ) ) {
+		$accessible_locales = get_user_meta( $user_id, 'accessible_locale' );
+
+		if ( ! empty( $accessible_locales ) ) {
 			$accessible_locales = bogo_filter_locales( $accessible_locales );
+			$locale = $args[0];
 
-			if ( in_array( $locale, $accessible_locales ) ) {
-				$capabilities['bogo_access_locale'] = true;
+			if ( ! in_array( $locale, $accessible_locales ) ) {
+				$caps[] = 'do_not_allow';
 			}
 		}
 	}
 
-	return $capabilities;
+	return $caps;
 }
 
 ?>
