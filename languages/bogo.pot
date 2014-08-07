@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bogo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-03 22:19+0900\n"
+"POT-Creation-Date: 2014-08-08 01:43+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
 "Language-Team: \n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Displayed on pages in"
 msgstr ""
 
-#: bogo/admin/post.php:20 bogo/admin/user.php:26
+#: bogo/admin/post.php:20 bogo/admin/user.php:66 bogo/admin/user.php:101
 msgid "Locale"
 msgstr ""
 
@@ -63,6 +63,10 @@ msgstr ""
 #: bogo/admin/post.php:251
 #, php-format
 msgid "Add %s translation"
+msgstr ""
+
+#: bogo/admin/user.php:69
+msgid "This user is allowed to access the following locales:"
 msgstr ""
 
 #: bogo/includes/functions.php:11
