@@ -7,10 +7,10 @@ Author: Takayuki Miyoshi
 Author URI: http://ideasilo.wordpress.com/
 Text Domain: bogo
 Domain Path: /languages/
-Version: 2.2
+Version: 2.3
 */
 
-define( 'BOGO_VERSION', '2.2' );
+define( 'BOGO_VERSION', '2.3' );
 
 define( 'BOGO_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
