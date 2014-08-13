@@ -149,43 +149,42 @@ function bogo_m17n_headers() {
 	$languages = array();
 
 	if ( is_singular() ) {
-		if ( ! $post_id = get_queried_object_id() ) {
-			return;
+		$post_id = get_queried_object_id();
+
+		if ( $post_id && $translations = bogo_get_post_translations( $post_id ) ) {
+			$locale = get_locale();
+			$translations[$locale] = get_post( $post_id );
+
+			foreach ( $translations as $lang => $translation ) {
+				$languages[] = array(
+					'hreflang' => bogo_language_tag( $lang ),
+					'href' => get_permalink( $translation ) );
+			}
 		}
-
-		if ( ! $translations = bogo_get_post_translations( $post_id ) ) {
-			return;
-		}
-
-		$locale = get_locale();
-		$translations[$locale] = get_post( $post_id );
-
-		foreach ( $translations as $lang => $translation ) {
-			$languages[] = array(
-				'hreflang' => bogo_language_tag( $lang ),
-				'href' => get_permalink( $translation ) );
-		}
-
 	} else {
 		$available_locales = bogo_available_locales();
 
-		if ( count( $available_locales ) < 2 ) {
-			return;
-		}
-
-		foreach ( $available_locales as $locale ) {
-			$languages[] = array(
-				'hreflang' => bogo_language_tag( $locale ),
-				'href' => bogo_url( null, $locale ) );
+		if ( 1 < count( $available_locales ) ) {
+			foreach ( $available_locales as $locale ) {
+				$languages[] = array(
+					'hreflang' => bogo_language_tag( $locale ),
+					'href' => bogo_url( null, $locale ) );
+			}
 		}
 	}
 
-	if ( ! $languages ) {
-		return;
-	}
+	$languages = apply_filters( 'bogo_rel_alternate_hreflang', $languages );
 
-	foreach ( $languages as $language ) {
-		echo '<link rel="alternate" hreflang="' . esc_attr( $language['hreflang'] ) . '" href="' . esc_url( $language['href'] ) . '" />' . "\n";
+	foreach ( (array) $languages as $language ) {
+		$hreflang = isset( $language['hreflang'] ) ? $language['hreflang'] : '';
+		$href = isset( $language['href'] ) ? $language['href'] : '';
+
+		if ( $hreflang && $href ) {
+			$link = sprintf( '<link rel="alternate" hreflang="%1$s" href="%2$s" />',
+				esc_attr( $hreflang ), esc_url( $href ) );
+
+			echo $link . "\n";
+		}
 	}
 }
 
