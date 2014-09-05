@@ -130,19 +130,30 @@ function bogo_get_language( $locale ) {
 }
 
 function bogo_get_default_locale() {
-	if ( defined( 'WPLANG' ) )
+	if ( defined( 'WPLANG' ) ) {
 		$locale = WPLANG;
-
-	if ( is_multisite() ) {
-		if ( defined( 'WP_INSTALLING' ) || ( false === $ms_locale = get_option( 'WPLANG' ) ) )
-			$ms_locale = get_site_option( 'WPLANG' );
-
-		if ( $ms_locale !== false )
-			$locale = $ms_locale;
 	}
 
-	if ( empty( $locale ) )
+	if ( is_multisite() ) {
+		if ( defined( 'WP_INSTALLING' )
+		|| ( false === $ms_locale = get_option( 'WPLANG' ) ) ) {
+			$ms_locale = get_site_option( 'WPLANG' );
+		}
+
+		if ( $ms_locale !== false ) {
+			$locale = $ms_locale;
+		}
+	} else {
+		$db_locale = get_option( 'WPLANG' );
+
+		if ( $db_locale !== false ) {
+			$locale = $db_locale;
+		}
+	}
+
+	if ( empty( $locale ) ) {
 		$locale = 'en_US';
+	}
 
 	return $locale;
 }
