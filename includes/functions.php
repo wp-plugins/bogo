@@ -233,7 +233,17 @@ function bogo_available_languages( $args = '' ) {
 }
 
 function bogo_is_available_locale( $locale ) {
-	return ! empty( $locale ) && in_array( $locale, bogo_available_locales() );
+	if ( empty( $locale ) ) {
+		return false;
+	}
+
+	static $available_locales = array();
+
+	if ( empty( $available_locales ) ) {
+		$available_locales = bogo_available_locales();
+	}
+
+	return in_array( $locale, $available_locales );
 }
 
 function bogo_filter_locales( $locales, $filter = 'available' ) {
