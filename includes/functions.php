@@ -38,7 +38,7 @@ function bogo_languages() {
 		'es_CL' => __( 'Spanish (Chile)', 'bogo' ),
 		'es_MX' => __( 'Mexican Spanish', 'bogo' ),
 		'es_PE' => __( 'Spanish (Peru)', 'bogo' ),
-		'es_VE' => __( 'Venezuelan Spanish', 'bogo' ),
+		'es_VE' => __( 'Spanish (Venezuela)', 'bogo' ),
 		'et' => __( 'Estonian', 'bogo' ),
 		'eu' => __( 'Basque', 'bogo' ),
 		'fa_IR' => __( 'Persian', 'bogo' ),
