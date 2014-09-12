@@ -46,4 +46,97 @@ function bogo_admin_enqueue_scripts( $hook_suffix ) {
 	}
 }
 
+add_action( 'admin_menu', 'bogo_admin_menu' );
+
+function bogo_admin_menu() {
+	$tools = add_management_page(
+		__( 'Translations', 'bogo' ), __( 'Translations', 'bogo' ),
+		'update_core', 'bogo-tools', 'bogo_tools_page' );
+
+	add_action( 'load-' . $tools, 'bogo_load_tools_page' );
+}
+
+function bogo_load_tools_page() {
+	require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
+
+	$action = isset( $_GET['action'] ) ? $_GET['action'] : '';
+
+	if ( 'install_translation' == $action ) {
+		check_admin_referer( 'bogo-tools' );
+
+		if ( ! current_user_can( 'update_core' ) ) {
+			wp_die( __( 'You are not allowed to install translations.', 'bogo' ) );
+		}
+
+		$locale = isset( $_GET['locale'] ) ? $_GET['locale'] : null;
+
+		if ( wp_download_language_pack( $locale ) ) {
+			$redirect_to = add_query_arg(
+				array( 'locale' => $locale, 'message' => 'success' ),
+				menu_page_url( 'bogo-tools', false ) );
+		} else {
+			$redirect_to = add_query_arg(
+				array( 'locale' => $locale, 'message' => 'failed' ),
+				menu_page_url( 'bogo-tools', false ) );
+		}
+
+		wp_safe_redirect( $redirect_to );
+		exit();
+	}
+}
+
+function bogo_tools_page() {
+	$default_locale = bogo_get_default_locale();
+	$languages = array( $default_locale => bogo_get_language( $default_locale ) )
+		+ bogo_available_languages() + bogo_languages();
+	$can_install = wp_can_install_language_pack();
+	$available_translations = wp_get_available_translations();
+
+	$message = "";
+
+	if ( isset( $_GET['message'] ) ) {
+		if ( 'success' == $_GET['message'] ) {
+			$message = __( "Translation installed successfully.", 'bogo' );
+		} elseif ( 'failed' == $_GET['message'] ) {
+			$message = __( "Translation install failed.", 'bogo' );
+		}
+	}
+
+?>
+<div class="wrap">
+
+<h2><?php echo esc_html( __( 'Translations', 'bogo' ) ); ?></h2>
+
+<?php if ( ! empty( $message ) ) : ?>
+<div id="message" class="updated"><p><?php echo esc_html( $message ); ?></p></div>
+<?php endif; ?>
+
+<ul>
+<?php
+	foreach ( $languages as $locale => $language ) {
+		if ( bogo_is_available_locale( $locale ) ) {
+			echo sprintf( '<li><strong>%s</strong></li>', esc_html( $language ) );
+		} elseif ( ! $can_install ) {
+			echo sprintf( '<li>%s</li>', esc_html( $language ) );
+		} elseif ( isset( $available_translations[$locale] ) ) {
+			$install_link = menu_page_url( 'bogo-tools', false );
+			$install_link = add_query_arg(
+				array( 'action' => 'install_translation', 'locale' => $locale ),
+				$install_link );
+			$install_link = wp_nonce_url( $install_link, 'bogo-tools' );
+			$install_link = sprintf( '<a href="%1$s">%2$s</a>',
+				$install_link, __( 'Install', 'bogo' ) );
+
+			echo sprintf( '<li>%1$s %2$s</li>',
+				esc_html( $language ), $install_link );
+		} else {
+			echo sprintf( '<li>%s</li>', esc_html( $language ) );
+		}
+	}
+?>
+</ul>
+</div>
+<?php
+}
+
 ?>
