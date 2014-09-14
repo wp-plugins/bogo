@@ -115,6 +115,8 @@ function bogo_languages() {
 		'zh_TW' => __( 'Chinese (Taiwan)', 'bogo' )
 	);
 
+	asort( $languages, SORT_STRING );
+
 	$languages = apply_filters( 'bogo_languages', $languages );
 
 	return $languages;
