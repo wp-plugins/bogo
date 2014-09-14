@@ -1,10 +1,10 @@
 === Bogo ===
 Contributors: takayukister
 Tags: multilingual, localization, language, locale, admin
-Requires at least: 3.8
-Tested up to: 3.9.2
+Requires at least: 4.0
+Tested up to: 4.0
 Donate link: http://www.pledgie.com/campaigns/17860
-Stable tag: 2.3
+Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,14 +60,14 @@ Here are some technical details for those interested. Bogo plugin assigns [one l
 
 == Changelog ==
 
+= 2.4 =
+
+* Check WPLANG option value to evaluate default locale.
+* Add "Bogo Tools" page under Tools menu.
+
 = 2.3 =
 
 * Allow administrators to manage each user's accessible locale set.
 * Bundle famfamfam flag icons and use them in language switcher.
 * "Next" and "Prev" links are picked up from posts in the same locale.
 * Locale list has been updated.
-
-= 2.2 =
-
-* Support nav-menu locale settings.
-* Fix: Handle posts page localization properly.
