@@ -46,6 +46,18 @@ function bogo_admin_enqueue_scripts( $hook_suffix ) {
 
 		return;
 	}
+
+	if ( 'options-general.php' == $hook_suffix ) {
+		wp_enqueue_script( 'bogo-admin',
+			plugins_url( 'admin/includes/js/admin.js', BOGO_PLUGIN_BASENAME ),
+			array( 'jquery' ),
+			BOGO_VERSION, true );
+
+		wp_localize_script( 'bogo-admin', '_bogo', array(
+			'defaultLocale' => bogo_get_default_locale() ) );
+
+		return;
+	}
 }
 
 add_action( 'admin_menu', 'bogo_admin_menu' );

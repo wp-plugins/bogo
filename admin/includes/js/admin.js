@@ -2,11 +2,11 @@
 	_bogo = _bogo || {};
 
 	$(function() {
-		$('.menu-item').bogoAddLocaleSelector();
+		$('body.nav-menus-php .menu-item').bogoAddLocaleSelector();
 	});
 
 	$(document).ajaxSuccess(function(event, request, settings) {
-		$('.menu-item').bogoAddLocaleSelector();
+		$('body.nav-menus-php .menu-item').bogoAddLocaleSelector();
 	});
 
 	$.fn.bogoAddLocaleSelector = function() {
@@ -71,5 +71,15 @@
 	_bogo.langName = function(locale) {
 		return _bogo.availableLanguages[locale] || '';
 	}
+
+	$(function() {
+		$('body.options-general-php select#WPLANG').each(function() {
+			var default_locale = _bogo.defaultLocale || '';
+
+			if ($(this).has('option[value="' + default_locale + '"]')) {
+				$(this).val(default_locale);
+			}
+		});
+	});
 
 })(jQuery);
