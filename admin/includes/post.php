@@ -339,18 +339,21 @@ add_filter( 'wp_unique_post_slug', 'bogo_unique_post_slug', 10, 6 );
 function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent, $original ) {
 	global $wp_rewrite;
 
-	if ( ! bogo_is_localizable_post_type( $type ) )
+	if ( ! bogo_is_localizable_post_type( $type ) ) {
 		return $slug;
+	}
 
 	$feeds = is_array( $wp_rewrite->feeds ) ? $wp_rewrite->feeds : array();
 
-	if ( in_array( $original, $feeds ) )
+	if ( in_array( $original, $feeds ) ) {
 		return $slug;
+	}
 
-	$locale = get_post_meta( $post_id, '_locale', true );
+	$locale = bogo_get_post_locale( $post_id );
 
-	if ( empty( $locale ) )
+	if ( empty( $locale ) ) {
 		return $slug;
+	}
 
 	$args = array(
 		'posts_per_page' => 1,
@@ -362,8 +365,9 @@ function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent, $origi
 	$hierarchical = in_array( $type, get_post_types( array( 'hierarchical' => true ) ) );
 
 	if ( $hierarchical ) {
-		if ( preg_match( "@^($wp_rewrite->pagination_base)?\d+$@", $original ) )
+		if ( preg_match( "@^($wp_rewrite->pagination_base)?\d+$@", $original ) ) {
 			return $slug;
+		}
 
 		$args['post_parent'] = $parent;
 	}
@@ -371,8 +375,9 @@ function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent, $origi
 	$q = new WP_Query();
 	$posts = $q->query( $args );
 
-	if ( empty( $posts ) )
+	if ( empty( $posts ) ) {
 		$slug = $original;
+	}
 
 	return $slug;
 }
