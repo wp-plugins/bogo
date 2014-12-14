@@ -65,7 +65,8 @@ function bogo_get_user_locale( $user_id = 0 ) {
 
 	$locale = get_user_option( 'locale', $user_id );
 
-	if ( user_can( $user_id, 'bogo_access_locale', $locale ) ) {
+	if ( bogo_is_available_locale( $locale )
+	&& user_can( $user_id, 'bogo_access_locale', $locale ) ) {
 		return $locale;
 	}
 
