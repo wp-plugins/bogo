@@ -1,0 +1,395 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: bogo\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
+"Language-Team: Ahrale, Atar4U.com <contact@atar4u.com>\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: he_IL\n"
+"X-Generator: Poedit 1.7.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "Title:"
+msgstr "כותרת:"
+
+msgid "Language Switcher"
+msgstr "החלפת שפה"
+
+msgid "Language switcher widget by Bogo plugin"
+msgstr "וידג'ט החלפת שפה של תוסף Bogo"
+
+msgid "Chinese (Taiwan)"
+msgstr "Chinese (Taiwan)"
+
+msgid "Chinese (China)"
+msgstr "Chinese (China)"
+
+msgid "Vietnamese"
+msgstr "Vietnamese"
+
+msgid "Uzbek"
+msgstr "Uzbek"
+
+msgid "Urdu"
+msgstr "Urdu"
+
+msgid "Ukrainian"
+msgstr "Ukrainian"
+
+msgid "Uighur"
+msgstr "Uighur"
+
+msgid "Tatar"
+msgstr "Tatar"
+
+msgid "Turkish"
+msgstr "Turkish"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Thai"
+msgstr "Thai"
+
+msgid "Tajik"
+msgstr "Tajik"
+
+msgid "Telugu"
+msgstr "Telugu"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Swahili"
+msgstr "Swahili"
+
+msgid "Sundanese"
+msgstr "Sundanese"
+
+msgid "Swedish"
+msgstr "Swedish"
+
+msgid "Serbian"
+msgstr "Serbian"
+
+msgid "Albanian"
+msgstr "Albanian"
+
+msgid "Somali"
+msgstr "Somali"
+
+msgid "Slovenian"
+msgstr "Slovenian"
+
+msgid "Slovak"
+msgstr "Slovak"
+
+msgid "Sinhala"
+msgstr "Sinhala"
+
+msgid "Sanskrit"
+msgstr "Sanskrit"
+
+msgid "Russian"
+msgstr "Russian"
+
+msgid "Romanian"
+msgstr "Romanian"
+
+msgid "Portuguese (Portugal)"
+msgstr "Portuguese (Portugal)"
+
+msgid "Portuguese (Brazil)"
+msgstr "Portuguese (Brazil)"
+
+msgid "Polish"
+msgstr "Polish"
+
+msgid "Punjabi"
+msgstr "Punjabi"
+
+msgid "Ossetic"
+msgstr "Ossetic"
+
+msgid "Dutch"
+msgstr "Dutch"
+
+msgid "Nias"
+msgstr "Nias"
+
+msgid "Nepali"
+msgstr "Nepali"
+
+msgid "Norwegian (Bokmål)"
+msgstr "Norwegian (Bokmål)"
+
+msgid "Burmese"
+msgstr "Burmese"
+
+msgid "Maltese"
+msgstr "Maltese"
+
+msgid "Malay"
+msgstr "Malay"
+
+msgid "Marathi"
+msgstr "Marathi"
+
+msgid "Mongolian"
+msgstr "Mongolian"
+
+msgid "Malayalam"
+msgstr "Malayalam"
+
+msgid "Macedonian"
+msgstr "Macedonian"
+
+msgid "Malagasy"
+msgstr "Malagasy"
+
+msgid "Latvian"
+msgstr "Latvian"
+
+msgid "Lithuanian"
+msgstr "Lithuanian"
+
+msgid "Lao"
+msgstr "Lao"
+
+msgid "Limburgish"
+msgstr "Limburgish"
+
+msgid "Korean"
+msgstr "Korean"
+
+msgid "Kannada"
+msgstr "Kannada"
+
+msgid "Khmer"
+msgstr "Khmer"
+
+msgid "Kazakh"
+msgstr "Kazakh"
+
+msgid "Georgian"
+msgstr "Georgian"
+
+msgid "Javanese"
+msgstr "Javanese"
+
+msgid "Japanese"
+msgstr "Japanese"
+
+msgid "Italian"
+msgstr "Italian"
+
+msgid "Icelandic"
+msgstr "Icelandic"
+
+msgid "Indonesian"
+msgstr "Indonesian"
+
+msgid "Armenian"
+msgstr "Armenian"
+
+msgid "Hungarian"
+msgstr "Hungarian"
+
+msgid "Haitian"
+msgstr "Haitian"
+
+msgid "Croatian"
+msgstr "Croatian"
+
+msgid "Hindi"
+msgstr "Hindi"
+
+msgid "Hebrew"
+msgstr "עברית"
+
+msgid "Gujarati"
+msgstr "Gujarati"
+
+msgid "Galician"
+msgstr "Galician"
+
+msgid "Scottish Gaelic"
+msgstr "Scottish Gaelic"
+
+msgid "Irish"
+msgstr "Irish"
+
+msgid "Frisian"
+msgstr "Frisian"
+
+msgid "French (France)"
+msgstr "French (France)"
+
+msgid "Faroese"
+msgstr "Faroese"
+
+msgid "Finnish"
+msgstr "Finnish"
+
+msgid "Persian"
+msgstr "Persian"
+
+msgid "Basque"
+msgstr "Basque"
+
+msgid "Estonian"
+msgstr "Estonian"
+
+msgid "Spanish (Venezuela)"
+msgstr "Spanish (Venezuela)"
+
+msgid "Spanish (Peru)"
+msgstr "Spanish (Peru)"
+
+msgid "Mexican Spanish"
+msgstr "Mexican Spanish"
+
+msgid "Spanish (Chile)"
+msgstr "Spanish (Chile)"
+
+msgid "Spanish (Spain)"
+msgstr "Spanish (Spain)"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "English (UK)"
+msgstr "English (UK)"
+
+msgid "English (Canada)"
+msgstr "English (Canada)"
+
+msgid "English (Australia)"
+msgstr "English (Australia)"
+
+msgid "English (United States)"
+msgstr "English (United States)"
+
+msgid "Greek"
+msgstr "Greek"
+
+msgid "Dhivehi"
+msgstr "Dhivehi"
+
+msgid "German"
+msgstr "German"
+
+msgid "Danish"
+msgstr "Danish"
+
+msgid "Welsh"
+msgstr "Welsh"
+
+msgid "Czech"
+msgstr "Czech"
+
+msgid "Corsican"
+msgstr "Corsican"
+
+msgid "Central Kurdish"
+msgstr "Central Kurdish"
+
+msgid "Catalan"
+msgstr "Catalan"
+
+msgid "Bosnian"
+msgstr "Bosnian"
+
+msgid "Tibetan"
+msgstr "Tibetan"
+
+msgid "Indian Bengali"
+msgstr "Indian Bengali"
+
+msgid "Bangla"
+msgstr "Bangla"
+
+msgid "Bulgarian"
+msgstr "Bulgarian"
+
+msgid "Belarusian"
+msgstr "Belarusian"
+
+msgid "Azerbaijani"
+msgstr "Azerbaijani"
+
+msgid "Assamese"
+msgstr "Assamese"
+
+msgid "Arabic"
+msgstr "Arabic"
+
+msgid "Aragonese"
+msgstr "Aragonese"
+
+msgid "Amharic"
+msgstr "Amharic"
+
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+msgid "Install"
+msgstr "התקן"
+
+msgid "Add Languages"
+msgstr "הוספת שפות"
+
+msgid "Available Languages"
+msgstr "שפות זמינות"
+
+msgid "Translation install failed."
+msgstr "התקנת התרגום נכשלה."
+
+msgid "Translation installed successfully."
+msgstr "התרגום הותקן בהצלחה."
+
+msgid "You are not allowed to install translations."
+msgstr "אין לך הרשאה להתקין תרגומים."
+
+msgid "Bogo"
+msgstr "Bogo"
+
+msgid "Bogo Tools"
+msgstr "כלי Bogo"
+
+msgid "This user is allowed to access the following locales:"
+msgstr "משתמש זה רשאי לגשת למיקומים שלהלן:"
+
+msgid "Add %s translation"
+msgstr "הוספת תרגום ל %s"
+
+msgid "Translations"
+msgstr "תרגומים"
+
+msgid "Language"
+msgstr "שפה"
+
+msgid "Translate into %s"
+msgstr "תרגם ל %s"
+
+msgid "Translate this item into %s"
+msgstr "תרגם פריט זה ל %s"
+
+msgid "Edit %s translation"
+msgstr "עריכת התרגום ל %s"
+
+msgid "Edit %s translation of this item"
+msgstr "ערוך את התרגום ל %s של פריט זה"
+
+msgid "Show all locales"
+msgstr "הצג את כל המיקומים"
+
+msgid "Locale"
+msgstr "מיקום"
+
+msgid "Displayed on pages in"
+msgstr "מוצג בעמודים ב"
