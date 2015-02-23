@@ -59,7 +59,14 @@ function bogo_switch_user_locale() {
 }
 
 function bogo_get_user_locale( $user_id = 0 ) {
-	if ( ! $user_id = absint( $user_id ) ) {
+	$default_locale = bogo_get_default_locale();
+	$user_id = absint( $user_id );
+
+	if ( ! $user_id ) {
+		if ( ! did_action( 'after_setup_theme' ) ) {
+			return $default_locale;
+		}
+
 		$user_id = get_current_user_id();
 	}
 
@@ -69,8 +76,6 @@ function bogo_get_user_locale( $user_id = 0 ) {
 	&& user_can( $user_id, 'bogo_access_locale', $locale ) ) {
 		return $locale;
 	}
-
-	$default_locale = bogo_get_default_locale();
 
 	if ( user_can( $user_id, 'bogo_access_locale', $default_locale ) ) {
 		return $default_locale;
