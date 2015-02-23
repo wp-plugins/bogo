@@ -59,15 +59,17 @@ function bogo_switch_user_locale() {
 }
 
 function bogo_get_user_locale( $user_id = 0 ) {
+	global $current_user;
+
 	$default_locale = bogo_get_default_locale();
 	$user_id = absint( $user_id );
 
 	if ( ! $user_id ) {
-		if ( ! did_action( 'after_setup_theme' ) ) {
+		if ( function_exists( 'wp_get_current_user' ) && ! empty( $current_user ) ) {
+			$user_id = get_current_user_id();
+		} elseif ( ! $user_id = apply_filters( 'determine_current_user', false ) ) {
 			return $default_locale;
 		}
-
-		$user_id = get_current_user_id();
 	}
 
 	$locale = get_user_option( 'locale', $user_id );
