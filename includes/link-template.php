@@ -254,6 +254,8 @@ function bogo_language_switcher( $args = '' ) {
 
 	$output .= '</ul>' . "\n";
 
+	$output = apply_filters( 'bogo_language_switcher', $output, $args );
+
 	if ( $args['echo'] ) {
 		echo $output;
 	} else {
