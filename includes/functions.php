@@ -2,9 +2,10 @@
 
 function bogo_languages() {
 	static $languages = array();
+	static $textdomain_loaded = false;
 
-	if ( ! empty( $languages ) ) {
-		return $languages;
+	if ( $languages && $textdomain_loaded ) {
+		return apply_filters( 'bogo_languages', $languages );
 	}
 
 	$languages = array(
@@ -115,11 +116,13 @@ function bogo_languages() {
 		'zh_TW' => __( 'Chinese (Taiwan)', 'bogo' )
 	);
 
+	if ( is_textdomain_loaded( 'bogo' ) ) {
+		$textdomain_loaded = true;
+	}
+
 	asort( $languages, SORT_STRING );
 
-	$languages = apply_filters( 'bogo_languages', $languages );
-
-	return $languages;
+	return apply_filters( 'bogo_languages', $languages );
 }
 
 function bogo_get_language( $locale ) {
