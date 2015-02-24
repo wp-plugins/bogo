@@ -33,9 +33,6 @@ function bogo_flag_css() {
 }
 
 function bogo_get_flag( $locale ) {
-	$dir = '/images/flag-icons';
-	$file = '';
-
 	$special_cases = array(
 		'ca' => 'catalonia',
 		'gd' => 'scotland',
@@ -66,12 +63,15 @@ function bogo_get_flag( $locale ) {
 		$file = $special_cases[$locale] . '.png';
 	} elseif ( preg_match( '/_([A-Z]{2})$/', $locale, $matches ) ) {
 		$file = strtolower( $matches[1] ) . '.png';
+	} else {
+		$file = 'zz.png'; // 'zz.png' doesn't exist, just a dummy.
 	}
 
+	$file = path_join( 'images/flag-icons', $file );
 	$url = '';
 
-	if ( $file && file_exists( path_join( BOGO_PLUGIN_DIR . $dir, $file ) ) ) {
-		$url = path_join( BOGO_PLUGIN_URL . $dir, $file );
+	if ( file_exists( path_join( BOGO_PLUGIN_DIR, $file ) ) ) {
+		$url = bogo_plugin_url( $file );
 	}
 
 	return apply_filters( 'bogo_get_flag', $url, $locale );

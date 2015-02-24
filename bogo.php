@@ -20,8 +20,6 @@ define( 'BOGO_PLUGIN_NAME', trim( dirname( BOGO_PLUGIN_BASENAME ), '/' ) );
 
 define( 'BOGO_PLUGIN_DIR', untrailingslashit( dirname( BOGO_PLUGIN ) ) );
 
-define( 'BOGO_PLUGIN_URL', untrailingslashit( plugins_url( '', BOGO_PLUGIN ) ) );
-
 require_once BOGO_PLUGIN_DIR . '/includes/functions.php';
 require_once BOGO_PLUGIN_DIR . '/includes/rewrite.php';
 require_once BOGO_PLUGIN_DIR . '/includes/link-template.php';
