@@ -74,15 +74,10 @@
 
 	$(function() {
 		$('body.options-general-php select#WPLANG').each(function() {
-			var default_locale = _bogo.defaultLocale || 'en_US';
-
-			if ('en_US' == default_locale) {
-				return;
-			}
-
-			if ($(this).has('option[value="' + default_locale + '"]')) {
-				$(this).val(default_locale);
-			}
+			$(this).find('option[selected="selected"]').removeAttr('selected');
+			var val = _bogo.defaultLocale || 'en_US';
+			val = ( 'en_US' == val ? '' : val );
+			$(this).find('option[value="' + val + '"]').first().attr('selected', 'selected');
 		});
 	});
 
