@@ -110,6 +110,9 @@ function bogo_tools_page() {
 		}
 	}
 
+	$default_locale = bogo_get_default_locale();
+	$available_locales = bogo_available_locales();
+
 ?>
 <div class="wrap">
 
@@ -119,68 +122,67 @@ function bogo_tools_page() {
 <div id="message" class="updated"><p><?php echo esc_html( $message ); ?></p></div>
 <?php endif; ?>
 
+<h3 class="title"><?php echo esc_html( __( 'Available Languages', 'bogo' ) ); ?></h3>
+
+<table id="bogo-languages-table" class="widefat">
+<tbody id="translations">
+	<tr><th>1</th><td><p>
+		<strong><?php echo esc_html( bogo_get_language( $default_locale ) ); ?></strong>
+		[<?php echo esc_html( $default_locale ); ?>]
+		<br /><?php echo esc_html( __( 'Site Default Language', 'bogo' ) ); ?>
+	</p></td></tr>
+
 <?php
-	bogo_toolbox_installed_translations();
-	bogo_toolbox_add_translations();
+	$count = 1;
+
+	foreach ( $available_locales as $locale ) {
+		if ( $locale == $default_locale ) {
+			continue;
+		}
+
+		$count += 1;
 ?>
-
-</div>
+	<tr><th><?php echo $count; ?></th><td><p>
+		<strong><?php echo esc_html( bogo_get_language( $locale ) ); ?></strong>
+		[<?php echo esc_html( $locale ); ?>]
+		<br /><?php echo esc_html( __( 'Installed', 'bogo' ) ); ?>
+	</p></td></tr>
 <?php
-}
-
-function bogo_toolbox_installed_translations() {
-	$title = __( 'Available Languages', 'bogo' );
-
-	$default_locale = bogo_get_default_locale();
-	$languages = array( $default_locale => bogo_get_language( $default_locale ) )
-		+ bogo_available_languages();
-?>
-<div class="tool-box">
-<h3 class="title"><?php echo esc_html( $title ); ?></h3>
-<ul id="translations">
-<?php
-	foreach ( $languages as $locale => $language ) {
-		echo sprintf( '<li>%s</li>', esc_html( $language ) );
-	}
-?>
-</ul>
-</div>
-<?php
-}
-
-function bogo_toolbox_add_translations() {
-	if ( ! wp_can_install_language_pack() ) {
-		return;
 	}
 
-	$title = __( 'Add Languages', 'bogo' );
+	$can_install = wp_can_install_language_pack();
 
-	$available_translations = wp_get_available_translations();
-	$languages = array_diff( bogo_languages(), bogo_available_languages() );
+	foreach ( wp_get_available_translations() as $locale => $translation ) {
+		if ( in_array( $locale, $available_locales ) ) {
+			continue;
+		}
 
-?>
-<div class="tool-box">
-<h3 class="title"><?php echo esc_html( $title ); ?></h3>
-<ul id="translations">
-<?php
-	foreach ( $languages as $locale => $language ) {
-		if ( isset( $available_translations[$locale] ) ) {
+		$count += 1;
+
+		$install_link = '';
+
+		if ( $can_install ) {
 			$install_link = menu_page_url( 'bogo-tools', false );
 			$install_link = add_query_arg(
 				array( 'action' => 'install_translation', 'locale' => $locale ),
 				$install_link );
 			$install_link = wp_nonce_url( $install_link, 'bogo-tools' );
 			$install_link = sprintf( '<a href="%1$s" class="install">%2$s</a>',
-				$install_link, __( 'Install', 'bogo' ) );
-
-			echo sprintf( '<li>%1$s %2$s</li>',
-				esc_html( $language ), $install_link );
-		} else {
-			echo sprintf( '<li>%s</li>', esc_html( $language ) );
+				$install_link, esc_html( __( 'Install', 'bogo' ) ) );
 		}
+?>
+	<tr><th><?php echo $count; ?></th><td><p>
+		<strong><?php echo esc_html( bogo_get_language( $locale ) ); ?></strong>
+		[<?php echo esc_html( $locale ); ?>]
+		<?php echo $install_link; ?>
+	</p></td></tr>
+<?php
 	}
 ?>
-</ul>
+
+</tbody>
+</table>
+
 </div>
 <?php
 }

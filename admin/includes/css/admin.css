@@ -38,6 +38,25 @@ fieldset.bogo-locale-options label.bogo-locale-option input[type="checkbox"] {
 	width: 16px;
 }
 
+/* Bogo Tools */
+
+#translations th {
+	width: 2em;
+}
+
+#translations th, #translations td {
+	box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+	padding: 8px 10px 4px;
+}
+
+#translations td p {
+	margin: 4px 0 8px;
+}
+
+#translations td strong {
+	font-size: 110%;
+}
+
 #translations a.install {
 	border: 1px solid #0074a2;
 	background: #d4eefe;
