@@ -125,6 +125,12 @@ function bogo_tools_page() {
 <h3 class="title"><?php echo esc_html( __( 'Available Languages', 'bogo' ) ); ?></h3>
 
 <table id="bogo-languages-table" class="widefat">
+<thead>
+	<tr><th></th><th><?php echo esc_html( __( 'Language', 'bogo' ) ); ?></th></tr>
+</thead>
+<tfoot>
+	<tr><th></th><th><?php echo esc_html( __( 'Language', 'bogo' ) ); ?></th></tr>
+</tfoot>
 <tbody id="translations">
 	<tr><th>1</th><td><p>
 		<strong><?php echo esc_html( bogo_get_language( $default_locale ) ); ?></strong>
