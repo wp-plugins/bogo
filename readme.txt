@@ -2,9 +2,9 @@
 Contributors: takayukister
 Tags: multilingual, localization, language, locale, admin
 Requires at least: 4.0
-Tested up to: 4.1
+Tested up to: 4.1.1
 Donate link: http://www.pledgie.com/campaigns/17860
-Stable tag: 2.4.2
+Stable tag: 2.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,16 @@ Here are some technical details for those interested. Bogo plugin assigns [one l
 1. The Language Post Box manages language and translations of the Post/Page.
 
 == Changelog ==
+
+= 2.4.3 =
+
+* Bug fixed: get_current_user_id() was called before WordPress set up the current user.
+* Bug fixed: bogo_languages filter was not applied to the static variable in bogo_languages().
+* Bug fixed: The language selector in the General Settings admin screen showed an incorrect value when your user locale was other than en_US and your choice was en_US.
+* Introduced BOGO_PLUGIN constant, and removed BOGO_PLUGIN_URL constant.
+* bogo_plugin_url() has been introduced.
+* bogo_language_switcher and bogo_language_switcher_links filter hooks have been introduced.
+* Redesigned the Bogo Tools admin screen.
 
 = 2.4.2 =
 
