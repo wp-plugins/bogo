@@ -1,0 +1,555 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bogo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-11 23:26+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Takayuki Miyoshi <takayukister@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 "
+"&& n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Generator: Poedit 1.7.5\n"
+"Language: ru_RU\n"
+"X-Poedit-SearchPath-0: bogo\n"
+
+#: bogo/bogo.php:4
+msgid ""
+"A straight-forward multilingual plugin. No more double-digit custom DB "
+"tables or hidden HTML comments that could cause you headaches later on."
+msgstr ""
+"Простой плагин многоязычных сайтов. Больше никаких лишних таблиц в "
+"базе или скрытых HTML комментариев с которыми потом одна только "
+"головная боль."
+
+#: bogo/admin/admin.php:40 bogo/admin/includes/widgets.php:20
+msgid "Displayed on pages in"
+msgstr "Отображается на страницах"
+
+#: bogo/admin/admin.php:67 bogo/admin/admin.php:119
+msgid "Bogo Tools"
+msgstr "Инструменты Bogo"
+
+#: bogo/admin/admin.php:67
+msgid "Bogo"
+msgstr "Bogo"
+
+#: bogo/admin/admin.php:82
+msgid "You are not allowed to install translations."
+msgstr "Недостаточно прав для установки языковых пакетов."
+
+#: bogo/admin/admin.php:107
+msgid "Translation installed successfully."
+msgstr "Языковые пакеты успешно установлены."
+
+#: bogo/admin/admin.php:109
+msgid "Translation install failed."
+msgstr "Установка языковых пакетов не удалась."
+
+#: bogo/admin/admin.php:125
+msgid "Available Languages"
+msgstr "Доступные языки"
+
+#: bogo/admin/admin.php:129 bogo/admin/admin.php:132
+#: bogo/admin/includes/post.php:147 bogo/admin/includes/post.php:181
+msgid "Language"
+msgstr "Язык"
+
+#: bogo/admin/admin.php:138
+msgid "Site Default Language"
+msgstr "Язык по умолчанию"
+
+#: bogo/admin/admin.php:154
+msgid "Installed"
+msgstr "Установлен"
+
+#: bogo/admin/admin.php:177
+msgid "Install"
+msgstr "Установить"
+
+#: bogo/admin/includes/post.php:20 bogo/admin/includes/user.php:66
+#: bogo/admin/includes/user.php:101
+msgid "Locale"
+msgstr "Локаль"
+
+#: bogo/admin/includes/post.php:73
+msgid "Show all locales"
+msgstr "Показать все локали"
+
+#: bogo/admin/includes/post.php:112
+#, php-format
+msgid "Edit %s translation of this item"
+msgstr "Редактировать %s вариант"
+
+#: bogo/admin/includes/post.php:113
+#, php-format
+msgid "Edit %s translation"
+msgstr "Редактировать %s вариант"
+
+#: bogo/admin/includes/post.php:118
+#, php-format
+msgid "Translate this item into %s"
+msgstr "Перевести этот пункт на %s"
+
+#: bogo/admin/includes/post.php:119
+#, php-format
+msgid "Translate into %s"
+msgstr "Перевести в %s"
+
+#: bogo/admin/includes/post.php:197
+msgid "Translations"
+msgstr "Переводы"
+
+#: bogo/admin/includes/post.php:251
+#, php-format
+msgid "Add %s translation"
+msgstr "Добавить %s перевод"
+
+#: bogo/admin/includes/user.php:69
+msgid "This user is allowed to access the following locales:"
+msgstr "Пользователь имеет доступ к следующим локалям:"
+
+#: bogo/includes/functions.php:12
+msgid "Afrikaans"
+msgstr "Африкаанс"
+
+#: bogo/includes/functions.php:13
+msgid "Amharic"
+msgstr "Амхарский"
+
+#: bogo/includes/functions.php:14
+msgid "Aragonese"
+msgstr "Арагонский"
+
+#: bogo/includes/functions.php:15
+msgid "Arabic"
+msgstr "Арабский"
+
+#: bogo/includes/functions.php:16
+msgid "Assamese"
+msgstr "Ассамский"
+
+#: bogo/includes/functions.php:17
+msgid "Azerbaijani"
+msgstr "Азербайджанский"
+
+#: bogo/includes/functions.php:18
+msgid "Belarusian"
+msgstr "Белорусский"
+
+#: bogo/includes/functions.php:19
+msgid "Bulgarian"
+msgstr "Болгарский"
+
+#: bogo/includes/functions.php:20
+msgid "Bangla"
+msgstr "Бенгальский"
+
+#: bogo/includes/functions.php:21
+msgid "Indian Bengali"
+msgstr "Индийский бенгальский"
+
+#: bogo/includes/functions.php:22
+msgid "Tibetan"
+msgstr "Тибетский"
+
+#: bogo/includes/functions.php:23
+msgid "Bosnian"
+msgstr "Боснийский"
+
+#: bogo/includes/functions.php:24
+msgid "Catalan"
+msgstr "Каталонский"
+
+#: bogo/includes/functions.php:25
+msgid "Central Kurdish"
+msgstr "Центральный курдский"
+
+#: bogo/includes/functions.php:26
+msgid "Corsican"
+msgstr "Корсиканский"
+
+#: bogo/includes/functions.php:27
+msgid "Czech"
+msgstr "Чешский"
+
+#: bogo/includes/functions.php:28
+msgid "Welsh"
+msgstr "Валлийский"
+
+#: bogo/includes/functions.php:29
+msgid "Danish"
+msgstr "Датский"
+
+#: bogo/includes/functions.php:30
+msgid "German"
+msgstr "Немецкий"
+
+#: bogo/includes/functions.php:31
+msgid "German (Switzerland)"
+msgstr "Немецкий (Швейцария)"
+
+#: bogo/includes/functions.php:32
+msgid "Dhivehi"
+msgstr "Мальдивский (Дивехи)"
+
+#: bogo/includes/functions.php:33
+msgid "Greek"
+msgstr "Греческий"
+
+#: bogo/includes/functions.php:34
+msgid "English (United States)"
+msgstr "Английский (США)"
+
+#: bogo/includes/functions.php:35
+msgid "English (Australia)"
+msgstr "Английский (Австралия)"
+
+#: bogo/includes/functions.php:36
+msgid "English (Canada)"
+msgstr "Английский (Канада)"
+
+#: bogo/includes/functions.php:37
+msgid "English (UK)"
+msgstr "Английский (Великобритания)"
+
+#: bogo/includes/functions.php:38
+msgid "Esperanto"
+msgstr "Эсперанто"
+
+#: bogo/includes/functions.php:39
+msgid "Spanish (Spain)"
+msgstr "Испанский (Испания)"
+
+#: bogo/includes/functions.php:40
+msgid "Spanish (Chile)"
+msgstr "Испанский (Чили)"
+
+#: bogo/includes/functions.php:41
+msgid "Spanish (Mexico)"
+msgstr "Испанский (Мексика)"
+
+#: bogo/includes/functions.php:42
+msgid "Spanish (Peru)"
+msgstr "Испанский (Перу)"
+
+#: bogo/includes/functions.php:43
+msgid "Spanish (Venezuela)"
+msgstr "Испанский (Венесуэла)"
+
+#: bogo/includes/functions.php:44
+msgid "Estonian"
+msgstr "Эстонский"
+
+#: bogo/includes/functions.php:45
+msgid "Basque"
+msgstr "Баскский"
+
+#: bogo/includes/functions.php:46
+msgid "Persian"
+msgstr "Персидский"
+
+#: bogo/includes/functions.php:47
+msgid "Finnish"
+msgstr "Финский"
+
+#: bogo/includes/functions.php:48
+msgid "Faroese"
+msgstr "Фарерский"
+
+#: bogo/includes/functions.php:49
+msgid "French (France)"
+msgstr "Французский (Франция)"
+
+#: bogo/includes/functions.php:50
+msgid "Frisian"
+msgstr "Фризский"
+
+#: bogo/includes/functions.php:51
+msgid "Irish"
+msgstr "Ирландский"
+
+#: bogo/includes/functions.php:52
+msgid "Scottish Gaelic"
+msgstr "Гэльский"
+
+#: bogo/includes/functions.php:53
+msgid "Galician"
+msgstr "Галисийский"
+
+#: bogo/includes/functions.php:54
+msgid "Gujarati"
+msgstr "Гуджарати"
+
+#: bogo/includes/functions.php:55
+msgid "Hazaragi"
+msgstr "Hazaragi"
+
+#: bogo/includes/functions.php:56
+msgid "Hebrew"
+msgstr "Иврит"
+
+#: bogo/includes/functions.php:57
+msgid "Hindi"
+msgstr "Хинди"
+
+#: bogo/includes/functions.php:58
+msgid "Croatian"
+msgstr "Хорватский"
+
+#: bogo/includes/functions.php:59
+msgid "Haitian"
+msgstr "Гаитянский"
+
+#: bogo/includes/functions.php:60
+msgid "Hungarian"
+msgstr "Венгерский"
+
+#: bogo/includes/functions.php:61
+msgid "Armenian"
+msgstr "Арменский"
+
+#: bogo/includes/functions.php:62
+msgid "Indonesian"
+msgstr "Индонезийский"
+
+#: bogo/includes/functions.php:63
+msgid "Icelandic"
+msgstr "Исландский"
+
+#: bogo/includes/functions.php:64
+msgid "Italian"
+msgstr "Итальянский"
+
+#: bogo/includes/functions.php:65
+msgid "Japanese"
+msgstr "Японский"
+
+#: bogo/includes/functions.php:66
+msgid "Javanese"
+msgstr "Яванский"
+
+#: bogo/includes/functions.php:67
+msgid "Georgian"
+msgstr "Грузинский"
+
+#: bogo/includes/functions.php:68
+msgid "Kazakh"
+msgstr "Казахский"
+
+#: bogo/includes/functions.php:69
+msgid "Khmer"
+msgstr "Кхмерский"
+
+#: bogo/includes/functions.php:70
+msgid "Kannada"
+msgstr "Каннада"
+
+#: bogo/includes/functions.php:71
+msgid "Korean"
+msgstr "Корейский"
+
+#: bogo/includes/functions.php:72
+msgid "Limburgish"
+msgstr "Лимбургский"
+
+#: bogo/includes/functions.php:73
+msgid "Lao"
+msgstr "Лаосский"
+
+#: bogo/includes/functions.php:74
+msgid "Lithuanian"
+msgstr "Литовский"
+
+#: bogo/includes/functions.php:75
+msgid "Latvian"
+msgstr "Латвийский"
+
+#: bogo/includes/functions.php:76
+msgid "Malagasy"
+msgstr "Малагасийский"
+
+#: bogo/includes/functions.php:77
+msgid "Macedonian"
+msgstr "Македонский"
+
+#: bogo/includes/functions.php:78
+msgid "Malayalam"
+msgstr "Малаялам"
+
+#: bogo/includes/functions.php:79
+msgid "Mongolian"
+msgstr "Монгольский"
+
+#: bogo/includes/functions.php:80
+msgid "Marathi"
+msgstr "Маратхи"
+
+#: bogo/includes/functions.php:81
+msgid "Malay"
+msgstr "Малайский"
+
+#: bogo/includes/functions.php:82
+msgid "Maltese"
+msgstr "Мальтийский"
+
+#: bogo/includes/functions.php:83
+msgid "Burmese"
+msgstr "Бирманский"
+
+#: bogo/includes/functions.php:84
+msgid "Norwegian (Bokmål)"
+msgstr "Норвежский (букмол)"
+
+#: bogo/includes/functions.php:85
+msgid "Nepali"
+msgstr "Непальский"
+
+#: bogo/includes/functions.php:86
+msgid "Nias"
+msgstr "Ниас"
+
+#: bogo/includes/functions.php:87
+msgid "Dutch"
+msgstr "Голландский"
+
+#: bogo/includes/functions.php:88
+msgid "Ossetic"
+msgstr "Осетинский"
+
+#: bogo/includes/functions.php:89
+msgid "Punjabi"
+msgstr "Панджаби"
+
+#: bogo/includes/functions.php:90
+msgid "Polish"
+msgstr "Польский"
+
+#: bogo/includes/functions.php:91
+msgid "Portuguese (Brazil)"
+msgstr "Португальский (Бразилия)"
+
+#: bogo/includes/functions.php:92
+msgid "Portuguese (Portugal)"
+msgstr "Португальский (Португалия)"
+
+#: bogo/includes/functions.php:93
+msgid "Romanian"
+msgstr "Румынский"
+
+#: bogo/includes/functions.php:94
+msgid "Russian"
+msgstr "Русский"
+
+#: bogo/includes/functions.php:95
+msgid "Sanskrit"
+msgstr "Санскрит"
+
+#: bogo/includes/functions.php:96
+msgid "Sinhala"
+msgstr "Сингальский"
+
+#: bogo/includes/functions.php:97
+msgid "Slovak"
+msgstr "Словацкий"
+
+#: bogo/includes/functions.php:98
+msgid "Slovenian"
+msgstr "Словенский"
+
+#: bogo/includes/functions.php:99
+msgid "Somali"
+msgstr "Сомалийский"
+
+#: bogo/includes/functions.php:100
+msgid "Albanian"
+msgstr "Албанский"
+
+#: bogo/includes/functions.php:101
+msgid "Serbian"
+msgstr "Сербский"
+
+#: bogo/includes/functions.php:102
+msgid "Swedish"
+msgstr "Шведский"
+
+#: bogo/includes/functions.php:103
+msgid "Sundanese"
+msgstr "Суданский"
+
+#: bogo/includes/functions.php:104
+msgid "Swahili"
+msgstr "Суахили"
+
+#: bogo/includes/functions.php:105
+msgid "Tamil"
+msgstr "Тамильский"
+
+#: bogo/includes/functions.php:106
+msgid "Telugu"
+msgstr "Телугу"
+
+#: bogo/includes/functions.php:107
+msgid "Tajik"
+msgstr "Таджикский"
+
+#: bogo/includes/functions.php:108
+msgid "Thai"
+msgstr "Тайский"
+
+#: bogo/includes/functions.php:109
+msgid "Tagalog"
+msgstr "Тагальский"
+
+#: bogo/includes/functions.php:110
+msgid "Turkish"
+msgstr "Турецкий"
+
+#: bogo/includes/functions.php:111
+msgid "Tatar"
+msgstr "Татарский"
+
+#: bogo/includes/functions.php:112
+msgid "Uighur"
+msgstr "Уйгурский"
+
+#: bogo/includes/functions.php:113
+msgid "Ukrainian"
+msgstr "Украинский"
+
+#: bogo/includes/functions.php:114
+msgid "Urdu"
+msgstr "Урду"
+
+#: bogo/includes/functions.php:115
+msgid "Uzbek"
+msgstr "Узбекский"
+
+#: bogo/includes/functions.php:116
+msgid "Vietnamese"
+msgstr "Вьетнамский"
+
+#: bogo/includes/functions.php:117
+msgid "Chinese (China)"
+msgstr "Китайский (Китай)"
+
+#: bogo/includes/functions.php:118
+msgid "Chinese (Taiwan)"
+msgstr "Китайский (Тайвань)"
+
+#: bogo/includes/widgets.php:15
+msgid "Language switcher widget by Bogo plugin"
+msgstr "Виджет выбора языка / Bogo"
+
+#: bogo/includes/widgets.php:20 bogo/includes/widgets.php:28
+msgid "Language Switcher"
+msgstr "Переключатель языка"
+
+#: bogo/includes/widgets.php:45
+msgid "Title:"
+msgstr "Заголовок:"
