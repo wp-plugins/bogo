@@ -28,6 +28,7 @@ function bogo_languages() {
 		'cy' => __( 'Welsh', 'bogo' ),
 		'da_DK' => __( 'Danish', 'bogo' ),
 		'de_DE' => __( 'German', 'bogo' ),
+		'de_DE_formal' => __( 'German (Formal)', 'bogo' ),
 		'de_CH' => __( 'German (Switzerland)', 'bogo' ),
 		'dv' => __( 'Dhivehi', 'bogo' ),
 		'el' => __( 'Greek', 'bogo' ),
@@ -38,6 +39,7 @@ function bogo_languages() {
 		'eo' => __( 'Esperanto', 'bogo' ),
 		'es_ES' => __( 'Spanish (Spain)', 'bogo' ),
 		'es_CL' => __( 'Spanish (Chile)', 'bogo' ),
+		'es_CO' => __( 'Spanish (Colombia)', 'bogo' ),
 		'es_MX' => __( 'Spanish (Mexico)', 'bogo' ),
 		'es_PE' => __( 'Spanish (Peru)', 'bogo' ),
 		'es_VE' => __( 'Spanish (Venezuela)', 'bogo' ),
@@ -85,9 +87,12 @@ function bogo_languages() {
 		'ne_NP' => __( 'Nepali', 'bogo' ),
 		'ni_ID' => __( 'Nias', 'bogo' ),
 		'nl_NL' => __( 'Dutch', 'bogo' ),
+		'nn_NO' => __( 'Norwegian (Nynorsk)', 'bogo' ),
+		'oci' => __( 'Occitan', 'bogo' ),
 		'os' => __( 'Ossetic', 'bogo' ),
 		'pa_IN' => __( 'Punjabi', 'bogo' ),
 		'pl_PL' => __( 'Polish', 'bogo' ),
+		'ps' => __( 'Pashto', 'bogo' ),
 		'pt_BR' => __( 'Portuguese (Brazil)', 'bogo' ),
 		'pt_PT' => __( 'Portuguese (Portugal)', 'bogo' ),
 		'ro_RO' => __( 'Romanian', 'bogo' ),
@@ -471,5 +476,3 @@ function bogo_plugin_url( $path = '' ) {
 
 	return $url;
 }
-
-?>
