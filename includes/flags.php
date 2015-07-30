@@ -33,6 +33,10 @@ function bogo_flag_css() {
 }
 
 function bogo_get_flag( $locale ) {
+	$locale = explode( '_', $locale );
+	$locale = array_slice( $locale, 0, 2 ); // de_DE_formal => de_DE
+	$locale = implode( '_', $locale );
+
 	$special_cases = array(
 		'ca' => 'catalonia',
 		'gd' => 'scotland',
@@ -76,5 +80,3 @@ function bogo_get_flag( $locale ) {
 
 	return apply_filters( 'bogo_get_flag', $url, $locale );
 }
-
-?>
