@@ -142,6 +142,10 @@ function bogo_get_language( $locale ) {
 }
 
 function bogo_get_language_native_name( $locale ) {
+	if ( 'en_US' == $locale ) {
+		return 'English (United States)';
+	}
+
 	if ( ! function_exists( 'wp_get_available_translations' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/translation-install.php';
 	}

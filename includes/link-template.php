@@ -218,12 +218,18 @@ function bogo_language_switcher( $args = '' ) {
 
 		$class = implode( ' ', array_unique( $class ) );
 
+		$label = $link['native_name'] ? $link['native_name'] : $link['title'];
+		$title = $link['title'];
+
 		if ( empty( $link['href'] ) ) {
-			$li = esc_html( $link['title'] );
+			$li = esc_html( $label );
 		} else {
 			$li = sprintf(
-				'<a rel="alternate" hreflang="%1$s" href="%2$s">%3$s</a>',
-				$link['lang'], esc_url( $link['href'] ), esc_html( $link['title'] ) );
+				'<a rel="alternate" hreflang="%1$s" href="%2$s" title="%3$s">%4$s</a>',
+				$link['lang'],
+				esc_url( $link['href'] ),
+				esc_attr( $title ),
+				esc_html( $label ) );
 		}
 
 		$li = sprintf( '<li class="%1$s">%2$s</li>', $class, $li );
@@ -265,6 +271,7 @@ function bogo_language_switcher_links( $args = '' ) {
 			'locale' => $code,
 			'lang' => bogo_language_tag( $code ),
 			'title' => $name,
+			'native_name' => bogo_get_language_native_name( $code ),
 			'href' => '' );
 
 		if ( $is_singular ) {
@@ -321,5 +328,3 @@ function bogo_adjacent_post_where( $where, $in_same_term, $excluded_terms ) {
 
 	return $where;
 }
-
-?>
