@@ -141,6 +141,24 @@ function bogo_get_language( $locale ) {
 	return null;
 }
 
+function bogo_get_language_native_name( $locale ) {
+	if ( ! function_exists( 'wp_get_available_translations' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/translation-install.php';
+	}
+
+	static $available_translations = array();
+
+	if ( empty( $available_translations ) ) {
+		$available_translations = wp_get_available_translations();
+	}
+
+	if ( isset( $available_translations[$locale]['native_name'] ) ) {
+		return $available_translations[$locale]['native_name'];
+	}
+
+	return false;
+}
+
 function bogo_get_default_locale() {
 	if ( defined( 'WPLANG' ) ) {
 		$locale = WPLANG;
