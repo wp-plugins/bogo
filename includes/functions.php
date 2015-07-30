@@ -376,23 +376,26 @@ function bogo_get_url_with_lang( $url = null, $lang = null, $args = '' ) {
 			$url .= $_SERVER['REQUEST_URI'];
 		}
 
-		if ( $frag = strstr( $url, '#' ) )
+		if ( $frag = strstr( $url, '#' ) ) {
 			$url = substr( $url, 0, - strlen( $frag ) );
+		}
 
 		if ( $query = @parse_url( $url, PHP_URL_QUERY ) ) {
 			parse_str( $query, $query_vars );
 
 			foreach ( array_keys( $query_vars ) as $qv ) {
-				if ( ! get_query_var( $qv ) )
+				if ( ! get_query_var( $qv ) ) {
 					$url = remove_query_arg( $qv, $url );
+				}
 			}
 		}
 	}
 
 	$default_locale = bogo_get_default_locale();
 
-	if ( ! $lang )
+	if ( ! $lang ) {
 		$lang = $default_locale;
+	}
 
 	$home = set_url_scheme( get_option( 'home' ) );
 	$home = trailingslashit( $home );
@@ -400,18 +403,25 @@ function bogo_get_url_with_lang( $url = null, $lang = null, $args = '' ) {
 	$url = remove_query_arg( 'lang', $url );
 
 	if ( ! $args['using_permalinks'] ) {
-		if ( $lang != $default_locale )
+		if ( $lang != $default_locale ) {
 			$url = add_query_arg( array( 'lang' => bogo_lang_slug( $lang ) ), $url );
+		}
 
 		return $url;
 	}
 
 	$available_languages = array_map( 'bogo_lang_slug', bogo_available_locales() );
 
+	$tail_slashed = ( '/' == substr( $url, -1 ) );
+
 	$url = preg_replace(
 		'#^' . preg_quote( $home ) . '((' . implode( '|', $available_languages ) . ')/)?#',
 		$home . ( $lang == $default_locale ? '' : bogo_lang_slug( $lang ) . '/' ),
 		trailingslashit( $url ) );
+
+	if ( ! $tail_slashed ) {
+		$url = untrailingslashit( $url );
+	}
 
 	return $url;
 }
